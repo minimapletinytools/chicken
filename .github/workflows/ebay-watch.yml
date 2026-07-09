@@ -1,0 +1,54 @@
+name: eBay Watch
+
+on:
+  schedule:
+    # Every 6 hours. Adjust as you like — eBay's Browse API app-token rate
+    # limit is generous (thousands/day) but keep an eye on it if you add
+    # many searches or run more often.
+    - cron: "17 */6 * * *"
+  workflow_dispatch:
+    inputs:
+      issue_mode:
+        description: "How to report hits"
+        type: choice
+        default: comment
+        options:
+          - comment
+          - new
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: ebay-watch
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -r requirements.txt
+
+      - name: Run eBay watch
+        env:
+          EBAY_CLIENT_ID: ${{ secrets.EBAY_CLIENT_ID }}
+          EBAY_CLIENT_SECRET: ${{ secrets.EBAY_CLIENT_SECRET }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          ISSUE_MODE: ${{ inputs.issue_mode || 'comment' }}
+        run: python scripts/ebay_watch.py
+
+      - name: Commit updated price cache
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add data/ebay_cache
+          git diff --cached --quiet || git commit -m "Update eBay price cache [skip ci]"
+          git push

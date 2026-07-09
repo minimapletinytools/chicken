@@ -1,0 +1,26 @@
+# eBay watch list.
+#
+# Each entry is one saved search. `id` must be unique and stable — it's used
+# as the cache filename, so renaming it resets that search's price history.
+#
+# Fields:
+#   id               (required) unique slug, e.g. "rtx-3080-fe"
+#   query            (required) eBay search text
+#   category_ids     (optional) eBay category id(s), comma-separated string
+#   condition        (optional) NEW | USED | NEW_OTHER | CERTIFIED_REFURBISHED
+#                      | SELLER_REFURBISHED | omit for any condition
+#   max_price        (optional) hard ceiling in USD; listings above this are
+#                      ignored entirely, regardless of price history
+#   exclude_keywords (optional) list of case-insensitive substrings; a listing
+#                      whose title contains any of these is skipped
+#   marketplace      (optional) defaults to EBAY_US
+
+- id: example-search
+  query: "example item you want to track"
+  condition: USED
+  max_price: 200
+  exclude_keywords:
+    - "parts only"
+    - "for parts"
+    - "broken"
+  marketplace: EBAY_US
