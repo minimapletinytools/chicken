@@ -150,7 +150,16 @@ def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
             if item["id"] in seen_ids:
                 continue
             if item["price"] < prior_lowest:
-                hits.append({**item, "search_id": search_id, "search_query": search["query"], "prior_lowest": prior_lowest})
+                hits.append(
+                    {
+                        **item,
+                        "search_id": search_id,
+                        "search_query": search["query"],
+                        "prior_lowest": prior_lowest,
+                        "group": search.get("group"),
+                        "priority": search.get("priority", "normal"),
+                    }
+                )
 
     # Update cache: lowest ratchets down over time; average reflects the
     # most recent run's snapshot rather than an all-time running average.
@@ -181,10 +190,12 @@ def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
 
 def format_hit(hit: dict) -> str:
     kind = "Auction" if hit["buying_option"] == "AUCTION" else "BIN"
+    flag = "🔴 **HIGH PRIORITY** — " if hit.get("priority") == "high" else ""
+    group = f" [{hit['group']}]" if hit.get("group") else ""
     return (
-        f"- **[{hit['title']}]({hit['url']})** — "
+        f"- {flag}**[{hit['title']}]({hit['url']})** — "
         f"{kind} ${hit['price']:.2f} (prior lowest ${hit['prior_lowest']:.2f}) "
-        f"· search `{hit['search_id']}`"
+        f"· search `{hit['search_id']}`{group}"
     )
 
 
@@ -246,6 +257,8 @@ def main() -> None:
             f"- `{search['id']}`: lowest ${cache['lowest_bin_price']}, "
             f"avg ${cache['average_bin_price']}, {len(hits)} new low hit(s)\n"
         )
+
+    all_hits.sort(key=lambda h: (0 if h.get("priority") == "high" else 1, h["price"]))
 
     summary = "".join(summary_lines)
     print(summary)
