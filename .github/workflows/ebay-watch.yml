@@ -2,10 +2,9 @@ name: eBay Watch
 
 on:
   schedule:
-    # Every 6 hours. Adjust as you like — eBay's Browse API app-token rate
-    # limit is generous (thousands/day) but keep an eye on it if you add
-    # many searches or run more often.
-    - cron: "17 */6 * * *"
+    # Roughly every 3 days (day-of-month step; cron has no native "every N
+    # days" so this resets at each month boundary, e.g. day 31 -> day 1).
+    - cron: "17 6 */3 * *"
   workflow_dispatch:
     inputs:
       issue_mode:
