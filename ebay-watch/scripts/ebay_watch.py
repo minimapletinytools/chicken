@@ -20,12 +20,18 @@ Env vars required:
 Optional env vars:
   ISSUE_MODE                "comment" (default, reuse one open issue) or "new"
   ISSUE_LABEL                label used to find/tag the alert issue (default "ebay-watch")
-  CONFIG_PATH                path to searches config (default config/ebay_searches.yml)
-  CACHE_DIR                  path to cache directory (default data/ebay_cache)
+  CONFIG_PATH                path to searches config (default <this folder>/config/ebay_searches.yml)
+  CACHE_DIR                  path to cache directory (default <repo root>/.github/data/ebay-watch)
   MAX_RESULTS                listings fetched per search, sorted by price asc (default 50)
   PRICE_DROP_THRESHOLD_PCT   default alert threshold in percent (default 20);
                                overridable per search via `price_drop_threshold_pct`
   HISTORY_CAP                max history snapshots kept per search (default 500)
+
+This script assumes it lives at <automation folder>/scripts/ebay_watch.py,
+with the automation folder placed at the root of a git repo (so that
+resolving two directories up from the repo root reaches ".github/data").
+That's the only structural assumption — everything else is config-driven,
+so the whole automation folder can be copied into another repo as-is.
 """
 from __future__ import annotations
 
@@ -40,9 +46,10 @@ from pathlib import Path
 import requests
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
-CONFIG_PATH = Path(os.environ.get("CONFIG_PATH", ROOT / "config" / "ebay_searches.yml"))
-CACHE_DIR = Path(os.environ.get("CACHE_DIR", ROOT / "data" / "ebay_cache"))
+AUTOMATION_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = AUTOMATION_ROOT.parent
+CONFIG_PATH = Path(os.environ.get("CONFIG_PATH", AUTOMATION_ROOT / "config" / "ebay_searches.yml"))
+CACHE_DIR = Path(os.environ.get("CACHE_DIR", REPO_ROOT / ".github" / "data" / "ebay-watch"))
 MAX_RESULTS = int(os.environ.get("MAX_RESULTS", "50"))
 ISSUE_MODE = os.environ.get("ISSUE_MODE", "comment")
 ISSUE_LABEL = os.environ.get("ISSUE_LABEL", "ebay-watch")

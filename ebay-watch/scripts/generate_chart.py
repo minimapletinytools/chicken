@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 """
-Generates a static HTML page (docs/index.html) charting each search's BIN
-price history (min/median/max over time), filterable by tag.
+Generates a static HTML page (docs/ebay-watch/index.html) charting each
+search's BIN price history (min/median/max over time), filterable by tag.
 
 Reads config/ebay_searches.yml for tags/priority and each search's
-data/ebay_cache/<id>.json for history. Priority is folded in as an implicit
-tag ("high"/"normal") alongside whatever's in `tags`.
+.github/data/ebay-watch/<id>.json for history. Priority is folded in as an
+implicit tag ("high"/"normal") alongside whatever's in `tags`.
 
 The page itself loads Chart.js + its date adapter from a CDN at view time —
-open docs/index.html directly in a browser, or serve it via GitHub Pages.
+open the output file directly in a browser, or serve it via GitHub Pages.
+
+Assumes it lives at <automation folder>/scripts/generate_chart.py, with the
+automation folder at the root of a git repo — see ebay_watch.py's docstring.
 """
 import json
 import os
@@ -16,10 +19,11 @@ from pathlib import Path
 
 import yaml
 
-ROOT = Path(__file__).resolve().parent.parent
-CONFIG_PATH = Path(os.environ.get("CONFIG_PATH", ROOT / "config" / "ebay_searches.yml"))
-CACHE_DIR = Path(os.environ.get("CACHE_DIR", ROOT / "data" / "ebay_cache"))
-OUTPUT_PATH = ROOT / "docs" / "index.html"
+AUTOMATION_ROOT = Path(__file__).resolve().parent.parent
+REPO_ROOT = AUTOMATION_ROOT.parent
+CONFIG_PATH = Path(os.environ.get("CONFIG_PATH", AUTOMATION_ROOT / "config" / "ebay_searches.yml"))
+CACHE_DIR = Path(os.environ.get("CACHE_DIR", REPO_ROOT / ".github" / "data" / "ebay-watch"))
+OUTPUT_PATH = Path(os.environ.get("OUTPUT_PATH", REPO_ROOT / "docs" / "ebay-watch" / "index.html"))
 
 HTML_TEMPLATE = """<!doctype html>
 <html>
