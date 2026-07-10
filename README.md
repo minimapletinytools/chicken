@@ -4,8 +4,9 @@ Automations, run via GitHub Actions.
 
 ## eBay watch
 
-Tracks eBay searches over time and flags listings (auction or Buy It Now)
-priced lower than the lowest BIN price previously seen for that search.
+Tracks eBay searches over time (BIN price range and listing counts) and
+opens an alert when a search's minimum Buy-It-Now price drops significantly
+below its all-time low.
 
 - Search definitions: [config/ebay_searches.yml](config/ebay_searches.yml)
 - Script: [scripts/ebay_watch.py](scripts/ebay_watch.py)
@@ -23,10 +24,10 @@ priced lower than the lowest BIN price previously seen for that search.
    - `EBAY_CLIENT_SECRET`
 3. Edit [config/ebay_searches.yml](config/ebay_searches.yml) — replace the
    example entry with the searches you actually want to track.
-4. The workflow runs every 6 hours on a schedule, or trigger it manually from
-   the Actions tab (`workflow_dispatch`), where you can choose whether hits
-   get commented onto the existing open alert issue (default) or open a new
-   issue each run.
+4. The workflow runs roughly every 3 days on a schedule, or trigger it
+   manually from the Actions tab (`workflow_dispatch`), where you can choose
+   the issue mode (comment on the existing alert issue vs. open a new one
+   each run) and override the alert threshold for that run.
 
 ### How it works
 
@@ -35,23 +36,31 @@ Each run, per search:
 1. Fetches up to `MAX_RESULTS` listings sorted by price ascending via eBay's
    Browse API, applying your `condition`/`max_price`/`exclude_keywords`
    filters.
-2. Compares each listing's price to the search's cached `lowest_bin_price`
-   (the lowest Buy-It-Now price ever observed for that search). Anything
-   priced lower — auction or BIN — and not already flagged before is a "hit".
-3. Updates the cache: `lowest_bin_price` only ever ratchets down;
-   `average_bin_price` is a snapshot of the current run's BIN listings (not
-   an all-time average).
-4. If there are hits, upserts a GitHub issue labeled `ebay-watch` with the
-   list of new lower-priced listings.
+2. Records a snapshot in `history`: timestamp, BIN listing count, total
+   listing count, and BIN min/max/median — so you can chart price range
+   evolution over time later (e.g. with `jq` or a notebook).
+3. Compares the current BIN min to `all_time_min_bin_price` (the lowest BIN
+   price ever observed for that search, which only ratchets down). If it
+   dropped by at least `price_drop_threshold_pct` (default 20%, set via the
+   `PRICE_DROP_THRESHOLD_PCT` env var or overridden per search in the
+   config), that's an alert.
+4. If there are alerts, upserts a GitHub issue labeled `ebay-watch` listing
+   each drop, sorted with `priority: high` searches first.
 5. Commits the updated cache files back to the repo.
 
 The very first run for a new search just seeds the cache — nothing to
-compare against yet, so no alerts fire until a second run sees something
-cheaper.
+compare against yet, so no alert fires until a later run sees a big enough
+drop. A repeat of the same low won't re-alert either, since the next drop
+has to clear the threshold against the new floor.
 
-### Caveat
+### Caveats
 
-eBay's Browse API item-summary `price` field for auction listings isn't
-always the live current bid — the script prefers `currentBidPrice` when eBay
-returns it, but for some auctions falls back to the summary `price` field,
-which may lag the true current bid slightly.
+- Since results are fetched sorted by price ascending and capped at
+  `MAX_RESULTS`, `bin_min` is reliable (always within the first page), but
+  `bin_max`/`bin_median` are biased toward the cheap end of the market —
+  they describe the cheapest N listings, not the true population. Good
+  enough as a rough trend heuristic, not exact stats.
+- eBay's Browse API item-summary `price` field for auction listings isn't
+  always the live current bid — the script prefers `currentBidPrice` when
+  eBay returns it, but for some auctions falls back to the summary `price`
+  field, which may lag the true current bid slightly.

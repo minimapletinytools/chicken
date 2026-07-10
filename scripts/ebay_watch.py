@@ -1,7 +1,16 @@
 #!/usr/bin/env python3
 """
-Watches eBay searches for BIN/auction listings priced below the lowest
-price previously seen for that search, using the official eBay Browse API.
+Watches eBay searches over time, using the official eBay Browse API.
+
+Each run records a snapshot of BIN price range (min/max/median) and listing
+counts per search, so the history can be charted later. Since results are
+fetched sorted by price ascending and capped at MAX_RESULTS, "max"/"median"
+are biased toward the cheap end of the market (a heuristic over the true
+population) — "min" is the one reliable stat since it's always within the
+first page.
+
+Opens/updates a GitHub issue when a search's BIN minimum drops significantly
+below its all-time low (default 20%, configurable globally or per search).
 
 Env vars required:
   EBAY_CLIENT_ID, EBAY_CLIENT_SECRET  - eBay developer app credentials
@@ -9,15 +18,21 @@ Env vars required:
   GITHUB_REPOSITORY                   - "owner/repo" (set automatically in GHA)
 
 Optional env vars:
-  ISSUE_MODE   "comment" (default, reuse one open issue) or "new"
-  ISSUE_LABEL  label used to find/tag the alert issue (default "ebay-watch")
-  CONFIG_PATH  path to searches config (default config/ebay_searches.yml)
-  CACHE_DIR    path to cache directory (default data/ebay_cache)
-  MAX_RESULTS  listings fetched per search, sorted by price asc (default 50)
+  ISSUE_MODE                "comment" (default, reuse one open issue) or "new"
+  ISSUE_LABEL                label used to find/tag the alert issue (default "ebay-watch")
+  CONFIG_PATH                path to searches config (default config/ebay_searches.yml)
+  CACHE_DIR                  path to cache directory (default data/ebay_cache)
+  MAX_RESULTS                listings fetched per search, sorted by price asc (default 50)
+  PRICE_DROP_THRESHOLD_PCT   default alert threshold in percent (default 20);
+                               overridable per search via `price_drop_threshold_pct`
+  HISTORY_CAP                max history snapshots kept per search (default 500)
 """
+from __future__ import annotations
+
 import base64
 import json
 import os
+import statistics
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -31,7 +46,8 @@ CACHE_DIR = Path(os.environ.get("CACHE_DIR", ROOT / "data" / "ebay_cache"))
 MAX_RESULTS = int(os.environ.get("MAX_RESULTS", "50"))
 ISSUE_MODE = os.environ.get("ISSUE_MODE", "comment")
 ISSUE_LABEL = os.environ.get("ISSUE_LABEL", "ebay-watch")
-SEEN_ID_CAP = 500
+DEFAULT_DROP_THRESHOLD_PCT = float(os.environ.get("PRICE_DROP_THRESHOLD_PCT", "20"))
+HISTORY_CAP = int(os.environ.get("HISTORY_CAP", "500"))
 
 EBAY_TOKEN_URL = "https://api.ebay.com/identity/v1/oauth2/token"
 EBAY_SEARCH_URL = "https://api.ebay.com/buy/browse/v1/item_summary/search"
@@ -118,11 +134,9 @@ def load_cache(search_id: str) -> dict:
         return json.loads(path.read_text())
     return {
         "search_id": search_id,
-        "lowest_bin_price": None,
-        "lowest_bin_item": None,
-        "average_bin_price": None,
-        "bin_sample_count": 0,
-        "seen_item_ids": [],
+        "all_time_min_bin_price": None,
+        "all_time_min_bin_item": None,
+        "history": [],
         "last_checked": None,
     }
 
@@ -133,69 +147,72 @@ def save_cache(search_id: str, cache: dict) -> None:
     path.write_text(json.dumps(cache, indent=2, sort_keys=True) + "\n")
 
 
-def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
+def process_search(token: str, search: dict) -> tuple[dict, dict | None]:
     search_id = search["id"]
     cache = load_cache(search_id)
     items = search_ebay(token, search)
-
-    bin_items = [i for i in items if i["buying_option"] == "FIXED_PRICE"]
     now = datetime.now(timezone.utc).isoformat()
 
-    prior_lowest = cache.get("lowest_bin_price")
-    seen_ids = set(cache.get("seen_item_ids", []))
+    bin_items = [i for i in items if i["buying_option"] == "FIXED_PRICE"]
+    bin_prices = [i["price"] for i in bin_items]
 
-    hits = []
-    if prior_lowest is not None:
-        for item in items:
-            if item["id"] in seen_ids:
-                continue
-            if item["price"] < prior_lowest:
-                hits.append(
-                    {
-                        **item,
-                        "search_id": search_id,
-                        "search_query": search["query"],
-                        "prior_lowest": prior_lowest,
-                        "group": search.get("group"),
-                        "priority": search.get("priority", "normal"),
-                    }
-                )
+    cache.setdefault("history", []).append(
+        {
+            "timestamp": now,
+            "total_count": len(items),
+            "bin_count": len(bin_items),
+            "bin_min": min(bin_prices) if bin_prices else None,
+            "bin_max": max(bin_prices) if bin_prices else None,
+            "bin_median": round(statistics.median(bin_prices), 2) if bin_prices else None,
+        }
+    )
+    cache["history"] = cache["history"][-HISTORY_CAP:]
+    cache["last_checked"] = now
 
-    # Update cache: lowest ratchets down over time; average reflects the
-    # most recent run's snapshot rather than an all-time running average.
+    alert = None
+    prior_min = cache.get("all_time_min_bin_price")
     if bin_items:
-        current_lowest_item = min(bin_items, key=lambda i: i["price"])
-        current_lowest = current_lowest_item["price"]
-        current_average = sum(i["price"] for i in bin_items) / len(bin_items)
+        current_min_item = min(bin_items, key=lambda i: i["price"])
+        current_min = current_min_item["price"]
 
-        if prior_lowest is None or current_lowest < prior_lowest:
-            cache["lowest_bin_price"] = current_lowest
-            cache["lowest_bin_item"] = {
-                "id": current_lowest_item["id"],
-                "title": current_lowest_item["title"],
-                "url": current_lowest_item["url"],
+        if prior_min:
+            threshold_pct = search.get("price_drop_threshold_pct", DEFAULT_DROP_THRESHOLD_PCT)
+            drop_pct = (prior_min - current_min) / prior_min * 100
+            if drop_pct >= threshold_pct:
+                alert = {
+                    "search_id": search_id,
+                    "search_query": search["query"],
+                    "group": search.get("group"),
+                    "priority": search.get("priority", "normal"),
+                    "prior_min": prior_min,
+                    "current_min": current_min,
+                    "drop_pct": drop_pct,
+                    "title": current_min_item["title"],
+                    "url": current_min_item["url"],
+                }
+
+        # Ratchets down; a repeat of the same low won't re-alert since the
+        # next drop has to clear the threshold against this new floor.
+        if prior_min is None or current_min < prior_min:
+            cache["all_time_min_bin_price"] = current_min
+            cache["all_time_min_bin_item"] = {
+                "id": current_min_item["id"],
+                "title": current_min_item["title"],
+                "url": current_min_item["url"],
                 "seen_at": now,
             }
 
-        cache["average_bin_price"] = round(current_average, 2)
-        cache["bin_sample_count"] = len(bin_items)
-
-    seen_ids.update(item["id"] for item in items)
-    cache["seen_item_ids"] = list(seen_ids)[-SEEN_ID_CAP:]
-    cache["last_checked"] = now
-
     save_cache(search_id, cache)
-    return cache, hits
+    return cache, alert
 
 
-def format_hit(hit: dict) -> str:
-    kind = "Auction" if hit["buying_option"] == "AUCTION" else "BIN"
-    flag = "🔴 **HIGH PRIORITY** — " if hit.get("priority") == "high" else ""
-    group = f" [{hit['group']}]" if hit.get("group") else ""
+def format_alert(alert: dict) -> str:
+    flag = "🔴 **HIGH PRIORITY** — " if alert.get("priority") == "high" else ""
+    group = f" [{alert['group']}]" if alert.get("group") else ""
     return (
-        f"- {flag}**[{hit['title']}]({hit['url']})** — "
-        f"{kind} ${hit['price']:.2f} (prior lowest ${hit['prior_lowest']:.2f}) "
-        f"· search `{hit['search_id']}`{group}"
+        f"- {flag}🔻 **{alert['search_query']}** min BIN dropped "
+        f"{alert['drop_pct']:.1f}% (${alert['prior_min']:.2f} → ${alert['current_min']:.2f}) — "
+        f"[{alert['title']}]({alert['url']}) · search `{alert['search_id']}`{group}"
     )
 
 
@@ -242,23 +259,27 @@ def main() -> None:
     searches = yaml.safe_load(CONFIG_PATH.read_text()) or []
     token = get_ebay_token(client_id, client_secret)
 
-    all_hits = []
+    all_alerts = []
     summary_lines = ["# eBay watch run\n"]
     for search in searches:
         try:
-            cache, hits = process_search(token, search)
+            cache, alert = process_search(token, search)
         except requests.HTTPError as e:
             print(f"[{search['id']}] eBay API error: {e}", file=sys.stderr)
             summary_lines.append(f"- `{search['id']}`: ERROR {e}\n")
             continue
 
-        all_hits.extend(hits)
+        latest = cache["history"][-1]
+        drop_note = f" — 🔻 {alert['drop_pct']:.1f}% drop" if alert else ""
         summary_lines.append(
-            f"- `{search['id']}`: lowest ${cache['lowest_bin_price']}, "
-            f"avg ${cache['average_bin_price']}, {len(hits)} new low hit(s)\n"
+            f"- `{search['id']}`: {latest['bin_count']} BIN / {latest['total_count']} total, "
+            f"min ${latest['bin_min']}, max ${latest['bin_max']}, median ${latest['bin_median']}"
+            f"{drop_note}\n"
         )
+        if alert:
+            all_alerts.append(alert)
 
-    all_hits.sort(key=lambda h: (0 if h.get("priority") == "high" else 1, h["price"]))
+    all_alerts.sort(key=lambda a: (0 if a.get("priority") == "high" else 1, -a["drop_pct"]))
 
     summary = "".join(summary_lines)
     print(summary)
@@ -270,14 +291,14 @@ def main() -> None:
     output_path = os.environ.get("GITHUB_OUTPUT")
     if output_path:
         with open(output_path, "a") as f:
-            f.write(f"hits_found={'true' if all_hits else 'false'}\n")
+            f.write(f"alerts_found={'true' if all_alerts else 'false'}\n")
 
-    if all_hits and gh_token:
-        body_lines = [f"### New listings below prior lowest seen price\n_{datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}_\n"]
-        body_lines.extend(format_hit(h) for h in all_hits)
+    if all_alerts and gh_token:
+        body_lines = [f"### Significant BIN price drops\n_{datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}_\n"]
+        body_lines.extend(format_alert(a) for a in all_alerts)
         upsert_issue(gh_token, "\n".join(body_lines))
-    elif all_hits:
-        print("Hits found but no GITHUB_TOKEN set, skipping issue creation.", file=sys.stderr)
+    elif all_alerts:
+        print("Alerts found but no GITHUB_TOKEN set, skipping issue creation.", file=sys.stderr)
 
 
 if __name__ == "__main__":

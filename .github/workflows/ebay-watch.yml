@@ -14,6 +14,10 @@ on:
         options:
           - comment
           - new
+      price_drop_threshold_pct:
+        description: "Alert threshold: BIN min drop % below all-time low"
+        type: string
+        default: "20"
 
 permissions:
   contents: write
@@ -42,6 +46,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           GITHUB_REPOSITORY: ${{ github.repository }}
           ISSUE_MODE: ${{ inputs.issue_mode || 'comment' }}
+          PRICE_DROP_THRESHOLD_PCT: ${{ inputs.price_drop_threshold_pct || '20' }}
         run: python scripts/ebay_watch.py
 
       - name: Commit updated price cache

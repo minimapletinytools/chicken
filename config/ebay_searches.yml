@@ -10,7 +10,10 @@
 #                      (e.g. "knives"); shown in alerts, purely for your own
 #                      organization
 #   priority         (optional) "high" | "normal" (default "normal"); high
-#                      priority hits are sorted first and marked in alerts
+#                      priority alerts are sorted first and marked
+#   price_drop_threshold_pct (optional) overrides PRICE_DROP_THRESHOLD_PCT
+#                      (default 20) for this search — how far the BIN min
+#                      must drop below its all-time low to trigger an alert
 #   category_ids     (optional) eBay category id(s), comma-separated string
 #   condition        (optional) NEW | USED | NEW_OTHER | CERTIFIED_REFURBISHED
 #                      | SELLER_REFURBISHED | omit for any condition
