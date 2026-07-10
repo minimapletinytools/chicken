@@ -194,7 +194,7 @@ def process_search(token: str, search: dict) -> tuple[dict, dict | None]:
                 alert = {
                     "search_id": search_id,
                     "search_query": search["query"],
-                    "group": search.get("group"),
+                    "tags": search.get("tags", []),
                     "priority": search.get("priority", "normal"),
                     "prior_min": prior_min,
                     "current_min": current_min,
@@ -220,11 +220,11 @@ def process_search(token: str, search: dict) -> tuple[dict, dict | None]:
 
 def format_alert(alert: dict) -> str:
     flag = "🔴 **HIGH PRIORITY** — " if alert.get("priority") == "high" else ""
-    group = f" [{alert['group']}]" if alert.get("group") else ""
+    tags = f" [{', '.join(alert['tags'])}]" if alert.get("tags") else ""
     return (
         f"- {flag}🔻 **{alert['search_query']}** min BIN dropped "
         f"{alert['drop_pct']:.1f}% (${alert['prior_min']:.2f} → ${alert['current_min']:.2f}) — "
-        f"[{alert['title']}]({alert['url']}) · search `{alert['search_id']}`{group}"
+        f"[{alert['title']}]({alert['url']}) · search `{alert['search_id']}`{tags}"
     )
 
 

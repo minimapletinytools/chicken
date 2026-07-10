@@ -6,9 +6,10 @@
 # Fields:
 #   id               (required) unique slug, e.g. "rtx-3080-fe"
 #   query            (required) eBay search text
-#   group            (optional) free-text tag for organizing related searches
-#                      (e.g. "knives"); shown in alerts, purely for your own
-#                      organization
+#   tags             (optional) list of free-text tags (e.g. [knives, spyderco]);
+#                      used to group/filter in alerts and the price-history
+#                      visualizer. priority (below) is also treated as an
+#                      implicit tag in the visualizer.
 #   priority         (optional) "high" | "normal" (default "normal"); high
 #                      priority alerts are sorted first and marked
 #   price_drop_threshold_pct (optional) overrides PRICE_DROP_THRESHOLD_PCT
@@ -24,87 +25,87 @@
 #   marketplace      (optional) defaults to EBAY_US
 
 - id: spyderco-matriarch-2-wave
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Matriarch 2 Wave"
 
 - id: spyderco-introvert
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Introvert"
 
 - id: spyderco-schempp-bowie
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Schempp Bowie"
 
 - id: spyderco-lava
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Lava"
 
 - id: spyderco-gunting
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Gunting"
 
 - id: spyderco-jot-singh-khalsa
-  group: knives
+  tags: [knives, spyderco]
   priority: high
   query: "Spyderco Jot Singh Khalsa"
 
 - id: spyderco-kiwi
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Kiwi"
 
 - id: spyderco-dodo
-  group: knives
+  tags: [knives, spyderco]
   priority: high
   query: "Spyderco Dodo"
 
 - id: spyderco-dyad
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Dyad"
 
 - id: spyderco-tighe-stick
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Tighe Stick"
 
 - id: spyderco-pkal
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco P'Kal"
 
 - id: spyderco-poliwog
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Poliwog"
 
 - id: spyderco-essenza
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Essenza"
 
 - id: spyderco-gooney
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Gooney"
 
 - id: spyderco-squeak
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Squeak"
 
 - id: spyderco-mcbee
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco McBee"
 
 - id: spyderco-cat
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Cat"
 
 - id: spyderco-jester
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Jester"
 
 - id: spyderco-retract
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Retract"
 
 - id: spyderco-kris
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco Kris"
 
 - id: spyderco-spyderench
-  group: knives
+  tags: [knives, spyderco]
   query: "Spyderco SpydeRench"

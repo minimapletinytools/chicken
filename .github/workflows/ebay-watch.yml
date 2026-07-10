@@ -49,10 +49,13 @@ jobs:
           PRICE_DROP_THRESHOLD_PCT: ${{ inputs.price_drop_threshold_pct || '20' }}
         run: python scripts/ebay_watch.py
 
-      - name: Commit updated price cache
+      - name: Regenerate price history chart
+        run: python scripts/generate_chart.py
+
+      - name: Commit updated price cache and chart
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add data/ebay_cache
+          git add data/ebay_cache docs/index.html
           git diff --cached --quiet || git commit -m "Update eBay price cache [skip ci]"
           git push

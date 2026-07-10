@@ -10,8 +10,10 @@ below its all-time low.
 
 - Search definitions: [config/ebay_searches.yml](config/ebay_searches.yml)
 - Script: [scripts/ebay_watch.py](scripts/ebay_watch.py)
+- Chart generator: [scripts/generate_chart.py](scripts/generate_chart.py)
 - Workflow: [.github/workflows/ebay-watch.yml](.github/workflows/ebay-watch.yml)
 - Price history cache (checked into the repo): `data/ebay_cache/<search_id>.json`
+- Price history chart (regenerated each run): [docs/index.html](docs/index.html)
 
 ### Setup
 
@@ -52,6 +54,21 @@ The very first run for a new search just seeds the cache — nothing to
 compare against yet, so no alert fires until a later run sees a big enough
 drop. A repeat of the same low won't re-alert either, since the next drop
 has to clear the threshold against the new floor.
+
+### Tags and the price history chart
+
+Each search can have a `tags` list (e.g. `[knives, spyderco]`) for grouping
+and filtering — `priority` (`high`/`normal`) is folded in as an implicit tag
+too. After every run, `scripts/generate_chart.py` regenerates
+[docs/index.html](docs/index.html): a self-contained line chart of BIN
+min/median/max price over time per search, with checkboxes to filter which
+tags' lines are shown and a dropdown to switch the plotted metric.
+
+Open it directly (`open docs/index.html`) or enable GitHub Pages for this
+repo pointed at the `docs/` folder to view it at a URL. It needs network
+access at view time to load Chart.js from a CDN.
+
+To regenerate it manually: `python scripts/generate_chart.py`.
 
 ### Caveats
 
