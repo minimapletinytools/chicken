@@ -14,8 +14,16 @@
       "bin_min": 51.95,
       "timestamp": "2026-07-10T21:18:27.493365+00:00",
       "total_count": 31
+    },
+    {
+      "bin_count": 31,
+      "bin_max": 229.99,
+      "bin_median": 79.95,
+      "bin_min": 51.95,
+      "timestamp": "2026-07-10T21:48:17.163353+00:00",
+      "total_count": 31
     }
   ],
-  "last_checked": "2026-07-10T21:18:27.493365+00:00",
+  "last_checked": "2026-07-10T21:48:17.163353+00:00",
   "search_id": "spyderco-squeak"
 }

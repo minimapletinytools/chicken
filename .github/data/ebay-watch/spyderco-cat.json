@@ -14,8 +14,16 @@
       "bin_min": 15.03,
       "timestamp": "2026-07-10T21:18:28.483342+00:00",
       "total_count": 23
+    },
+    {
+      "bin_count": 23,
+      "bin_max": 219.98,
+      "bin_median": 78.75,
+      "bin_min": 15.03,
+      "timestamp": "2026-07-10T21:48:17.894937+00:00",
+      "total_count": 23
     }
   ],
-  "last_checked": "2026-07-10T21:18:28.483342+00:00",
+  "last_checked": "2026-07-10T21:48:17.894937+00:00",
   "search_id": "spyderco-cat"
 }

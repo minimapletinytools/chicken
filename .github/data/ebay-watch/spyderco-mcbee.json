@@ -14,8 +14,16 @@
       "bin_min": 16.88,
       "timestamp": "2026-07-10T21:18:28.007331+00:00",
       "total_count": 50
+    },
+    {
+      "bin_count": 50,
+      "bin_max": 400.0,
+      "bin_median": 195.0,
+      "bin_min": 16.88,
+      "timestamp": "2026-07-10T21:48:17.542137+00:00",
+      "total_count": 50
     }
   ],
-  "last_checked": "2026-07-10T21:18:28.007331+00:00",
+  "last_checked": "2026-07-10T21:48:17.542137+00:00",
   "search_id": "spyderco-mcbee"
 }

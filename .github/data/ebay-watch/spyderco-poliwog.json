@@ -14,8 +14,16 @@
       "bin_min": 275.0,
       "timestamp": "2026-07-10T21:18:26.005114+00:00",
       "total_count": 4
+    },
+    {
+      "bin_count": 4,
+      "bin_max": 395.0,
+      "bin_median": 282.0,
+      "bin_min": 275.0,
+      "timestamp": "2026-07-10T21:48:15.846282+00:00",
+      "total_count": 4
     }
   ],
-  "last_checked": "2026-07-10T21:18:26.005114+00:00",
+  "last_checked": "2026-07-10T21:48:15.846282+00:00",
   "search_id": "spyderco-poliwog"
 }

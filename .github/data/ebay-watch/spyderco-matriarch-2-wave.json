@@ -14,8 +14,16 @@
       "bin_min": 119.99,
       "timestamp": "2026-07-10T21:18:21.557155+00:00",
       "total_count": 7
+    },
+    {
+      "bin_count": 7,
+      "bin_max": 153.0,
+      "bin_median": 136.5,
+      "bin_min": 119.99,
+      "timestamp": "2026-07-10T21:48:11.946151+00:00",
+      "total_count": 7
     }
   ],
-  "last_checked": "2026-07-10T21:18:21.557155+00:00",
+  "last_checked": "2026-07-10T21:48:11.946151+00:00",
   "search_id": "spyderco-matriarch-2-wave"
 }

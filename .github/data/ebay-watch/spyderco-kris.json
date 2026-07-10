@@ -9,8 +9,16 @@
       "bin_min": null,
       "timestamp": "2026-07-10T21:18:29.596889+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "timestamp": "2026-07-10T21:48:18.953986+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-07-10T21:18:29.596889+00:00",
+  "last_checked": "2026-07-10T21:48:18.953986+00:00",
   "search_id": "spyderco-kris"
 }

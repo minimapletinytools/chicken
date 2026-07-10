@@ -14,8 +14,16 @@
       "bin_min": 194.95,
       "timestamp": "2026-07-10T21:18:25.555639+00:00",
       "total_count": 26
+    },
+    {
+      "bin_count": 26,
+      "bin_max": 731.99,
+      "bin_median": 291.75,
+      "bin_min": 194.95,
+      "timestamp": "2026-07-10T21:48:15.487176+00:00",
+      "total_count": 26
     }
   ],
-  "last_checked": "2026-07-10T21:18:25.555639+00:00",
+  "last_checked": "2026-07-10T21:48:15.487176+00:00",
   "search_id": "spyderco-pkal"
 }

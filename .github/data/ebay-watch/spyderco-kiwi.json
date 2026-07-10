@@ -14,8 +14,16 @@
       "bin_min": 24.95,
       "timestamp": "2026-07-10T21:18:23.945528+00:00",
       "total_count": 7
+    },
+    {
+      "bin_count": 7,
+      "bin_max": 500.0,
+      "bin_median": 120.0,
+      "bin_min": 24.95,
+      "timestamp": "2026-07-10T21:48:13.939399+00:00",
+      "total_count": 7
     }
   ],
-  "last_checked": "2026-07-10T21:18:23.945528+00:00",
+  "last_checked": "2026-07-10T21:48:13.939399+00:00",
   "search_id": "spyderco-kiwi"
 }

@@ -14,8 +14,16 @@
       "bin_min": 158.63,
       "timestamp": "2026-07-10T21:18:26.498404+00:00",
       "total_count": 15
+    },
+    {
+      "bin_count": 15,
+      "bin_max": 192.12,
+      "bin_median": 176.25,
+      "bin_min": 158.63,
+      "timestamp": "2026-07-10T21:48:16.248302+00:00",
+      "total_count": 15
     }
   ],
-  "last_checked": "2026-07-10T21:18:26.498404+00:00",
+  "last_checked": "2026-07-10T21:48:16.248302+00:00",
   "search_id": "spyderco-essenza"
 }

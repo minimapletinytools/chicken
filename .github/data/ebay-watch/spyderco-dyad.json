@@ -14,8 +14,16 @@
       "bin_min": 175.0,
       "timestamp": "2026-07-10T21:18:24.875599+00:00",
       "total_count": 12
+    },
+    {
+      "bin_count": 12,
+      "bin_max": 554.95,
+      "bin_median": 325.54,
+      "bin_min": 175.0,
+      "timestamp": "2026-07-10T21:48:14.746034+00:00",
+      "total_count": 12
     }
   ],
-  "last_checked": "2026-07-10T21:18:24.875599+00:00",
+  "last_checked": "2026-07-10T21:48:14.746034+00:00",
   "search_id": "spyderco-dyad"
 }
