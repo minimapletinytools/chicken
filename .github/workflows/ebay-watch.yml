@@ -56,6 +56,6 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add .github/data/ebay-watch docs/ebay-watch/index.html
+          git add .github/data/ebay-watch ebay-watch/docs/index.html
           git diff --cached --quiet || git commit -m "Update eBay price cache [skip ci]"
           git push

@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Generates a static HTML page (docs/ebay-watch/index.html) charting each
-search's BIN price history (min/median/max over time), filterable by tag.
+Generates a static HTML page (docs/index.html, inside this automation's
+folder) charting each search's BIN price history (min/median/max over
+time), filterable by tag.
 
 Reads config/ebay_searches.yml for tags/priority and each search's
 .github/data/ebay-watch/<id>.json for history. Priority is folded in as an
@@ -23,7 +24,7 @@ AUTOMATION_ROOT = Path(__file__).resolve().parent.parent
 REPO_ROOT = AUTOMATION_ROOT.parent
 CONFIG_PATH = Path(os.environ.get("CONFIG_PATH", AUTOMATION_ROOT / "config" / "ebay_searches.yml"))
 CACHE_DIR = Path(os.environ.get("CACHE_DIR", REPO_ROOT / ".github" / "data" / "ebay-watch"))
-OUTPUT_PATH = Path(os.environ.get("OUTPUT_PATH", REPO_ROOT / "docs" / "ebay-watch" / "index.html"))
+OUTPUT_PATH = Path(os.environ.get("OUTPUT_PATH", AUTOMATION_ROOT / "docs" / "index.html"))
 
 HTML_TEMPLATE = """<!doctype html>
 <html>

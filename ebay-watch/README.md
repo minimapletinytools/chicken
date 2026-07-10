@@ -16,7 +16,7 @@ its `.github/workflows/` — nothing else needs to change.
 - Workflow: [.github/workflows/ebay-watch.yml](../.github/workflows/ebay-watch.yml)
 - Price history cache (checked into the repo, outside this folder since it's
   run-specific state, not shareable template): `.github/data/ebay-watch/<search_id>.json`
-- Price history chart (regenerated each run): [docs/ebay-watch/index.html](../docs/ebay-watch/index.html)
+- Price history chart (regenerated each run): [docs/index.html](docs/index.html)
 
 ### Setup
 
@@ -63,15 +63,17 @@ has to clear the threshold against the new floor.
 Each search can have a `tags` list (e.g. `[knives, spyderco]`) for grouping
 and filtering — `priority` (`high`/`normal`) is folded in as an implicit tag
 too. After every run, `scripts/generate_chart.py` regenerates
-[docs/ebay-watch/index.html](../docs/ebay-watch/index.html): a self-contained
-line chart of BIN min/median/max price over time per search, with checkboxes
-to filter which tags' lines are shown and a dropdown to switch the plotted
-metric.
+[docs/index.html](docs/index.html): a self-contained line chart of BIN
+min/median/max price over time per search, with checkboxes to filter which
+tags' lines are shown and a dropdown to switch the plotted metric.
 
-Open it directly (`open docs/ebay-watch/index.html` from the repo root) or
-enable GitHub Pages for the repo pointed at the `docs/` folder to view it at
-a URL (it'll be served at `<pages-url>/ebay-watch/`). It needs network
-access at view time to load Chart.js from a CDN.
+Open it directly (`open ebay-watch/docs/index.html` from the repo root). It
+needs network access at view time to load Chart.js from a CDN. Note this
+lives at `ebay-watch/docs/`, not a repo-root `docs/` folder, to keep the
+whole automation self-contained — GitHub Pages' simple "deploy from branch"
+option only serves a root-level `/docs` folder, so hosting this chart at a
+URL would need a custom Pages deployment step (e.g. via
+`actions/upload-pages-artifact`) rather than the one-click settings toggle.
 
 To regenerate it manually: `python scripts/generate_chart.py` (run from
 anywhere — paths resolve relative to this file, not your working directory).
