@@ -131,7 +131,19 @@ def search_ebay(token: str, search: dict) -> list[dict]:
 def load_cache(search_id: str) -> dict:
     path = CACHE_DIR / f"{search_id}.json"
     if path.exists():
-        return json.loads(path.read_text())
+        data = json.loads(path.read_text())
+        if "all_time_min_bin_price" not in data:
+            # Migrate from the older lowest_bin_price/average_bin_price/
+            # seen_item_ids schema, preserving the real all-time low so
+            # alerting doesn't silently reset to "unseeded".
+            data = {
+                "search_id": data.get("search_id", search_id),
+                "all_time_min_bin_price": data.get("lowest_bin_price"),
+                "all_time_min_bin_item": data.get("lowest_bin_item"),
+                "history": [],
+                "last_checked": data.get("last_checked"),
+            }
+        return data
     return {
         "search_id": search_id,
         "all_time_min_bin_price": None,
