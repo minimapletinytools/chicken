@@ -1,0 +1,22 @@
+{
+  "average_bin_price": 161.77,
+  "bin_sample_count": 7,
+  "last_checked": "2026-07-10T00:09:13.904680+00:00",
+  "lowest_bin_item": {
+    "id": "v1|206206737559|0",
+    "seen_at": "2026-07-10T00:09:13.904680+00:00",
+    "title": "Self Defense Hooked Bladed Knife -Honshu Karambit Black Knife",
+    "url": "https://www.ebay.com/itm/206206737559?_skw=Spyderco+Kiwi&hash=item3002e11c97:g:-ewAAeSwvuZp3AqE"
+  },
+  "lowest_bin_price": 24.95,
+  "search_id": "spyderco-kiwi",
+  "seen_item_ids": [
+    "v1|157927338554|0",
+    "v1|127781675847|0",
+    "v1|188341124947|0",
+    "v1|327199906125|0",
+    "v1|206206737559|0",
+    "v1|407058779779|0",
+    "v1|198442211582|0"
+  ]
+}

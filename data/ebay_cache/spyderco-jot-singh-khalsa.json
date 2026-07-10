@@ -1,0 +1,23 @@
+{
+  "average_bin_price": 385.21,
+  "bin_sample_count": 8,
+  "last_checked": "2026-07-10T00:09:13.193407+00:00",
+  "lowest_bin_item": {
+    "id": "v1|127148744886|0",
+    "seen_at": "2026-07-10T00:09:13.193407+00:00",
+    "title": "Spyderco Sprint Run Jot Singh Khalsa Sprint Run\u00ae C40G DISCONTINUED",
+    "url": "https://www.ebay.com/itm/127148744886?_skw=Spyderco+Jot+Singh+Khalsa&hash=item1d9aa7e0b6:g:OfoAAeSw00NoPG8c"
+  },
+  "lowest_bin_price": 299.0,
+  "search_id": "spyderco-jot-singh-khalsa",
+  "seen_item_ids": [
+    "v1|127148744886|0",
+    "v1|296841189869|0",
+    "v1|256772437714|0",
+    "v1|205476475205|0",
+    "v1|126873518285|0",
+    "v1|326641371160|0",
+    "v1|326717501259|0",
+    "v1|406218911312|0"
+  ]
+}

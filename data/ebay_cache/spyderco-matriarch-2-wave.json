@@ -1,0 +1,22 @@
+{
+  "average_bin_price": 135.57,
+  "bin_sample_count": 7,
+  "last_checked": "2026-07-10T00:09:10.761276+00:00",
+  "lowest_bin_item": {
+    "id": "v1|287326349513|0",
+    "seen_at": "2026-07-10T00:09:10.761276+00:00",
+    "title": "Spyderco Matriarch 2 Emerson Wave Knife C12SBK2W Satin Serrated Blade Black FRN",
+    "url": "https://www.ebay.com/itm/287326349513?_skw=Spyderco+Matriarch+2+Wave&hash=item42e5fc28c9:g:KS8AAeSw0lVqAk7j"
+  },
+  "lowest_bin_price": 119.99,
+  "search_id": "spyderco-matriarch-2-wave",
+  "seen_item_ids": [
+    "v1|147345512670|0",
+    "v1|121734884619|0",
+    "v1|221445902849|0",
+    "v1|198023134087|0",
+    "v1|355037955949|0",
+    "v1|287326349513|0",
+    "v1|233911938396|0"
+  ]
+}

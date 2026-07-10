@@ -1,0 +1,27 @@
+{
+  "average_bin_price": 349.36,
+  "bin_sample_count": 12,
+  "last_checked": "2026-07-10T00:09:14.915570+00:00",
+  "lowest_bin_item": {
+    "id": "v1|178257464364|0",
+    "seen_at": "2026-07-10T00:09:14.915570+00:00",
+    "title": "Spyderco Dyad Jr,  Satin CPM-SPY27 Plain and Serrated Blade, Blue FRN Handle",
+    "url": "https://www.ebay.com/itm/178257464364?_skw=Spyderco+Dyad&hash=item2980f90c2c:g:2iQAAeSwSRNqLdm9"
+  },
+  "lowest_bin_price": 175.0,
+  "search_id": "spyderco-dyad",
+  "seen_item_ids": [
+    "v1|397883254733|0",
+    "v1|126871420409|0",
+    "v1|397923359740|0",
+    "v1|236490489272|0",
+    "v1|158010021744|0",
+    "v1|178257464364|0",
+    "v1|327083762054|0",
+    "v1|398107240814|0",
+    "v1|206253496633|0",
+    "v1|257222107188|0",
+    "v1|366422620311|0",
+    "v1|326577580008|0"
+  ]
+}
