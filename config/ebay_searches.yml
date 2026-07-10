@@ -72,3 +72,39 @@
 - id: spyderco-poliwog
   group: knives
   query: "Spyderco Poliwog"
+
+- id: spyderco-essenza
+  group: knives
+  query: "Spyderco Essenza"
+
+- id: spyderco-gooney
+  group: knives
+  query: "Spyderco Gooney"
+
+- id: spyderco-squeak
+  group: knives
+  query: "Spyderco Squeak"
+
+- id: spyderco-mcbee
+  group: knives
+  query: "Spyderco McBee"
+
+- id: spyderco-cat
+  group: knives
+  query: "Spyderco Cat"
+
+- id: spyderco-jester
+  group: knives
+  query: "Spyderco Jester"
+
+- id: spyderco-retract
+  group: knives
+  query: "Spyderco Retract"
+
+- id: spyderco-kris
+  group: knives
+  query: "Spyderco Kris"
+
+- id: spyderco-spyderench
+  group: knives
+  query: "Spyderco SpydeRench"
