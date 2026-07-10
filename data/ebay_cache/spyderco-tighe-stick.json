@@ -1,16 +1,21 @@
 {
-  "average_bin_price": 899.0,
-  "bin_sample_count": 1,
-  "last_checked": "2026-07-10T07:27:29.348353+00:00",
-  "lowest_bin_item": {
+  "all_time_min_bin_item": {
     "id": "v1|327235494215|0",
     "seen_at": "2026-07-10T00:09:15.441372+00:00",
     "title": "Spyderco Tighe Stick CPM-S90V C198TI Ti Framelock Discontinued Orig Pouch NEW 10",
     "url": "https://www.ebay.com/itm/327235494215?_skw=Spyderco+Tighe+Stick&hash=item4c30c16147:g:10IAAeSwCDZqCIjF"
   },
-  "lowest_bin_price": 899.0,
-  "search_id": "spyderco-tighe-stick",
-  "seen_item_ids": [
-    "v1|327235494215|0"
-  ]
+  "all_time_min_bin_price": 899.0,
+  "history": [
+    {
+      "bin_count": 1,
+      "bin_max": 899.0,
+      "bin_median": 899.0,
+      "bin_min": 899.0,
+      "timestamp": "2026-07-10T21:18:25.220574+00:00",
+      "total_count": 1
+    }
+  ],
+  "last_checked": "2026-07-10T21:18:25.220574+00:00",
+  "search_id": "spyderco-tighe-stick"
 }

@@ -1,16 +1,21 @@
 {
-  "average_bin_price": 474.0,
-  "bin_sample_count": 1,
-  "last_checked": "2026-07-10T07:27:25.701923+00:00",
-  "lowest_bin_item": {
+  "all_time_min_bin_item": {
     "id": "v1|387363181551|0",
     "seen_at": "2026-07-10T00:09:11.645107+00:00",
     "title": "Spyderco /Ed Schempp Persian /Red G10 /VG-10 /C83GPRD /Discontinued rare",
     "url": "https://www.ebay.com/itm/387363181551?_skw=Spyderco+Schempp+Bowie&hash=item5a30a513ef:g:AVEAAeSwGR9purnM"
   },
-  "lowest_bin_price": 474.0,
-  "search_id": "spyderco-schempp-bowie",
-  "seen_item_ids": [
-    "v1|387363181551|0"
-  ]
+  "all_time_min_bin_price": 474.0,
+  "history": [
+    {
+      "bin_count": 1,
+      "bin_max": 474.0,
+      "bin_median": 474.0,
+      "bin_min": 474.0,
+      "timestamp": "2026-07-10T21:18:22.360088+00:00",
+      "total_count": 1
+    }
+  ],
+  "last_checked": "2026-07-10T21:18:22.360088+00:00",
+  "search_id": "spyderco-schempp-bowie"
 }

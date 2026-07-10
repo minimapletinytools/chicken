@@ -1,21 +1,21 @@
 {
-  "average_bin_price": 157.1,
-  "bin_sample_count": 6,
-  "last_checked": "2026-07-10T07:27:26.143511+00:00",
-  "lowest_bin_item": {
+  "all_time_min_bin_item": {
     "id": "v1|176429531224|0",
     "seen_at": "2026-07-10T00:09:12.238487+00:00",
     "title": "Chroma Scales Lava Fits Spyderco Paramilitary 2 Textured Nylon PA12 Construction",
     "url": "https://www.ebay.com/itm/176429531224?_skw=Spyderco+Lava&hash=item2914050058:g:LekAAOSwY39iHiSL"
   },
-  "lowest_bin_price": 37.69,
-  "search_id": "spyderco-lava",
-  "seen_item_ids": [
-    "v1|176429531224|0",
-    "v1|137433770044|0",
-    "v1|267626805676|0",
-    "v1|188586329243|0",
-    "v1|318473260905|0",
-    "v1|176606002941|0"
-  ]
+  "all_time_min_bin_price": 37.69,
+  "history": [
+    {
+      "bin_count": 6,
+      "bin_max": 315.0,
+      "bin_median": 154.95,
+      "bin_min": 37.69,
+      "timestamp": "2026-07-10T21:18:22.682559+00:00",
+      "total_count": 6
+    }
+  ],
+  "last_checked": "2026-07-10T21:18:22.682559+00:00",
+  "search_id": "spyderco-lava"
 }

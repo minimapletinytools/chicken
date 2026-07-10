@@ -1,0 +1,21 @@
+{
+  "all_time_min_bin_item": {
+    "id": "v1|168282227156|0",
+    "seen_at": "2026-07-10T21:18:28.960104+00:00",
+    "title": "Spyderco Jester Folding Knife JSSS Serrated Blade NEW DISCONTINUED",
+    "url": "https://www.ebay.com/itm/168282227156?_skw=Spyderco+Jester&hash=item272e6701d4:g:IDUAAeSwcN1pzs-y"
+  },
+  "all_time_min_bin_price": 175.0,
+  "history": [
+    {
+      "bin_count": 3,
+      "bin_max": 258.65,
+      "bin_median": 189.99,
+      "bin_min": 175.0,
+      "timestamp": "2026-07-10T21:18:28.960104+00:00",
+      "total_count": 3
+    }
+  ],
+  "last_checked": "2026-07-10T21:18:28.960104+00:00",
+  "search_id": "spyderco-jester"
+}
