@@ -22,8 +22,18 @@
       "bin_min": 51.95,
       "timestamp": "2026-07-10T21:48:17.163353+00:00",
       "total_count": 31
+    },
+    {
+      "bin_count": 31,
+      "bin_max": 229.99,
+      "bin_median": 79.95,
+      "bin_min": 51.95,
+      "bin_min_url": "https://www.ebay.com/itm/358502215163?_skw=Spyderco+Squeak&hash=item537865adfb:g:BaoAAeSwEPFp8peH",
+      "timestamp": "2026-07-11T04:27:53.659583+00:00",
+      "total_count": 31
     }
   ],
-  "last_checked": "2026-07-10T21:48:17.163353+00:00",
-  "search_id": "spyderco-squeak"
+  "last_checked": "2026-07-11T04:27:53.659583+00:00",
+  "search_id": "spyderco-squeak",
+  "seen_auction_ids": []
 }
