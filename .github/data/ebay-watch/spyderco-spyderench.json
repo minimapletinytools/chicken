@@ -40,9 +40,18 @@
       "bin_min_url": "https://www.ebay.com/itm/236895145939?_skw=Spyderco+SpydeRench&hash=item37280d0fd3:g:7gkAAeSwFGdqGLWE",
       "timestamp": "2026-07-11T16:01:47.107651+00:00",
       "total_count": 10
+    },
+    {
+      "bin_count": 10,
+      "bin_max": 776.29,
+      "bin_median": 649.98,
+      "bin_min": 299.99,
+      "bin_min_url": "https://www.ebay.com/itm/236895145939?_skw=Spyderco+SpydeRench&hash=item37280d0fd3:g:7gkAAeSwFGdqGLWE",
+      "timestamp": "2026-07-11T16:13:00.659652+00:00",
+      "total_count": 10
     }
   ],
-  "last_checked": "2026-07-11T16:01:47.107651+00:00",
+  "last_checked": "2026-07-11T16:13:00.659652+00:00",
   "search_id": "spyderco-spyderench",
   "seen_auction_ids": []
 }
