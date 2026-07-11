@@ -31,9 +31,18 @@
       "bin_min_url": "https://www.ebay.com/itm/336682375494?_skw=Spyderco+Gooney&hash=item4e63d55946:g:pPsAAeSwaTJqUVY0",
       "timestamp": "2026-07-11T04:27:53.173769+00:00",
       "total_count": 13
+    },
+    {
+      "bin_count": 13,
+      "bin_max": 80.0,
+      "bin_median": 60.0,
+      "bin_min": 50.0,
+      "bin_min_url": "https://www.ebay.com/itm/336682375494?_skw=Spyderco+Gooney&hash=item4e63d55946:g:pPsAAeSwaTJqUVY0",
+      "timestamp": "2026-07-11T16:01:44.248970+00:00",
+      "total_count": 13
     }
   ],
-  "last_checked": "2026-07-11T04:27:53.173769+00:00",
+  "last_checked": "2026-07-11T16:01:44.248970+00:00",
   "search_id": "spyderco-gooney",
   "seen_auction_ids": []
 }
