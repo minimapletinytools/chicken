@@ -183,6 +183,7 @@ def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
     bin_items = [i for i in items if i["buying_option"] == "FIXED_PRICE"]
     bin_prices = [i["price"] for i in bin_items]
     auction_items = [i for i in items if i["buying_option"] == "AUCTION"]
+    current_min_item = min(bin_items, key=lambda i: i["price"]) if bin_items else None
 
     cache.setdefault("history", []).append(
         {
@@ -192,6 +193,10 @@ def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
             "bin_min": min(bin_prices) if bin_prices else None,
             "bin_max": max(bin_prices) if bin_prices else None,
             "bin_median": round(statistics.median(bin_prices), 2) if bin_prices else None,
+            # Link to this run's actual cheapest listing (as opposed to
+            # all_time_min_bin_item below, which can go stale/sold once a
+            # cheaper item has since been listed and the record-holder ends).
+            "bin_min_url": current_min_item["url"] if current_min_item else None,
         }
     )
     cache["history"] = cache["history"][-HISTORY_CAP:]
@@ -200,8 +205,7 @@ def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
     alerts = []
     prior_min = cache.get("all_time_min_bin_price")
 
-    if bin_items:
-        current_min_item = min(bin_items, key=lambda i: i["price"])
+    if current_min_item:
         current_min = current_min_item["price"]
 
         if prior_min:

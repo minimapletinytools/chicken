@@ -74,7 +74,14 @@ and filtering — `priority` (`high`/`normal`) is folded in as an implicit tag
 too. After every run, `scripts/generate_chart.py` regenerates
 [docs/index.html](docs/index.html): a self-contained line chart of BIN
 min/median/max price over time per search, with checkboxes to filter which
-tags' lines are shown and a dropdown to switch the plotted metric.
+tags' lines are shown and a dropdown to switch the plotted metric. Hovering
+a line highlights its legend entry and vice versa.
+
+Each legend entry has two icons: 🔍 opens that search on eBay in a new tab,
+and 🏷️ opens the actual listing that was cheapest as of the most recent run
+(sourced from `bin_min_url` in that search's cache history — not the
+all-time-low listing, which may already be sold/delisted). The 🏷️ icon is
+omitted for searches with no BIN listing in their history yet.
 
 Open it directly (`open ebay-watch/docs/index.html` from the repo root). It
 needs network access at view time to load Chart.js from a CDN. Note this

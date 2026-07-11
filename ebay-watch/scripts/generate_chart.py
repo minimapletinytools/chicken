@@ -14,6 +14,8 @@ open the output file directly in a browser, or serve it via GitHub Pages.
 Assumes it lives at <automation folder>/scripts/generate_chart.py, with the
 automation folder at the root of a git repo — see ebay_watch.py's docstring.
 """
+from __future__ import annotations
+
 import json
 import os
 from pathlib import Path
@@ -129,16 +131,28 @@ function buildLegend(visible) {
     label.textContent = d.query;
     label.title = d.query;
 
-    const link = document.createElement('a');
-    link.className = 'legend-link';
-    link.href = ebaySearchUrl(d.query);
-    link.target = '_blank';
-    link.rel = 'noopener';
-    link.title = 'Open eBay search in new tab';
-    link.textContent = '↗';
-    link.addEventListener('click', event => event.stopPropagation());
+    const searchLink = document.createElement('a');
+    searchLink.className = 'legend-link';
+    searchLink.href = ebaySearchUrl(d.query);
+    searchLink.target = '_blank';
+    searchLink.rel = 'noopener';
+    searchLink.title = 'Open eBay search in new tab';
+    searchLink.textContent = '🔍';
+    searchLink.addEventListener('click', event => event.stopPropagation());
 
-    row.append(swatch, label, link);
+    row.append(swatch, label, searchLink);
+
+    if (d.min_price_url) {
+      const priceLink = document.createElement('a');
+      priceLink.className = 'legend-link';
+      priceLink.href = d.min_price_url;
+      priceLink.target = '_blank';
+      priceLink.rel = 'noopener';
+      priceLink.title = 'Open cheapest current listing in new tab';
+      priceLink.textContent = '🏷️';
+      priceLink.addEventListener('click', event => event.stopPropagation());
+      row.append(priceLink);
+    }
     row.addEventListener('click', () => {
       if (chart.isDatasetVisible(i)) {
         chart.hide(i);
@@ -227,6 +241,16 @@ render();
 """
 
 
+def latest_min_price_url(history: list[dict]) -> str | None:
+    # Walk backwards to the most recent run that actually had a BIN listing —
+    # the latest run alone might have none (e.g. everything sold/delisted).
+    for entry in reversed(history):
+        url = entry.get("bin_min_url")
+        if url:
+            return url
+    return None
+
+
 def build_dataset() -> list[dict]:
     searches = yaml.safe_load(CONFIG_PATH.read_text()) or []
     dataset = []
@@ -236,13 +260,15 @@ def build_dataset() -> list[dict]:
         if not cache_path.exists():
             continue
         cache = json.loads(cache_path.read_text())
+        history = cache.get("history", [])
         tags = list(search.get("tags", [])) + [search.get("priority", "normal")]
         dataset.append(
             {
                 "id": search_id,
                 "query": search["query"],
                 "tags": tags,
-                "history": cache.get("history", []),
+                "history": history,
+                "min_price_url": latest_min_price_url(history),
             }
         )
     return dataset
