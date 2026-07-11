@@ -193,7 +193,17 @@ function render() {
         setActiveDataset(elements.length ? elements[0].datasetIndex : -1);
       },
       scales: {
-        x: { type: 'time', time: { unit: 'day' }, ticks: { color: '#ccc' }, grid: { color: '#333' } },
+        x: {
+          type: 'time',
+          time: {
+            unit: 'day',
+            tooltipFormat: 'MMM d, yyyy HH:mm',
+            displayFormats: { day: 'MMM d, yyyy' },
+          },
+          ticks: { color: '#ccc' },
+          grid: { color: '#333' },
+          title: { display: true, text: 'Date', color: '#ccc' },
+        },
         y: { ticks: { color: '#ccc' }, grid: { color: '#333' }, title: { display: true, text: 'USD', color: '#ccc' } },
       },
       plugins: { legend: { display: false } },
