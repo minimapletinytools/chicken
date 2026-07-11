@@ -39,9 +39,20 @@ its `.github/workflows/` — nothing else needs to change.
 
 Each run, per search:
 
-1. Fetches up to `MAX_RESULTS` listings sorted by price ascending via eBay's
-   Browse API, applying your `condition`/`max_price`/`exclude_keywords`
-   filters.
+1. Makes two separate eBay Browse API calls — one for BIN listings
+   (`buyingOptions:{FIXED_PRICE}`, sorted by price ascending, up to
+   `MAX_RESULTS`) and one for auctions (`buyingOptions:{AUCTION}`, sorted by
+   `newlyListed`, up to `MAX_RESULTS`) — applying your
+   `condition`/`max_price`/`exclude_keywords` filters to both. This isn't
+   one combined call because eBay's Browse API only returns FIXED_PRICE
+   listings *by default*; a pure auction with no Buy-It-Now option is
+   silently excluded unless the buyingOptions filter explicitly asks for
+   AUCTION too. Auctions are sorted by recency rather than price so a
+   brand-new one surfaces on the next run regardless of its starting price,
+   instead of getting buried behind cheaper BIN listings. Logs
+   fetched-vs-total counts per search (from eBay's own `total` field) so
+   under-coverage — more matching listings than `MAX_RESULTS` fetched — is
+   visible in the run output rather than silently missing listings.
 2. Records a snapshot in `history`: timestamp, BIN listing count, total
    listing count, and BIN min/max/median — so you can chart price range
    evolution over time later (e.g. with `jq` or a notebook).
@@ -96,11 +107,14 @@ anywhere — paths resolve relative to this file, not your working directory).
 
 ### Caveats
 
-- Since results are fetched sorted by price ascending and capped at
+- Since BIN results are fetched sorted by price ascending and capped at
   `MAX_RESULTS`, `bin_min` is reliable (always within the first page), but
   `bin_max`/`bin_median` are biased toward the cheap end of the market —
   they describe the cheapest N listings, not the true population. Good
-  enough as a rough trend heuristic, not exact stats.
+  enough as a rough trend heuristic, not exact stats. Auctions don't have
+  this bias (sorted by recency, not price), but are similarly capped at
+  `MAX_RESULTS` — a search with more than that many active auctions could
+  still miss some; check the run log's fetched-vs-total counts.
 - eBay's Browse API item-summary `price` field for auction listings isn't
   always the live current bid — the script prefers `currentBidPrice` when
   eBay returns it, but for some auctions falls back to the summary `price`

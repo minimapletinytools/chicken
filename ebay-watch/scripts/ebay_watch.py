@@ -2,12 +2,32 @@
 """
 Watches eBay searches over time, using the official eBay Browse API.
 
+Does two separate item_summary/search calls per search, not one:
+  - BIN listings, filter buyingOptions:{FIXED_PRICE}, sort=price (ascending)
+  - auction listings, filter buyingOptions:{AUCTION}, sort=newlyListed
+
+Two reasons this isn't a single combined call:
+  1. eBay's Browse API only returns FIXED_PRICE listings *by default* — a
+     pure auction with no Buy-It-Now option is silently excluded unless the
+     buyingOptions filter explicitly asks for AUCTION too. Without this,
+     the script would never see pure auctions at all (dual-format "auction
+     with BIN" listings would still slip through, since those carry
+     FIXED_PRICE as well — which is what made this easy to miss).
+  2. Sorting auctions by newlyListed instead of price means a brand-new
+     auction surfaces on the very next run regardless of its starting
+     price, rather than getting buried behind up to MAX_RESULTS cheaper
+     BIN listings in a single price-sorted call (and never appearing at
+     all if this search reliably has more than MAX_RESULTS BIN listings).
+     BIN listings stay sorted by price, since that's what guarantees the
+     true min is always captured for price-drop-threshold alerting.
+
 Each run records a snapshot of BIN price range (min/max/median) and listing
-counts per search, so the history can be charted later. Since results are
-fetched sorted by price ascending and capped at MAX_RESULTS, "max"/"median"
-are biased toward the cheap end of the market (a heuristic over the true
-population) — "min" is the one reliable stat since it's always within the
-first page.
+counts per search, so the history can be charted later. Since BIN results
+are capped at MAX_RESULTS, "max"/"median" are biased toward the cheap end
+of the market (a heuristic over the true population) — "min" is the one
+reliable stat since it's always within that page. Logs fetched-vs-total
+counts per search (see eBay's `total` field) so under-coverage is visible
+in the run output rather than silently missing listings.
 
 Opens/updates a GitHub issue for two kinds of events:
   - BIN minimum drops significantly below its all-time low (default 20%,
@@ -26,7 +46,10 @@ Optional env vars:
   ISSUE_LABEL                label used to find/tag the alert issue (default "ebay-watch")
   CONFIG_PATH                path to searches config (default <this folder>/config/ebay_searches.yml)
   CACHE_DIR                  path to cache directory (default <repo root>/.github/data/ebay-watch)
-  MAX_RESULTS                listings fetched per search, sorted by price asc (default 50)
+  MAX_RESULTS                listings fetched per search per buying-option
+                               (BIN and auction each fetch up to this many,
+                               so up to 2x this per search), sorted per the
+                               rules above (default 50)
   PRICE_DROP_THRESHOLD_PCT   default alert threshold in percent (default 20);
                                overridable per search via `price_drop_threshold_pct`
   HISTORY_CAP                max history snapshots kept per search (default 500)
@@ -85,8 +108,9 @@ def get_ebay_token(client_id: str, client_secret: str) -> str:
     return resp.json()["access_token"]
 
 
-def search_ebay(token: str, search: dict) -> list[dict]:
-    filters = []
+def fetch_ebay_page(token: str, search: dict, buying_options: str, sort: str) -> tuple[list[dict], int]:
+    """One Browse API call. Returns (parsed items, eBay-reported total matches)."""
+    filters = [f"buyingOptions:{{{buying_options}}}"]
     if search.get("condition"):
         filters.append(f"conditions:{{{search['condition']}}}")
     if search.get("max_price"):
@@ -95,10 +119,9 @@ def search_ebay(token: str, search: dict) -> list[dict]:
     params = {
         "q": search["query"],
         "limit": str(MAX_RESULTS),
-        "sort": "price",
+        "sort": sort,
+        "filter": ",".join(filters),
     }
-    if filters:
-        params["filter"] = ",".join(filters)
     if search.get("category_ids"):
         params["category_ids"] = str(search["category_ids"])
 
@@ -121,8 +144,8 @@ def search_ebay(token: str, search: dict) -> list[dict]:
         if any(kw in title.lower() for kw in excludes):
             continue
 
-        buying_options = item.get("buyingOptions", [])
-        is_auction = "AUCTION" in buying_options
+        buying_opts = item.get("buyingOptions", [])
+        is_auction = "AUCTION" in buying_opts
         # For auctions the Browse API sometimes exposes the live bid
         # separately; fall back to `price` (starting/current price) if not.
         price_field = item.get("currentBidPrice") or item.get("price")
@@ -139,7 +162,37 @@ def search_ebay(token: str, search: dict) -> list[dict]:
                 "url": item.get("itemWebUrl"),
             }
         )
-    return items
+    return items, data.get("total", len(items))
+
+
+def search_ebay(token: str, search: dict) -> list[dict]:
+    bin_items, bin_total = fetch_ebay_page(token, search, "FIXED_PRICE", "price")
+    auction_items, auction_total = fetch_ebay_page(token, search, "AUCTION", "newlyListed")
+
+    search_id = search["id"]
+    print(
+        f"[{search_id}] fetched {len(bin_items)}/{bin_total} BIN match(es), "
+        f"{len(auction_items)}/{auction_total} auction match(es)"
+    )
+    if bin_total > len(bin_items):
+        print(
+            f"[{search_id}] WARNING: {bin_total - len(bin_items)} BIN listing(s) not fetched "
+            f"(beyond MAX_RESULTS={MAX_RESULTS}) — min/max/median may not reflect the full market",
+            file=sys.stderr,
+        )
+    if auction_total > len(auction_items):
+        print(
+            f"[{search_id}] WARNING: {auction_total - len(auction_items)} auction listing(s) not fetched "
+            f"(beyond MAX_RESULTS={MAX_RESULTS}) — some new auctions may be missed this run",
+            file=sys.stderr,
+        )
+
+    # A dual-format ("auction with Buy It Now") listing can appear in both
+    # pages; either copy classifies identically since buying_option is
+    # derived from the item's own data, not which call fetched it.
+    combined = {item["id"]: item for item in bin_items}
+    combined.update((item["id"], item) for item in auction_items)
+    return list(combined.values())
 
 
 def load_cache(search_id: str) -> dict:
