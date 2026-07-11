@@ -1,8 +1,9 @@
 # eBay watch
 
 Tracks eBay searches over time (BIN price range and listing counts) and
-opens an alert when a search's minimum Buy-It-Now price drops significantly
-below its all-time low.
+opens an alert for two kinds of events: a search's minimum Buy-It-Now price
+dropping significantly below its all-time low, or a new auction listing
+showing up priced below that all-time-low BIN price.
 
 Designed to be portable: this folder plus the workflow file below are the
 whole automation. To reuse it in another repo, copy this `ebay-watch/`
@@ -48,15 +49,23 @@ Each run, per search:
    price ever observed for that search, which only ratchets down). If it
    dropped by at least `price_drop_threshold_pct` (default 20%, set via the
    `PRICE_DROP_THRESHOLD_PCT` env var or overridden per search in the
-   config), that's an alert.
-4. If there are alerts, upserts a GitHub issue labeled `ebay-watch` listing
-   each drop, sorted with `priority: high` searches first.
-5. Commits the updated cache files and chart back to the repo.
+   config), that's a **price drop alert**.
+4. Checks every auction listing not seen in a prior run: if its current bid
+   is below `all_time_min_bin_price`, that's a **new auction alert** — a
+   real deal, as opposed to a low starting bid that'll likely climb past it.
+   Each auction only ever triggers this once (tracked via
+   `seen_auction_ids`), even if it stays cheap across several runs.
+5. If there are alerts, upserts a GitHub issue labeled `ebay-watch` listing
+   them, sorted with `priority: high` searches first.
+6. Commits the updated cache files and chart back to the repo.
 
 The very first run for a new search just seeds the cache — nothing to
 compare against yet, so no alert fires until a later run sees a big enough
-drop. A repeat of the same low won't re-alert either, since the next drop
-has to clear the threshold against the new floor.
+BIN drop or a cheap-enough new auction. A repeat of the same BIN low won't
+re-alert either, since the next drop has to clear the threshold against the
+new floor. A search that never has any BIN listings can't establish
+`all_time_min_bin_price`, so it'll never produce a new-auction alert either
+— there's nothing to compare against.
 
 ### Tags and the price history chart
 
