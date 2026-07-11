@@ -10,8 +10,23 @@
   h1 { font-size: 1.3rem; }
   #controls { margin-bottom: 1rem; display: flex; gap: 2rem; flex-wrap: wrap; align-items: baseline; }
   #tags label { margin-right: 1rem; cursor: pointer; }
-  #chart-container { max-width: 1200px; }
   select { background: #222; color: #eee; border: 1px solid #444; padding: 2px 6px; }
+  #chart-row { display: flex; gap: 1.5rem; align-items: flex-start; }
+  #chart-container { max-width: 900px; flex: 1 1 auto; }
+  #legend {
+    display: flex; flex-direction: column; gap: 1px; max-height: 520px; overflow-y: auto;
+    min-width: 220px; max-width: 340px; flex: 0 0 auto;
+  }
+  .legend-row {
+    display: flex; align-items: center; gap: 6px; padding: 3px 6px; border-radius: 4px;
+    cursor: pointer; transition: background-color 0.15s ease, opacity 0.15s ease;
+  }
+  .legend-row:hover, .legend-row.legend-active { background-color: rgba(255,255,255,0.12); }
+  .legend-row.legend-hidden { opacity: 0.35; }
+  .legend-swatch { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .legend-label { flex: 1 1 auto; font-size: 0.85rem; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .legend-link { color: #8ab4f8; text-decoration: none; font-size: 0.85rem; flex-shrink: 0; }
+  .legend-link:hover { text-decoration: underline; }
 </style>
 </head>
 <body>
@@ -27,13 +42,20 @@
   </div>
   <div id="tags"></div>
 </div>
-<div id="chart-container"><canvas id="chart"></canvas></div>
+<div id="chart-row">
+  <div id="chart-container"><canvas id="chart"></canvas></div>
+  <div id="legend"></div>
+</div>
 <script>
 const DATA = [{"id": "spyderco-matriarch-2-wave", "query": "Spyderco Matriarch 2 Wave", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 7, "bin_max": 153.0, "bin_median": 136.5, "bin_min": 119.99, "timestamp": "2026-07-10T21:18:21.557155+00:00", "total_count": 7}, {"bin_count": 7, "bin_max": 153.0, "bin_median": 136.5, "bin_min": 119.99, "timestamp": "2026-07-10T21:48:11.946151+00:00", "total_count": 7}]}, {"id": "spyderco-introvert", "query": "Spyderco Introvert", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 0, "bin_max": null, "bin_median": null, "bin_min": null, "timestamp": "2026-07-10T21:18:21.893410+00:00", "total_count": 0}, {"bin_count": 0, "bin_max": null, "bin_median": null, "bin_min": null, "timestamp": "2026-07-10T21:48:12.291613+00:00", "total_count": 0}]}, {"id": "spyderco-schempp-bowie", "query": "Spyderco Schempp Bowie", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 1, "bin_max": 474.0, "bin_median": 474.0, "bin_min": 474.0, "timestamp": "2026-07-10T21:18:22.360088+00:00", "total_count": 1}, {"bin_count": 1, "bin_max": 474.0, "bin_median": 474.0, "bin_min": 474.0, "timestamp": "2026-07-10T21:48:12.590784+00:00", "total_count": 1}]}, {"id": "spyderco-lava", "query": "Spyderco Lava", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 6, "bin_max": 315.0, "bin_median": 154.95, "bin_min": 37.69, "timestamp": "2026-07-10T21:18:22.682559+00:00", "total_count": 6}, {"bin_count": 6, "bin_max": 315.0, "bin_median": 154.95, "bin_min": 37.69, "timestamp": "2026-07-10T21:48:12.887655+00:00", "total_count": 6}]}, {"id": "spyderco-gunting", "query": "Spyderco Gunting", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 13, "bin_max": 795.0, "bin_median": 459.0, "bin_min": 309.0, "timestamp": "2026-07-10T21:18:23.129825+00:00", "total_count": 13}, {"bin_count": 13, "bin_max": 795.0, "bin_median": 459.0, "bin_min": 309.0, "timestamp": "2026-07-10T21:48:13.262412+00:00", "total_count": 13}]}, {"id": "spyderco-jot-singh-khalsa", "query": "Spyderco Jot Singh Khalsa", "tags": ["knives", "spyderco", "high"], "history": [{"bin_count": 8, "bin_max": 514.35, "bin_median": 387.5, "bin_min": 299.0, "timestamp": "2026-07-10T21:18:23.546128+00:00", "total_count": 8}, {"bin_count": 8, "bin_max": 514.35, "bin_median": 387.5, "bin_min": 299.0, "timestamp": "2026-07-10T21:48:13.560884+00:00", "total_count": 8}]}, {"id": "spyderco-kiwi", "query": "Spyderco Kiwi", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 7, "bin_max": 500.0, "bin_median": 120.0, "bin_min": 24.95, "timestamp": "2026-07-10T21:18:23.945528+00:00", "total_count": 7}, {"bin_count": 7, "bin_max": 500.0, "bin_median": 120.0, "bin_min": 24.95, "timestamp": "2026-07-10T21:48:13.939399+00:00", "total_count": 7}]}, {"id": "spyderco-dodo", "query": "Spyderco Dodo", "tags": ["knives", "spyderco", "high"], "history": [{"bin_count": 16, "bin_max": 400.0, "bin_median": 299.98, "bin_min": 235.0, "timestamp": "2026-07-10T21:18:24.374147+00:00", "total_count": 16}, {"bin_count": 16, "bin_max": 400.0, "bin_median": 299.98, "bin_min": 235.0, "timestamp": "2026-07-10T21:48:14.344529+00:00", "total_count": 16}]}, {"id": "spyderco-dyad", "query": "Spyderco Dyad", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 12, "bin_max": 554.95, "bin_median": 325.54, "bin_min": 175.0, "timestamp": "2026-07-10T21:18:24.875599+00:00", "total_count": 12}, {"bin_count": 12, "bin_max": 554.95, "bin_median": 325.54, "bin_min": 175.0, "timestamp": "2026-07-10T21:48:14.746034+00:00", "total_count": 12}]}, {"id": "spyderco-tighe-stick", "query": "Spyderco Tighe Stick", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 1, "bin_max": 899.0, "bin_median": 899.0, "bin_min": 899.0, "timestamp": "2026-07-10T21:18:25.220574+00:00", "total_count": 1}, {"bin_count": 1, "bin_max": 899.0, "bin_median": 899.0, "bin_min": 899.0, "timestamp": "2026-07-10T21:48:15.134771+00:00", "total_count": 1}]}, {"id": "spyderco-pkal", "query": "Spyderco P'Kal", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 26, "bin_max": 731.99, "bin_median": 291.75, "bin_min": 194.95, "timestamp": "2026-07-10T21:18:25.555639+00:00", "total_count": 26}, {"bin_count": 26, "bin_max": 731.99, "bin_median": 291.75, "bin_min": 194.95, "timestamp": "2026-07-10T21:48:15.487176+00:00", "total_count": 26}]}, {"id": "spyderco-poliwog", "query": "Spyderco Poliwog", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 4, "bin_max": 395.0, "bin_median": 282.0, "bin_min": 275.0, "timestamp": "2026-07-10T21:18:26.005114+00:00", "total_count": 4}, {"bin_count": 4, "bin_max": 395.0, "bin_median": 282.0, "bin_min": 275.0, "timestamp": "2026-07-10T21:48:15.846282+00:00", "total_count": 4}]}, {"id": "spyderco-essenza", "query": "Spyderco Essenza", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 15, "bin_max": 192.12, "bin_median": 176.25, "bin_min": 158.63, "timestamp": "2026-07-10T21:18:26.498404+00:00", "total_count": 15}, {"bin_count": 15, "bin_max": 192.12, "bin_median": 176.25, "bin_min": 158.63, "timestamp": "2026-07-10T21:48:16.248302+00:00", "total_count": 15}]}, {"id": "spyderco-gooney", "query": "Spyderco Gooney", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 13, "bin_max": 80.0, "bin_median": 60.0, "bin_min": 50.0, "timestamp": "2026-07-10T21:18:27.079813+00:00", "total_count": 13}, {"bin_count": 13, "bin_max": 80.0, "bin_median": 60.0, "bin_min": 50.0, "timestamp": "2026-07-10T21:48:16.833054+00:00", "total_count": 13}]}, {"id": "spyderco-squeak", "query": "Spyderco Squeak", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 31, "bin_max": 229.99, "bin_median": 79.95, "bin_min": 51.95, "timestamp": "2026-07-10T21:18:27.493365+00:00", "total_count": 31}, {"bin_count": 31, "bin_max": 229.99, "bin_median": 79.95, "bin_min": 51.95, "timestamp": "2026-07-10T21:48:17.163353+00:00", "total_count": 31}]}, {"id": "spyderco-mcbee", "query": "Spyderco McBee", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 50, "bin_max": 400.0, "bin_median": 195.0, "bin_min": 16.88, "timestamp": "2026-07-10T21:18:28.007331+00:00", "total_count": 50}, {"bin_count": 50, "bin_max": 400.0, "bin_median": 195.0, "bin_min": 16.88, "timestamp": "2026-07-10T21:48:17.542137+00:00", "total_count": 50}]}, {"id": "spyderco-cat", "query": "Spyderco Cat", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 23, "bin_max": 219.98, "bin_median": 78.75, "bin_min": 15.03, "timestamp": "2026-07-10T21:18:28.483342+00:00", "total_count": 23}, {"bin_count": 23, "bin_max": 219.98, "bin_median": 78.75, "bin_min": 15.03, "timestamp": "2026-07-10T21:48:17.894937+00:00", "total_count": 23}]}, {"id": "spyderco-jester", "query": "Spyderco Jester", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 3, "bin_max": 258.65, "bin_median": 189.99, "bin_min": 175.0, "timestamp": "2026-07-10T21:18:28.960104+00:00", "total_count": 3}, {"bin_count": 3, "bin_max": 258.65, "bin_median": 189.99, "bin_min": 175.0, "timestamp": "2026-07-10T21:48:18.228628+00:00", "total_count": 3}]}, {"id": "spyderco-retract", "query": "Spyderco Retract", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 0, "bin_max": null, "bin_median": null, "bin_min": null, "timestamp": "2026-07-10T21:18:29.307557+00:00", "total_count": 0}, {"bin_count": 0, "bin_max": null, "bin_median": null, "bin_min": null, "timestamp": "2026-07-10T21:48:18.598404+00:00", "total_count": 0}]}, {"id": "spyderco-kris", "query": "Spyderco Kris", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 0, "bin_max": null, "bin_median": null, "bin_min": null, "timestamp": "2026-07-10T21:18:29.596889+00:00", "total_count": 0}, {"bin_count": 0, "bin_max": null, "bin_median": null, "bin_min": null, "timestamp": "2026-07-10T21:48:18.953986+00:00", "total_count": 0}]}, {"id": "spyderco-spyderench", "query": "Spyderco SpydeRench", "tags": ["knives", "spyderco", "normal"], "history": [{"bin_count": 10, "bin_max": 777.24, "bin_median": 649.98, "bin_min": 299.99, "timestamp": "2026-07-10T21:18:30.022380+00:00", "total_count": 10}, {"bin_count": 10, "bin_max": 777.24, "bin_median": 649.98, "bin_min": 299.99, "timestamp": "2026-07-10T21:48:19.330565+00:00", "total_count": 10}]}];
 
 const COLORS = ['#e6194b','#3cb44b','#ffe119','#4363d8','#f58231','#911eb4','#46f0f0',
   '#f032e6','#bcf60c','#fabebe','#008080','#e6beff','#9a6324','#fffac8','#800000',
   '#aaffc3','#808000','#ffd8b1','#000075','#a9a9a9','#ffffff'];
+
+function ebaySearchUrl(query) {
+  return 'https://www.ebay.com/sch/i.html?_nkw=' + encodeURIComponent(query);
+}
 
 const allTags = [...new Set(DATA.flatMap(d => d.tags))].sort();
 const tagsEl = document.getElementById('tags');
@@ -50,6 +72,54 @@ allTags.forEach(tag => {
 });
 
 let chart;
+
+function buildLegend(visible) {
+  const legendEl = document.getElementById('legend');
+  legendEl.innerHTML = '';
+  visible.forEach((d, i) => {
+    const row = document.createElement('div');
+    row.className = 'legend-row';
+    row.dataset.index = String(i);
+
+    const swatch = document.createElement('span');
+    swatch.className = 'legend-swatch';
+    swatch.style.backgroundColor = COLORS[i % COLORS.length];
+
+    const label = document.createElement('span');
+    label.className = 'legend-label';
+    label.textContent = d.query;
+    label.title = d.query;
+
+    const link = document.createElement('a');
+    link.className = 'legend-link';
+    link.href = ebaySearchUrl(d.query);
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.title = 'Open eBay search in new tab';
+    link.textContent = '↗';
+    link.addEventListener('click', event => event.stopPropagation());
+
+    row.append(swatch, label, link);
+    row.addEventListener('click', () => {
+      if (chart.isDatasetVisible(i)) {
+        chart.hide(i);
+        row.classList.add('legend-hidden');
+      } else {
+        chart.show(i);
+        row.classList.remove('legend-hidden');
+      }
+    });
+
+    legendEl.appendChild(row);
+  });
+}
+
+function highlightLegendRow(datasetIndex) {
+  document.querySelectorAll('.legend-row').forEach(row => {
+    row.classList.toggle('legend-active', row.dataset.index === String(datasetIndex));
+  });
+}
+
 function render() {
   const metric = document.getElementById('metric').value;
   const active = new Set([...tagsEl.querySelectorAll('input:checked')].map(cb => cb.value));
@@ -71,13 +141,19 @@ function render() {
     data: { datasets },
     options: {
       responsive: true,
+      interaction: { mode: 'nearest', intersect: true },
+      onHover: (event, elements) => {
+        highlightLegendRow(elements.length ? elements[0].datasetIndex : -1);
+      },
       scales: {
         x: { type: 'time', time: { unit: 'day' }, ticks: { color: '#ccc' }, grid: { color: '#333' } },
         y: { ticks: { color: '#ccc' }, grid: { color: '#333' }, title: { display: true, text: 'USD', color: '#ccc' } },
       },
-      plugins: { legend: { labels: { color: '#ccc' } } },
+      plugins: { legend: { display: false } },
     },
   });
+
+  buildLegend(visible);
 }
 
 document.getElementById('metric').addEventListener('change', render);
