@@ -109,3 +109,8 @@
 - id: spyderco-spyderench
   tags: [knives, spyderco]
   query: "Spyderco SpydeRench"
+
+- id: boker-dw-1
+  tags: [knives, boker]
+  query: "Boker \"DW-1\""
+  
