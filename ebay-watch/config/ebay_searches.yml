@@ -141,3 +141,23 @@
 - id: byrd-robin-meadowlark
   tags: [knives, byrd]
   query: "Byrd Robin Meadowlark"
+
+- id: byrd-finch
+  tags: [knives, byrd]
+  query: "Byrd Finch"
+
+- id: byrd-starling
+  tags: [knives, byrd]
+  query: "Byrd Starling"
+
+- id: byrd-wrench
+  tags: [knives, byrd]
+  query: "Byrd Wrench"
+
+- id: byrd-robin-2
+  tags: [knives, byrd]
+  query: "Byrd Robin 2"
+
+- id: spyderco-dragonfly
+  tags: [knives, spyderco]
+  query: "Spyderco Dragonfly"
