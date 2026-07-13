@@ -113,4 +113,19 @@
 - id: boker-dw-1
   tags: [knives, boker]
   query: "Boker \"DW-1\""
-  
+
+- id: kansept-mini-korvid-s35vn
+  tags: [knives, kansept]
+  query: "Kansept Mini Korvid S35VN"
+
+- id: kansept-mini-korvid
+  tags: [knives, kansept]
+  query: "Kansept Mini Korvid"
+
+- id: kizer-microbe
+  tags: [knives, kizer]
+  query: "Kizer Microbe"
+
+- id: kizer-microbe-m390
+  tags: [knives, kizer]
+  query: "Kizer Microbe M390"
