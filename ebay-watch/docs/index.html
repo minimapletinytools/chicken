@@ -6,16 +6,24 @@
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 <style>
-  body { font-family: system-ui, sans-serif; margin: 2rem; background: #111; color: #eee; }
-  h1 { font-size: 1.3rem; }
+  * { box-sizing: border-box; }
+  html, body { width: 100%; margin: 0; }
+  body { font-family: system-ui, sans-serif; padding: 1.5rem; background: #111; color: #eee; }
+  h1 { font-size: 1.3rem; margin-top: 0; }
   #controls { margin-bottom: 1rem; display: flex; gap: 2rem; flex-wrap: wrap; align-items: baseline; }
-  #tags label { margin-right: 1rem; cursor: pointer; }
-  select { background: #222; color: #eee; border: 1px solid #444; padding: 2px 6px; }
-  #chart-row { display: flex; gap: 1.5rem; align-items: flex-start; }
-  #chart-container { max-width: 900px; flex: 1 1 auto; }
+  #tags { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 1rem; }
+  #tags label { cursor: pointer; }
+  select, button {
+    background: #222; color: #eee; border: 1px solid #444; padding: 3px 8px;
+    border-radius: 4px; font: inherit;
+  }
+  button { cursor: pointer; }
+  button:hover { background: #333; }
+  #chart-row { display: flex; gap: 1.5rem; align-items: flex-start; width: 100%; }
+  #chart-container { position: relative; flex: 1 1 auto; min-width: 0; height: 75vh; }
   #legend {
-    display: flex; flex-direction: column; gap: 1px; max-height: 520px; overflow-y: auto;
-    min-width: 220px; max-width: 340px; flex: 0 0 auto;
+    display: flex; flex-direction: column; gap: 1px; max-height: 75vh; overflow-y: auto;
+    min-width: 260px; max-width: 22vw; flex: 0 0 auto;
   }
   .legend-row {
     display: flex; align-items: center; gap: 6px; padding: 3px 6px; border-radius: 4px;
@@ -39,6 +47,10 @@
       <option value="bin_median">Median BIN</option>
       <option value="bin_max">Max BIN</option>
     </select>
+  </div>
+  <div>
+    <button id="selectAllTags" type="button">Select all</button>
+    <button id="deselectAllTags" type="button">Unselect all</button>
   </div>
   <div id="tags"></div>
 </div>
@@ -81,6 +93,13 @@ allTags.forEach(tag => {
   label.append(' ' + tag);
   tagsEl.appendChild(label);
 });
+
+function setAllTags(checked) {
+  tagsEl.querySelectorAll('input[type=checkbox]').forEach(cb => { cb.checked = checked; });
+  render();
+}
+document.getElementById('selectAllTags').addEventListener('click', () => setAllTags(true));
+document.getElementById('deselectAllTags').addEventListener('click', () => setAllTags(false));
 
 let chart;
 
@@ -185,6 +204,7 @@ function render() {
     data: { datasets },
     options: {
       responsive: true,
+      maintainAspectRatio: false,
       // intersect: false so hovering anywhere near a line (not just exactly
       // on a data point) picks up the nearest one — makes it easy to tell
       // lines apart with this many series.
