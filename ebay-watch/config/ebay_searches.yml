@@ -169,3 +169,23 @@
 - id: spyderco-manbug
   tags: [knives, spyderco]
   query: "Spyderco Manbug"
+
+- id: petrified-fish-hummingbird
+  tags: [knives, petrified-fish]
+  query: "Petrified Fish Hummingbird"
+
+- id: kizer-micro-sheepdog
+  tags: [knives, kizer]
+  query: "Kizer Micro Sheepdog"
+
+- id: fox-baby-core
+  tags: [knives, fox]
+  query: "Fox Knives Baby Core"
+
+- id: microtech-exocet
+  tags: [knives, microtech]
+  query: "Microtech Exocet"
+
+- id: microtech-utx-70
+  tags: [knives, microtech]
+  query: "Microtech UTX-70"
