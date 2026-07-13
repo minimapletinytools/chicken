@@ -161,3 +161,11 @@
 - id: spyderco-dragonfly
   tags: [knives, spyderco]
   query: "Spyderco Dragonfly"
+
+- id: spyderco-ladybug
+  tags: [knives, spyderco]
+  query: "Spyderco Ladybug"
+
+- id: spyderco-manbug
+  tags: [knives, spyderco]
+  query: "Spyderco Manbug"
