@@ -1,0 +1,25 @@
+{
+  "all_time_min_bin_item": {
+    "id": "v1|267345007742|0",
+    "seen_at": "2026-07-13T23:26:33.877432+00:00",
+    "title": "Spyderco Manbug Lightweight Folding Knife, Wharncliffe SS Blade, Black Handle",
+    "url": "https://www.ebay.com/itm/267345007742?_skw=Spyderco+Manbug&hash=item3e3f01147e:g:30gAAeSwqwxohrqR"
+  },
+  "all_time_min_bin_price": 44.95,
+  "history": [
+    {
+      "bin_count": 50,
+      "bin_max": 64.5,
+      "bin_median": 64.5,
+      "bin_min": 44.95,
+      "bin_min_url": "https://www.ebay.com/itm/267345007742?_skw=Spyderco+Manbug&hash=item3e3f01147e:g:30gAAeSwqwxohrqR",
+      "timestamp": "2026-07-13T23:26:33.877432+00:00",
+      "total_count": 51
+    }
+  ],
+  "last_checked": "2026-07-13T23:26:33.877432+00:00",
+  "search_id": "spyderco-manbug",
+  "seen_auction_ids": [
+    "v1|398150946589|0"
+  ]
+}

@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|387363181551|0",
-    "seen_at": "2026-07-10T00:09:11.645107+00:00",
-    "title": "Spyderco /Ed Schempp Persian /Red G10 /VG-10 /C83GPRD /Discontinued rare",
-    "url": "https://www.ebay.com/itm/387363181551?_skw=Spyderco+Schempp+Bowie&hash=item5a30a513ef:g:AVEAAeSwGR9purnM"
+    "id": "v1|158078349689|0",
+    "seen_at": "2026-07-13T23:26:06.729366+00:00",
+    "title": "Spyderco Schempp Bowie Ethnic Series Folding Knife - Satin 3.72\"",
+    "url": "https://www.ebay.com/itm/158078349689?_skw=Spyderco+Schempp+Bowie&hash=item24ce343179:g:MJ8AAeSwINxqVKOx"
   },
-  "all_time_min_bin_price": 474.0,
+  "all_time_min_bin_price": 400.0,
   "history": [
     {
       "bin_count": 1,
@@ -58,9 +58,18 @@
       "bin_min_url": "https://www.ebay.com/itm/387363181551?_skw=Spyderco+Schempp+Bowie&hash=item5a30a513ef:g:AVEAAeSwGR9purnM",
       "timestamp": "2026-07-13T07:24:57.591906+00:00",
       "total_count": 1
+    },
+    {
+      "bin_count": 2,
+      "bin_max": 474.0,
+      "bin_median": 437.0,
+      "bin_min": 400.0,
+      "bin_min_url": "https://www.ebay.com/itm/158078349689?_skw=Spyderco+Schempp+Bowie&hash=item24ce343179:g:MJ8AAeSwINxqVKOx",
+      "timestamp": "2026-07-13T23:26:06.729366+00:00",
+      "total_count": 2
     }
   ],
-  "last_checked": "2026-07-13T07:24:57.591906+00:00",
+  "last_checked": "2026-07-13T23:26:06.729366+00:00",
   "search_id": "spyderco-schempp-bowie",
   "seen_auction_ids": []
 }
