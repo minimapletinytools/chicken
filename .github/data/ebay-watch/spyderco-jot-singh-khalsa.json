@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|127148744886|0",
-    "seen_at": "2026-07-10T00:09:13.193407+00:00",
-    "title": "Spyderco Sprint Run Jot Singh Khalsa Sprint Run\u00ae C40G DISCONTINUED",
-    "url": "https://www.ebay.com/itm/127148744886?_skw=Spyderco+Jot+Singh+Khalsa&hash=item1d9aa7e0b6:g:OfoAAeSw00NoPG8c"
+    "id": "v1|127976906258|0",
+    "seen_at": "2026-07-16T07:06:35.690668+00:00",
+    "title": "Spyderco Jot Singh Khalsa Discontinued Model, Brand New",
+    "url": "https://www.ebay.com/itm/127976906258?_skw=Spyderco+Jot+Singh+Khalsa&hash=item1dcc049e12:g:a0kAAeSw8KNqWBYj"
   },
-  "all_time_min_bin_price": 299.0,
+  "all_time_min_bin_price": 250.0,
   "history": [
     {
       "bin_count": 8,
@@ -67,9 +67,18 @@
       "bin_min_url": "https://www.ebay.com/itm/127148744886?_skw=Spyderco+Jot+Singh+Khalsa&hash=item1d9aa7e0b6:g:OfoAAeSw00NoPG8c",
       "timestamp": "2026-07-13T23:26:09.313922+00:00",
       "total_count": 8
+    },
+    {
+      "bin_count": 9,
+      "bin_max": 515.84,
+      "bin_median": 375.0,
+      "bin_min": 250.0,
+      "bin_min_url": "https://www.ebay.com/itm/127976906258?_skw=Spyderco+Jot+Singh+Khalsa&hash=item1dcc049e12:g:a0kAAeSw8KNqWBYj",
+      "timestamp": "2026-07-16T07:06:35.690668+00:00",
+      "total_count": 9
     }
   ],
-  "last_checked": "2026-07-13T23:26:09.313922+00:00",
+  "last_checked": "2026-07-16T07:06:35.690668+00:00",
   "search_id": "spyderco-jot-singh-khalsa",
   "seen_auction_ids": []
 }

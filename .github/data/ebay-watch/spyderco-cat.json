@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
     "id": "v1|396785319072|0",
-    "seen_at": "2026-07-10T21:18:28.483342+00:00",
+    "seen_at": "2026-07-16T07:06:43.252292+00:00",
     "title": "Brass Sphinx Cat Lanyard Knife Beads Pendant For Spyderco DIY",
     "url": "https://www.ebay.com/itm/396785319072?_skw=Spyderco+Cat&hash=item5c623f7ca0:g:264AAOSwkN1oW5k~"
   },
-  "all_time_min_bin_price": 15.03,
+  "all_time_min_bin_price": 14.71,
   "history": [
     {
       "bin_count": 23,
@@ -67,9 +67,18 @@
       "bin_min_url": "https://www.ebay.com/itm/396785319072?_skw=Spyderco+Cat&hash=item5c623f7ca0:g:264AAOSwkN1oW5k~",
       "timestamp": "2026-07-13T23:26:18.219505+00:00",
       "total_count": 24
+    },
+    {
+      "bin_count": 24,
+      "bin_max": 219.98,
+      "bin_median": 78.87,
+      "bin_min": 14.71,
+      "bin_min_url": "https://www.ebay.com/itm/396785319072?_skw=Spyderco+Cat&hash=item5c623f7ca0:g:264AAOSwkN1oW5k~",
+      "timestamp": "2026-07-16T07:06:43.252292+00:00",
+      "total_count": 25
     }
   ],
-  "last_checked": "2026-07-13T23:26:18.219505+00:00",
+  "last_checked": "2026-07-16T07:06:43.252292+00:00",
   "search_id": "spyderco-cat",
   "seen_auction_ids": [
     "v1|188626264154|0"
