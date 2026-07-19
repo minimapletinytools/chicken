@@ -28,9 +28,18 @@
       "bin_min_url": null,
       "timestamp": "2026-07-19T03:49:40.390838+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "timestamp": "2026-07-19T07:08:54.380338+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-07-19T03:49:40.390838+00:00",
+  "last_checked": "2026-07-19T07:08:54.380338+00:00",
   "search_id": "byrd-wrench",
   "seen_auction_ids": []
 }

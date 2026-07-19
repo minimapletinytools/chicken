@@ -33,9 +33,18 @@
       "bin_min_url": "https://www.ebay.com/itm/126865532938?_skw=Byrd+Robin+2&hash=item1d89c6680a:g:IYgAAOSwGd5neIem",
       "timestamp": "2026-07-19T03:49:41.052717+00:00",
       "total_count": 47
+    },
+    {
+      "bin_count": 46,
+      "bin_max": 149.99,
+      "bin_median": 36.75,
+      "bin_min": 6.29,
+      "bin_min_url": "https://www.ebay.com/itm/126865532938?_skw=Byrd+Robin+2&hash=item1d89c6680a:g:IYgAAOSwGd5neIem",
+      "timestamp": "2026-07-19T07:08:55.207288+00:00",
+      "total_count": 47
     }
   ],
-  "last_checked": "2026-07-19T03:49:41.052717+00:00",
+  "last_checked": "2026-07-19T07:08:55.207288+00:00",
   "search_id": "byrd-robin-2",
   "seen_auction_ids": [
     "v1|188660930769|0"
