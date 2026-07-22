@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|227151646607|0",
-    "seen_at": "2026-07-13T23:26:32.975632+00:00",
-    "title": "Spyderco Serrated Ladybug Lockback VG-10 Folding Knife Black Seki-Japan",
-    "url": "https://www.ebay.com/itm/227151646607?_skw=Spyderco+Ladybug&hash=item34e34b0f8f:g:E1IAAeSwptlpUrsy"
+    "id": "v1|127985222071|0",
+    "seen_at": "2026-07-22T07:10:50.167265+00:00",
+    "title": "Spyderco Seki Japan 1st Gen Lady Bug Black Pocket Knife Combo Edge",
+    "url": "https://www.ebay.com/itm/127985222071?_skw=Spyderco+Ladybug&hash=item1dcc8381b7:g:hsAAAeSwENVqXj9F"
   },
-  "all_time_min_bin_price": 29.99,
+  "all_time_min_bin_price": 27.0,
   "history": [
     {
       "bin_count": 50,
@@ -42,9 +42,18 @@
       "bin_min_url": "https://www.ebay.com/itm/227151646607?_skw=Spyderco+Ladybug&hash=item34e34b0f8f:g:E1IAAeSwptlpUrsy",
       "timestamp": "2026-07-19T07:08:56.694405+00:00",
       "total_count": 53
+    },
+    {
+      "bin_count": 48,
+      "bin_max": 52.5,
+      "bin_median": 52.5,
+      "bin_min": 27.0,
+      "bin_min_url": "https://www.ebay.com/itm/127985222071?_skw=Spyderco+Ladybug&hash=item1dcc8381b7:g:hsAAAeSwENVqXj9F",
+      "timestamp": "2026-07-22T07:10:50.167265+00:00",
+      "total_count": 54
     }
   ],
-  "last_checked": "2026-07-19T07:08:56.694405+00:00",
+  "last_checked": "2026-07-22T07:10:50.167265+00:00",
   "search_id": "spyderco-ladybug",
   "seen_auction_ids": [
     "v1|298500453106|0",
@@ -55,6 +64,8 @@
     "v1|158093403223|0",
     "v1|407080510628|0",
     "v1|158093457752|0",
-    "v1|298510484397|0"
+    "v1|298510484397|0",
+    "v1|298518530423|0",
+    "v1|287472532486|0"
   ]
 }
