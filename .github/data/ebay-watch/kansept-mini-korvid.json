@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|387405442187|0",
-    "seen_at": "2026-07-13T23:26:24.003338+00:00",
-    "title": "Kansept Mini Korvid T3030W1 Stonewashed 154CM and G10 with Cat and Bat Print EDC",
-    "url": "https://www.ebay.com/itm/387405442187?_skw=Kansept+Mini+Korvid&hash=item5a3329ec8b:g:SnoAAOSwxjFmqzxL"
+    "id": "v1|257426918121|0",
+    "seen_at": "2026-07-25T07:03:28.211037+00:00",
+    "title": "KANSEPT Mini Korvid Folding Knife 1.45\" 154CM Orange G10 Handle",
+    "url": "https://www.ebay.com/itm/257426918121?_skw=Kansept+Mini+Korvid&hash=item3befd70ae9:g:xCgAAeSwPHhpxYkf"
   },
-  "all_time_min_bin_price": 50.0,
+  "all_time_min_bin_price": 48.0,
   "history": [
     {
       "bin_count": 50,
@@ -51,9 +51,18 @@
       "bin_min_url": "https://www.ebay.com/itm/387405442187?_skw=Kansept+Mini+Korvid&hash=item5a3329ec8b:g:SnoAAOSwxjFmqzxL",
       "timestamp": "2026-07-22T07:10:42.025279+00:00",
       "total_count": 51
+    },
+    {
+      "bin_count": 50,
+      "bin_max": 91.7,
+      "bin_median": 65.09,
+      "bin_min": 48.0,
+      "bin_min_url": "https://www.ebay.com/itm/257426918121?_skw=Kansept+Mini+Korvid&hash=item3befd70ae9:g:xCgAAeSwPHhpxYkf",
+      "timestamp": "2026-07-25T07:03:28.211037+00:00",
+      "total_count": 51
     }
   ],
-  "last_checked": "2026-07-22T07:10:42.025279+00:00",
+  "last_checked": "2026-07-25T07:03:28.211037+00:00",
   "search_id": "kansept-mini-korvid",
   "seen_auction_ids": [
     "v1|358773453453|0",
