@@ -32,9 +32,8 @@ in the run output rather than silently missing listings.
 Opens/updates a GitHub issue for two kinds of events:
   - BIN minimum drops significantly below its all-time low (default 20%,
     configurable globally or per search)
-  - a not-previously-seen auction listing shows up priced below the
-    all-time-low BIN price (i.e. a real deal, not just a low starting bid
-    that'll climb past it)
+  - an auction listing is priced below the median history BIN price
+    (median over last 2 months)
 
 Env vars required:
   EBAY_CLIENT_ID, EBAY_CLIENT_SECRET  - eBay developer app credentials
@@ -69,7 +68,7 @@ import json
 import os
 import statistics
 import sys
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 import requests
@@ -227,11 +226,42 @@ def save_cache(search_id: str, cache: dict) -> None:
     path.write_text(json.dumps(cache, indent=2, sort_keys=True) + "\n")
 
 
+def get_median_history_bin(history: list[dict], days: int = 60, now: datetime | None = None) -> float | None:
+    if not history:
+        return None
+    if now is None:
+        now = datetime.now(timezone.utc)
+    cutoff = now - timedelta(days=days)
+
+    recent_medians = []
+    for entry in history:
+        ts_str = entry.get("timestamp")
+        if not ts_str:
+            continue
+        try:
+            ts = datetime.fromisoformat(ts_str)
+            if ts.tzinfo is None:
+                ts = ts.replace(tzinfo=timezone.utc)
+        except (ValueError, TypeError):
+            continue
+        if ts >= cutoff and entry.get("bin_median") is not None:
+            recent_medians.append(entry["bin_median"])
+
+    if not recent_medians:
+        recent_medians = [e["bin_median"] for e in history if e.get("bin_median") is not None]
+
+    if not recent_medians:
+        return None
+
+    return round(statistics.median(recent_medians), 2)
+
+
 def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
     search_id = search["id"]
     cache = load_cache(search_id)
     items = search_ebay(token, search)
-    now = datetime.now(timezone.utc).isoformat()
+    now_dt = datetime.now(timezone.utc)
+    now = now_dt.isoformat()
 
     bin_items = [i for i in items if i["buying_option"] == "FIXED_PRICE"]
     bin_prices = [i["price"] for i in bin_items]
@@ -291,31 +321,28 @@ def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
                 "seen_at": now,
             }
 
-    # New (not-previously-seen) auctions priced below the all-time-low BIN
-    # price — a real deal, as opposed to a low starting bid that'll likely
-    # climb past it. Compared against prior_min (before this run's BIN
-    # update) for consistency with the price-drop check above.
+    # Auctions priced below the median history BIN price (last 2 months)
+    median_hist_bin = get_median_history_bin(cache["history"], days=60, now=now_dt)
     seen_auctions = list(cache.get("seen_auction_ids", []))
     seen_auction_set = set(seen_auctions)
-    if prior_min:
+    if median_hist_bin is not None:
         for item in auction_items:
-            if item["id"] in seen_auction_set or item["price"] >= prior_min:
-                continue
-            discount_pct = (prior_min - item["price"]) / prior_min * 100
-            alerts.append(
-                {
-                    "kind": "new_auction",
-                    "search_id": search_id,
-                    "search_query": search["query"],
-                    "tags": search.get("tags", []),
-                    "priority": search.get("priority", "normal"),
-                    "prior_min": prior_min,
-                    "current_min": item["price"],
-                    "drop_pct": discount_pct,
-                    "title": item["title"],
-                    "url": item["url"],
-                }
-            )
+            if item["price"] < median_hist_bin:
+                discount_pct = (median_hist_bin - item["price"]) / median_hist_bin * 100
+                alerts.append(
+                    {
+                        "kind": "new_auction",
+                        "search_id": search_id,
+                        "search_query": search["query"],
+                        "tags": search.get("tags", []),
+                        "priority": search.get("priority", "normal"),
+                        "median_bin": median_hist_bin,
+                        "current_min": item["price"],
+                        "drop_pct": discount_pct,
+                        "title": item["title"],
+                        "url": item["url"],
+                    }
+                )
     for item in auction_items:
         if item["id"] not in seen_auction_set:
             seen_auctions.append(item["id"])
@@ -331,8 +358,8 @@ def format_alert(alert: dict) -> str:
     tags = f" [{', '.join(alert['tags'])}]" if alert.get("tags") else ""
     if alert["kind"] == "new_auction":
         return (
-            f"- {flag}🔨 **{alert['search_query']}** new auction below lowest BIN: "
-            f"${alert['current_min']:.2f} bid vs ${alert['prior_min']:.2f} lowest BIN "
+            f"- {flag}🔨 **{alert['search_query']}** auction below median BIN history: "
+            f"${alert['current_min']:.2f} bid vs ${alert['median_bin']:.2f} median BIN "
             f"({alert['drop_pct']:.1f}% under) — [{alert['title']}]({alert['url']}) · "
             f"search `{alert['search_id']}`{tags}"
         )
@@ -403,7 +430,7 @@ def main() -> None:
         if price_drops:
             note += f" — 🔻 {price_drops[0]['drop_pct']:.1f}% BIN drop"
         if new_auctions:
-            note += f" — 🔨 {len(new_auctions)} new auction(s) below lowest BIN"
+            note += f" — 🔨 {len(new_auctions)} auction(s) below median BIN"
         summary_lines.append(
             f"- `{search['id']}`: {latest['bin_count']} BIN / {latest['total_count']} total, "
             f"min ${latest['bin_min']}, max ${latest['bin_max']}, median ${latest['bin_median']}"

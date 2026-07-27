@@ -2,8 +2,8 @@
 
 Tracks eBay searches over time (BIN price range and listing counts) and
 opens an alert for two kinds of events: a search's minimum Buy-It-Now price
-dropping significantly below its all-time low, or a new auction listing
-showing up priced below that all-time-low BIN price.
+dropping significantly below its all-time low, or an auction listing
+showing up priced below the median history BIN price (over the last 2 months).
 
 Designed to be portable: this folder plus the workflow file below are the
 whole automation. To reuse it in another repo, copy this `ebay-watch/`
@@ -30,7 +30,7 @@ its `.github/workflows/` — nothing else needs to change.
    - `EBAY_CLIENT_SECRET`
 3. Edit [config/ebay_searches.yml](config/ebay_searches.yml) — replace the
    example entry with the searches you actually want to track.
-4. The workflow runs roughly every 3 days on a schedule, or trigger it
+4. The workflow runs roughly every 2 days on a schedule, or trigger it
    manually from the Actions tab (`workflow_dispatch`), where you can choose
    the issue mode (comment on the existing alert issue vs. open a new one
    each run) and override the alert threshold for that run.
@@ -61,11 +61,9 @@ Each run, per search:
    dropped by at least `price_drop_threshold_pct` (default 20%, set via the
    `PRICE_DROP_THRESHOLD_PCT` env var or overridden per search in the
    config), that's a **price drop alert**.
-4. Checks every auction listing not seen in a prior run: if its current bid
-   is below `all_time_min_bin_price`, that's a **new auction alert** — a
-   real deal, as opposed to a low starting bid that'll likely climb past it.
-   Each auction only ever triggers this once (tracked via
-   `seen_auction_ids`), even if it stays cheap across several runs.
+4. Checks auction listings: if an auction's current price/bid is below the
+   median history BIN price (median over the last 2 months), that's an **auction alert** — a
+   real deal, as opposed to a high bid that's already reached typical BIN market prices.
 5. If there are alerts, upserts a GitHub issue labeled `ebay-watch` listing
    them, sorted with `priority: high` searches first.
 6. Commits the updated cache files and chart back to the repo.
