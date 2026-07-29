@@ -69,15 +69,25 @@
       "bin_min_url": "https://www.ebay.com/itm/267345007742?_skw=Spyderco+Manbug&hash=item3e3f01147e:g:30gAAeSwqwxohrqR",
       "timestamp": "2026-07-27T07:27:24.500467+00:00",
       "total_count": 51
+    },
+    {
+      "bin_count": 50,
+      "bin_max": 64.5,
+      "bin_median": 64.5,
+      "bin_min": 44.95,
+      "bin_min_url": "https://www.ebay.com/itm/267345007742?_skw=Spyderco+Manbug&hash=item3e3f01147e:g:30gAAeSwqwxohrqR",
+      "timestamp": "2026-07-29T07:13:23.958441+00:00",
+      "total_count": 51
     }
   ],
-  "last_checked": "2026-07-27T07:27:24.500467+00:00",
+  "last_checked": "2026-07-29T07:13:23.958441+00:00",
   "search_id": "spyderco-manbug",
   "seen_auction_ids": [
     "v1|398150946589|0",
     "v1|398174457399|0",
     "v1|198509488888|0",
     "v1|398200606485|0",
-    "v1|198518800955|0"
+    "v1|198518800955|0",
+    "v1|398224842035|0"
   ]
 }

@@ -69,9 +69,18 @@
       "bin_min_url": "https://www.ebay.com/itm/267648803424?_skw=Byrd+Meadowlark&hash=item3e511ca260:g:l8cAAeSwoJhp6nLX",
       "timestamp": "2026-07-27T07:27:18.574850+00:00",
       "total_count": 51
+    },
+    {
+      "bin_count": 50,
+      "bin_max": 49.95,
+      "bin_median": 40.6,
+      "bin_min": 24.0,
+      "bin_min_url": "https://www.ebay.com/itm/267648803424?_skw=Byrd+Meadowlark&hash=item3e511ca260:g:l8cAAeSwoJhp6nLX",
+      "timestamp": "2026-07-29T07:13:17.572539+00:00",
+      "total_count": 50
     }
   ],
-  "last_checked": "2026-07-27T07:27:18.574850+00:00",
+  "last_checked": "2026-07-29T07:13:17.572539+00:00",
   "search_id": "byrd-meadowlark",
   "seen_auction_ids": [
     "v1|236942441674|0",
