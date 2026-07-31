@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
     "id": "v1|358502215163|0",
-    "seen_at": "2026-07-10T21:18:27.493365+00:00",
+    "seen_at": "2026-07-31T07:17:14.990470+00:00",
     "title": "Spyderco Squeak Pocket Knife Plain Edge Blade N690Co Pink",
     "url": "https://www.ebay.com/itm/358502215163?_skw=Spyderco+Squeak&hash=item537865adfb:g:BaoAAeSwEPFp8peH"
   },
-  "all_time_min_bin_price": 51.95,
+  "all_time_min_bin_price": 49.95,
   "history": [
     {
       "bin_count": 31,
@@ -130,9 +130,18 @@
       "bin_min_url": "https://www.ebay.com/itm/358502215163?_skw=Spyderco+Squeak&hash=item537865adfb:g:BaoAAeSwEPFp8peH",
       "timestamp": "2026-07-29T07:13:07.608873+00:00",
       "total_count": 33
+    },
+    {
+      "bin_count": 30,
+      "bin_max": 229.99,
+      "bin_median": 80.25,
+      "bin_min": 49.95,
+      "bin_min_url": "https://www.ebay.com/itm/358502215163?_skw=Spyderco+Squeak&hash=item537865adfb:g:BaoAAeSwEPFp8peH",
+      "timestamp": "2026-07-31T07:17:14.990470+00:00",
+      "total_count": 31
     }
   ],
-  "last_checked": "2026-07-29T07:13:07.608873+00:00",
+  "last_checked": "2026-07-31T07:17:14.990470+00:00",
   "search_id": "spyderco-squeak",
   "seen_auction_ids": [
     "v1|327250093772|0",
