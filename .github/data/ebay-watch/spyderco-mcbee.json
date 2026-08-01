@@ -139,9 +139,18 @@
       "bin_min_url": "https://www.ebay.com/itm/174104158603?_skw=Spyderco+McBee&hash=item28896aa18b:g:TkkAAOSwIvdd2EXr",
       "timestamp": "2026-07-31T07:17:15.846419+00:00",
       "total_count": 50
+    },
+    {
+      "bin_count": 50,
+      "bin_max": 195.97,
+      "bin_median": 195.0,
+      "bin_min": 16.88,
+      "bin_min_url": "https://www.ebay.com/itm/174104158603?_skw=Spyderco+McBee&hash=item28896aa18b:g:TkkAAOSwIvdd2EXr",
+      "timestamp": "2026-08-01T07:07:38.583319+00:00",
+      "total_count": 50
     }
   ],
-  "last_checked": "2026-07-31T07:17:15.846419+00:00",
+  "last_checked": "2026-08-01T07:07:38.583319+00:00",
   "search_id": "spyderco-mcbee",
   "seen_auction_ids": []
 }
