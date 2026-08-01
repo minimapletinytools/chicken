@@ -189,3 +189,11 @@
 - id: microtech-utx-70
   tags: [knives, microtech]
   query: "Microtech UTX-70"
+
+- id: spyderco-ambitious
+  tags: [knives, spyderco]
+  query: "Spyderco Ambitious"
+
+- id: lucent-automatic-knife
+  tags: [knives, lucent]
+  query: "Lucent Automatic Knife"
