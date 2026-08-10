@@ -184,9 +184,18 @@
       "bin_min_url": "https://www.ebay.com/itm/198023134087?_skw=Spyderco+Matriarch+2+Wave&hash=item2e1b193b87:g:u~cAAeSwy8VpZTPt",
       "timestamp": "2026-08-09T07:15:29.198216+00:00",
       "total_count": 9
+    },
+    {
+      "bin_count": 8,
+      "bin_max": 160.0,
+      "bin_median": 144.75,
+      "bin_min": 102.0,
+      "bin_min_url": "https://www.ebay.com/itm/198023134087?_skw=Spyderco+Matriarch+2+Wave&hash=item2e1b193b87:g:u~cAAeSwy8VpZTPt",
+      "timestamp": "2026-08-10T02:38:27.249969+00:00",
+      "total_count": 9
     }
   ],
-  "last_checked": "2026-08-09T07:15:29.198216+00:00",
+  "last_checked": "2026-08-10T02:38:27.249969+00:00",
   "search_id": "spyderco-matriarch-2-wave",
   "seen_auction_ids": [
     "v1|398169731885|0",
