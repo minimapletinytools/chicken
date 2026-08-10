@@ -151,9 +151,13 @@ def fetch_ebay_page(token: str, search: dict, buying_options: str, sort: str) ->
         if not price_field or price_field.get("value") is None:
             continue
 
+        item_id = item.get("itemId")
+        if not item_id:
+            continue
+
         items.append(
             {
-                "id": item.get("itemId"),
+                "id": item_id,
                 "title": title,
                 "price": float(price_field["value"]),
                 "currency": price_field.get("currency", "USD"),
