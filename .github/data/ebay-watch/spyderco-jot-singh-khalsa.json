@@ -202,9 +202,18 @@
       "bin_min_url": "https://www.ebay.com/itm/318642139474?_skw=Spyderco+Jot+Singh+Khalsa&hash=item4a308d3152:g:WMgAAeSwAY9qZ3Gr",
       "timestamp": "2026-08-10T02:50:12.275632+00:00",
       "total_count": 9
+    },
+    {
+      "bin_count": 9,
+      "bin_max": 520.16,
+      "bin_median": 309.95,
+      "bin_min": 200.0,
+      "bin_min_url": "https://www.ebay.com/itm/318642139474?_skw=Spyderco+Jot+Singh+Khalsa&hash=item4a308d3152:g:WMgAAeSwAY9qZ3Gr",
+      "timestamp": "2026-08-10T02:51:12.712303+00:00",
+      "total_count": 9
     }
   ],
-  "last_checked": "2026-08-10T02:50:12.275632+00:00",
+  "last_checked": "2026-08-10T02:51:12.712303+00:00",
   "search_id": "spyderco-jot-singh-khalsa",
   "seen_auction_ids": []
 }
