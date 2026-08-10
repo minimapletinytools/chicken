@@ -61,9 +61,12 @@ Each run, per search:
    dropped by at least `price_drop_threshold_pct` (default 20%, set via the
    `PRICE_DROP_THRESHOLD_PCT` env var or overridden per search in the
    config), that's a **price drop alert**.
-4. Checks auction listings: if an auction's current price/bid is below the
-   median history BIN price (median over the last 2 months), that's an **auction alert** — a
-   real deal, as opposed to a high bid that's already reached typical BIN market prices.
+4. Checks auction listings: if an auction listing not seen in a prior run is
+   priced below the median history BIN price (median over the last 2 months),
+   that's an **auction alert** — a real deal, as opposed to a high bid that's
+   already reached typical BIN market prices. Each auction only ever triggers
+   this once (tracked via `seen_auction_ids`), even if it stays cheap across
+   several runs.
 5. If there are alerts, upserts a GitHub issue labeled `ebay-watch` listing
    them, sorted with `priority: high` searches first.
 6. Commits the updated cache files and chart back to the repo.

@@ -32,8 +32,8 @@ in the run output rather than silently missing listings.
 Opens/updates a GitHub issue for two kinds of events:
   - BIN minimum drops significantly below its all-time low (default 20%,
     configurable globally or per search)
-  - an auction listing is priced below the median history BIN price
-    (median over last 2 months)
+  - a not-previously-seen auction listing is priced below the median history BIN
+    price (median over last 2 months)
 
 Env vars required:
   EBAY_CLIENT_ID, EBAY_CLIENT_SECRET  - eBay developer app credentials
@@ -207,8 +207,10 @@ def load_cache(search_id: str) -> dict:
                 "all_time_min_bin_price": data.get("lowest_bin_price"),
                 "all_time_min_bin_item": data.get("lowest_bin_item"),
                 "history": [],
+                "seen_auction_ids": [],
                 "last_checked": data.get("last_checked"),
             }
+        data.setdefault("seen_auction_ids", [])
         return data
     return {
         "search_id": search_id,
@@ -321,28 +323,31 @@ def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
                 "seen_at": now,
             }
 
-    # Auctions priced below the median history BIN price (last 2 months)
+    # New (not-previously-seen) auctions priced below the median history BIN
+    # price (median over last 2 months). Each auction only ever triggers once
+    # (tracked via seen_auction_ids), even if it stays cheap across several runs.
     median_hist_bin = get_median_history_bin(cache["history"], days=60, now=now_dt)
     seen_auctions = list(cache.get("seen_auction_ids", []))
     seen_auction_set = set(seen_auctions)
     if median_hist_bin is not None:
         for item in auction_items:
-            if item["price"] < median_hist_bin:
-                discount_pct = (median_hist_bin - item["price"]) / median_hist_bin * 100
-                alerts.append(
-                    {
-                        "kind": "new_auction",
-                        "search_id": search_id,
-                        "search_query": search["query"],
-                        "tags": search.get("tags", []),
-                        "priority": search.get("priority", "normal"),
-                        "median_bin": median_hist_bin,
-                        "current_min": item["price"],
-                        "drop_pct": discount_pct,
-                        "title": item["title"],
-                        "url": item["url"],
-                    }
-                )
+            if item["id"] in seen_auction_set or item["price"] >= median_hist_bin:
+                continue
+            discount_pct = (median_hist_bin - item["price"]) / median_hist_bin * 100
+            alerts.append(
+                {
+                    "kind": "new_auction",
+                    "search_id": search_id,
+                    "search_query": search["query"],
+                    "tags": search.get("tags", []),
+                    "priority": search.get("priority", "normal"),
+                    "median_bin": median_hist_bin,
+                    "current_min": item["price"],
+                    "drop_pct": discount_pct,
+                    "title": item["title"],
+                    "url": item["url"],
+                }
+            )
     for item in auction_items:
         if item["id"] not in seen_auction_set:
             seen_auctions.append(item["id"])
