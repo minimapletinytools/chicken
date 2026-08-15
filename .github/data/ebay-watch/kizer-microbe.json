@@ -177,9 +177,18 @@
       "bin_min_url": "https://www.ebay.com/itm/127583237567?_skw=Kizer+Microbe&hash=item1db48db5bf:g:XoQAAeSwdpZpTQOp",
       "timestamp": "2026-08-13T07:53:00.199994+00:00",
       "total_count": 37
+    },
+    {
+      "bin_count": 37,
+      "bin_max": 225.99,
+      "bin_median": 86.48,
+      "bin_min": 50.39,
+      "bin_min_url": "https://www.ebay.com/itm/127583237567?_skw=Kizer+Microbe&hash=item1db48db5bf:g:XoQAAeSwdpZpTQOp",
+      "timestamp": "2026-08-15T06:57:07.571126+00:00",
+      "total_count": 39
     }
   ],
-  "last_checked": "2026-08-13T07:53:00.199994+00:00",
+  "last_checked": "2026-08-15T06:57:07.571126+00:00",
   "search_id": "kizer-microbe",
   "seen_auction_ids": [
     "v1|206407985640|0",

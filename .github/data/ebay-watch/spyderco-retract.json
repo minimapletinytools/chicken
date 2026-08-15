@@ -224,9 +224,18 @@
       "bin_min_url": null,
       "timestamp": "2026-08-13T07:52:56.364349+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "timestamp": "2026-08-15T06:57:02.980333+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-08-13T07:52:56.364349+00:00",
+  "last_checked": "2026-08-15T06:57:02.980333+00:00",
   "search_id": "spyderco-retract",
   "seen_auction_ids": []
 }

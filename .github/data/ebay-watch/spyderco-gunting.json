@@ -229,9 +229,18 @@
       "bin_min_url": "https://www.ebay.com/itm/144434848485?_skw=Spyderco+Gunting&hash=item21a0fce2e5:g:5sQAAOSwbFFe-4YJ",
       "timestamp": "2026-08-13T07:52:47.426404+00:00",
       "total_count": 11
+    },
+    {
+      "bin_count": 11,
+      "bin_max": 795.0,
+      "bin_median": 459.0,
+      "bin_min": 313.99,
+      "bin_min_url": "https://www.ebay.com/itm/144434848485?_skw=Spyderco+Gunting&hash=item21a0fce2e5:g:5sQAAOSwbFFe-4YJ",
+      "timestamp": "2026-08-15T06:56:52.072552+00:00",
+      "total_count": 11
     }
   ],
-  "last_checked": "2026-08-13T07:52:47.426404+00:00",
+  "last_checked": "2026-08-15T06:56:52.072552+00:00",
   "search_id": "spyderco-gunting",
   "seen_auction_ids": []
 }
