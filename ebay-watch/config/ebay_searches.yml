@@ -82,10 +82,6 @@
   tags: [knives, spyderco]
   query: "Spyderco Gooney"
 
-- id: spyderco-squeak
-  tags: [knives, spyderco]
-  query: "Spyderco Squeak"
-
 - id: spyderco-mcbee
   tags: [knives, spyderco]
   query: "Spyderco McBee"
@@ -165,10 +161,6 @@
 - id: spyderco-ladybug
   tags: [knives, spyderco]
   query: "Spyderco Ladybug"
-
-- id: spyderco-manbug
-  tags: [knives, spyderco]
-  query: "Spyderco Manbug"
 
 - id: petrified-fish-hummingbird
   tags: [knives, petrified-fish]
