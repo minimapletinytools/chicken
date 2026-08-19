@@ -195,9 +195,18 @@
       "bin_min_url": "https://www.ebay.com/itm/336732081092?_skw=Byrd+Wrench&hash=item4e66cbcbc4:g:h6kAAeSwk71qdmCB",
       "timestamp": "2026-08-17T07:16:08.383090+00:00",
       "total_count": 1
+    },
+    {
+      "bin_count": 2,
+      "bin_max": 5.95,
+      "bin_median": 5.47,
+      "bin_min": 5.0,
+      "bin_min_url": "https://www.ebay.com/itm/336732081092?_skw=Byrd+Wrench&hash=item4e66cbcbc4:g:h6kAAeSwk71qdmCB",
+      "timestamp": "2026-08-19T07:05:04.825685+00:00",
+      "total_count": 2
     }
   ],
-  "last_checked": "2026-08-17T07:16:08.383090+00:00",
+  "last_checked": "2026-08-19T07:05:04.825685+00:00",
   "search_id": "byrd-wrench",
   "seen_auction_ids": []
 }

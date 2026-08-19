@@ -247,9 +247,18 @@
       "bin_min_url": "https://www.ebay.com/itm/177205935445?_skw=Spyderco+Squeak&hash=item29424bfd55:g:ZFcAAOSwA-VoUuN-",
       "timestamp": "2026-08-17T07:15:53.322240+00:00",
       "total_count": 30
+    },
+    {
+      "bin_count": 29,
+      "bin_max": 345.0,
+      "bin_median": 80.25,
+      "bin_min": 74.25,
+      "bin_min_url": "https://www.ebay.com/itm/137554312752?_skw=Spyderco+Squeak&hash=item2006e03e30:g:D3QAAeSwQ7dqZx0u",
+      "timestamp": "2026-08-19T07:04:51.146281+00:00",
+      "total_count": 30
     }
   ],
-  "last_checked": "2026-08-17T07:15:53.322240+00:00",
+  "last_checked": "2026-08-19T07:04:51.146281+00:00",
   "search_id": "spyderco-squeak",
   "seen_auction_ids": [
     "v1|327250093772|0",
@@ -259,6 +268,7 @@
     "v1|278222838175|0",
     "v1|327288075368|0",
     "v1|278244247333|0",
-    "v1|278266827911|0"
+    "v1|278266827911|0",
+    "v1|327315168330|0"
   ]
 }

@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|227455110704|0",
-    "seen_at": "2026-07-31T07:17:26.319795+00:00",
-    "title": "Spyderco Byrd Meadowlark 2 Gray FRN 8Cr13MoV Folding Knife ~Very Sharp~",
-    "url": "https://www.ebay.com/itm/227455110704?_skw=Byrd+Meadowlark&hash=item34f5618e30:g:iAsAAeSwraVqa2eE"
+    "id": "v1|398293040112|0",
+    "seen_at": "2026-08-19T07:05:01.506306+00:00",
+    "title": "Byrd Meadowlark 2 Pocket Knife, FRN, 8cr13mov, Lockback. By Spyderco. Great!",
+    "url": "https://www.ebay.com/itm/398293040112?_skw=Byrd+Meadowlark&hash=item5cbc1d7bf0:g:oQYAAeSwk3lqge5K"
   },
-  "all_time_min_bin_price": 22.0,
+  "all_time_min_bin_price": 19.99,
   "history": [
     {
       "bin_count": 50,
@@ -195,9 +195,18 @@
       "bin_min_url": "https://www.ebay.com/itm/147491139120?_skw=Byrd+Meadowlark&hash=item2257282e30:g:GhIAAeSwinpqdyry",
       "timestamp": "2026-08-17T07:16:05.125646+00:00",
       "total_count": 51
+    },
+    {
+      "bin_count": 50,
+      "bin_max": 45.0,
+      "bin_median": 39.0,
+      "bin_min": 19.99,
+      "bin_min_url": "https://www.ebay.com/itm/398293040112?_skw=Byrd+Meadowlark&hash=item5cbc1d7bf0:g:oQYAAeSwk3lqge5K",
+      "timestamp": "2026-08-19T07:05:01.506306+00:00",
+      "total_count": 52
     }
   ],
-  "last_checked": "2026-08-17T07:16:05.125646+00:00",
+  "last_checked": "2026-08-19T07:05:01.506306+00:00",
   "search_id": "byrd-meadowlark",
   "seen_auction_ids": [
     "v1|236942441674|0",
@@ -205,6 +214,7 @@
     "v1|298546212169|0",
     "v1|800479533824|0",
     "v1|298573881500|0",
-    "v1|800514050187|0"
+    "v1|800514050187|0",
+    "v1|318746322901|0"
   ]
 }

@@ -195,9 +195,18 @@
       "bin_min_url": "https://www.ebay.com/itm/267667663628?_skw=Byrd+Gooney&hash=item3e523c6b0c:g:STQAAeSwYbhp5sWx",
       "timestamp": "2026-08-17T07:16:04.019375+00:00",
       "total_count": 18
+    },
+    {
+      "bin_count": 18,
+      "bin_max": 65.0,
+      "bin_median": 60.0,
+      "bin_min": 49.99,
+      "bin_min_url": "https://www.ebay.com/itm/267667663628?_skw=Byrd+Gooney&hash=item3e523c6b0c:g:STQAAeSwYbhp5sWx",
+      "timestamp": "2026-08-19T07:05:00.674260+00:00",
+      "total_count": 18
     }
   ],
-  "last_checked": "2026-08-17T07:16:04.019375+00:00",
+  "last_checked": "2026-08-19T07:05:00.674260+00:00",
   "search_id": "byrd-gooney",
   "seen_auction_ids": [
     "v1|267721785199|0"

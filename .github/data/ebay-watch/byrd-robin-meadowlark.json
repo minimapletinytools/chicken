@@ -190,9 +190,18 @@
       "bin_min_url": null,
       "timestamp": "2026-08-17T07:16:06.027237+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "timestamp": "2026-08-19T07:05:02.448572+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-08-17T07:16:06.027237+00:00",
+  "last_checked": "2026-08-19T07:05:02.448572+00:00",
   "search_id": "byrd-robin-meadowlark",
   "seen_auction_ids": []
 }
