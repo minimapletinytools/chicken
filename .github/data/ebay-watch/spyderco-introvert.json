@@ -251,9 +251,18 @@
       "bin_min_url": null,
       "timestamp": "2026-08-19T07:04:40.207139+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "timestamp": "2026-08-21T07:06:58.801283+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-08-19T07:04:40.207139+00:00",
+  "last_checked": "2026-08-21T07:06:58.801283+00:00",
   "search_id": "spyderco-introvert",
   "seen_auction_ids": []
 }

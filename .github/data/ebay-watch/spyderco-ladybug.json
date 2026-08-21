@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|127985222071|0",
-    "seen_at": "2026-07-22T07:10:50.167265+00:00",
-    "title": "Spyderco Seki Japan 1st Gen Lady Bug Black Pocket Knife Combo Edge",
-    "url": "https://www.ebay.com/itm/127985222071?_skw=Spyderco+Ladybug&hash=item1dcc8381b7:g:hsAAAeSwENVqXj9F"
+    "id": "v1|137642825765|0",
+    "seen_at": "2026-08-21T07:07:20.286167+00:00",
+    "title": "DARK PURPLE SPYDERCO LADYBUG FOLDING LOCKBACK POCKET KNIFE EXCELLENT CONDITION ",
+    "url": "https://www.ebay.com/itm/137642825765?_skw=Spyderco+Ladybug&hash=item200c26d825:g:K7IAAeSw69pqhtrL"
   },
-  "all_time_min_bin_price": 27.0,
+  "all_time_min_bin_price": 24.99,
   "history": [
     {
       "bin_count": 50,
@@ -204,9 +204,18 @@
       "bin_min_url": "https://www.ebay.com/itm/227151646607?_skw=Spyderco+Ladybug&hash=item34e34b0f8f:g:E1IAAeSwptlpUrsy",
       "timestamp": "2026-08-19T07:05:07.399299+00:00",
       "total_count": 54
+    },
+    {
+      "bin_count": 48,
+      "bin_max": 52.5,
+      "bin_median": 52.5,
+      "bin_min": 24.99,
+      "bin_min_url": "https://www.ebay.com/itm/137642825765?_skw=Spyderco+Ladybug&hash=item200c26d825:g:K7IAAeSw69pqhtrL",
+      "timestamp": "2026-08-21T07:07:20.286167+00:00",
+      "total_count": 54
     }
   ],
-  "last_checked": "2026-08-19T07:05:07.399299+00:00",
+  "last_checked": "2026-08-21T07:07:20.286167+00:00",
   "search_id": "spyderco-ladybug",
   "seen_auction_ids": [
     "v1|298500453106|0",
@@ -242,6 +251,7 @@
     "v1|407152451452|0",
     "v1|158200616751|0",
     "v1|298597144418|0",
-    "v1|158197869971|0"
+    "v1|158197869971|0",
+    "v1|298599174297|0"
   ]
 }
