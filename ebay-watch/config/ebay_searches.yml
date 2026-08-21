@@ -44,11 +44,6 @@
   tags: [knives, spyderco]
   query: "Spyderco Gunting"
 
-- id: spyderco-jot-singh-khalsa
-  tags: [knives, spyderco]
-  priority: high
-  query: "Spyderco Jot Singh Khalsa"
-
 - id: spyderco-kiwi
   tags: [knives, spyderco]
   query: "Spyderco Kiwi"
@@ -129,10 +124,6 @@
 - id: byrd-gooney
   tags: [knives, byrd]
   query: "Byrd Gooney"
-
-- id: byrd-meadowlark
-  tags: [knives, byrd]
-  query: "Byrd Meadowlark"
 
 - id: byrd-robin-meadowlark
   tags: [knives, byrd]
