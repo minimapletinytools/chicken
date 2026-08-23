@@ -208,9 +208,18 @@
       "bin_min_url": null,
       "timestamp": "2026-08-21T07:07:22.971645+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "timestamp": "2026-08-23T07:00:59.547477+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-08-21T07:07:22.971645+00:00",
+  "last_checked": "2026-08-23T07:00:59.547477+00:00",
   "search_id": "microtech-exocet",
   "seen_auction_ids": []
 }
