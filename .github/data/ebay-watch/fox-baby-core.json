@@ -231,9 +231,18 @@
       "bin_min_url": "https://www.ebay.com/itm/267743535074?_skw=Fox+Knives+Baby+Core&hash=item3e56c21fe2:g:0BcAAeSwaU9pO1RQ",
       "timestamp": "2026-08-25T07:08:14.391227+00:00",
       "total_count": 35
+    },
+    {
+      "bin_count": 33,
+      "bin_max": 266.28,
+      "bin_median": 120.69,
+      "bin_min": 54.99,
+      "bin_min_url": "https://www.ebay.com/itm/267743535074?_skw=Fox+Knives+Baby+Core&hash=item3e56c21fe2:g:0BcAAeSwaU9pO1RQ",
+      "timestamp": "2026-08-27T17:38:04.721268+00:00",
+      "total_count": 35
     }
   ],
-  "last_checked": "2026-08-25T07:08:14.391227+00:00",
+  "last_checked": "2026-08-27T17:38:04.721268+00:00",
   "search_id": "fox-baby-core",
   "seen_auction_ids": [
     "v1|117294108601|0",
@@ -246,6 +255,7 @@
     "v1|117344896815|0",
     "v1|117358144237|0",
     "v1|137617963733|0",
-    "v1|117370614066|0"
+    "v1|117370614066|0",
+    "v1|137663860507|0"
   ]
 }

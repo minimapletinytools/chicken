@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|407056198974|0",
-    "seen_at": "2026-07-13T23:26:24.783763+00:00",
-    "title": "Kizer Microbe 2.19\" Folding Pocket Knife 14C28N Blade Aluminum Handle V2742A1",
-    "url": "https://www.ebay.com/itm/407056198974?_skw=Kizer+Microbe&hash=item5ec670ad3e:g:1GgAAeSwDatqKFsr"
+    "id": "v1|227494041482|0",
+    "seen_at": "2026-08-27T17:37:53.912003+00:00",
+    "title": "Kizer Microbe EDC 2.19\" Folding Pocket Knife 14C28N Blade Micarta Handle V2742A6",
+    "url": "https://www.ebay.com/itm/227494041482?_skw=Kizer+Microbe&hash=item34f7b3978a:g:5ooAAeSwZuRqkFut"
   },
-  "all_time_min_bin_price": 49.99,
+  "all_time_min_bin_price": 44.0,
   "history": [
     {
       "bin_count": 32,
@@ -231,9 +231,18 @@
       "bin_min_url": "https://www.ebay.com/itm/168637322360?_skw=Kizer+Microbe&hash=item2743915478:g:7aAAAeSwuTdqjRTD",
       "timestamp": "2026-08-25T07:08:05.832979+00:00",
       "total_count": 46
+    },
+    {
+      "bin_count": 46,
+      "bin_max": 225.99,
+      "bin_median": 79.99,
+      "bin_min": 44.0,
+      "bin_min_url": "https://www.ebay.com/itm/227494041482?_skw=Kizer+Microbe&hash=item34f7b3978a:g:5ooAAeSwZuRqkFut",
+      "timestamp": "2026-08-27T17:37:53.912003+00:00",
+      "total_count": 46
     }
   ],
-  "last_checked": "2026-08-25T07:08:05.832979+00:00",
+  "last_checked": "2026-08-27T17:37:53.912003+00:00",
   "search_id": "kizer-microbe",
   "seen_auction_ids": [
     "v1|206407985640|0",

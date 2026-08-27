@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|206504557034|0",
-    "seen_at": "2026-08-21T07:07:09.895921+00:00",
-    "title": "Spyderco Buttonul CF/ Spyderco Retract",
-    "url": "https://www.ebay.com/itm/206504557034?_skw=Spyderco+Retract&hash=item3014a179ea:g:ew0AAeSwSUlqhlKM"
+    "id": "v1|336421228956|0",
+    "seen_at": "2026-08-27T17:37:48.407807+00:00",
+    "title": "SPYDERCO Retract, Black Textured G-10, Plain 9Cr18MoV Flat Ground Steel, C276GP",
+    "url": "https://www.ebay.com/itm/336421228956?_skw=Spyderco+Retract&hash=item4e5444919c:g:rkwAAeSwu2Rpg69~"
   },
-  "all_time_min_bin_price": 115.0,
+  "all_time_min_bin_price": 71.25,
   "history": [
     {
       "bin_count": 0,
@@ -283,9 +283,18 @@
       "bin_min_url": "https://www.ebay.com/itm/206504557034?_skw=Spyderco+Retract&hash=item3014a179ea:g:ew0AAeSwSUlqhlKM",
       "timestamp": "2026-08-25T07:08:01.705947+00:00",
       "total_count": 1
+    },
+    {
+      "bin_count": 2,
+      "bin_max": 115.0,
+      "bin_median": 93.12,
+      "bin_min": 71.25,
+      "bin_min_url": "https://www.ebay.com/itm/336421228956?_skw=Spyderco+Retract&hash=item4e5444919c:g:rkwAAeSwu2Rpg69~",
+      "timestamp": "2026-08-27T17:37:48.407807+00:00",
+      "total_count": 2
     }
   ],
-  "last_checked": "2026-08-25T07:08:01.705947+00:00",
+  "last_checked": "2026-08-27T17:37:48.407807+00:00",
   "search_id": "spyderco-retract",
   "seen_auction_ids": []
 }

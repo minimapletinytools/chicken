@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|407162196611|0",
-    "seen_at": "2026-08-23T07:01:02.077989+00:00",
-    "title": "Jellycat Bo Bigfoot Brown Plush Toy 11 Inch Soft Sasquatch Companion",
-    "url": "https://www.ebay.com/itm/407162196611?_skw=Jellycat+Bo+Bigfoot&hash=item5eccc21283:g:GaYAAeSww45qiSkr"
+    "id": "v1|407170960522|0",
+    "seen_at": "2026-08-27T17:38:10.970312+00:00",
+    "title": "Jellycat Amuseable Fluffy Bo Bigfoot Plush Doll Gift Kids Toy 11in",
+    "url": "https://www.ebay.com/itm/407170960522?_skw=Jellycat+Bo+Bigfoot&hash=item5ecd47cc8a:g:p1UAAeSwndxqjrlp"
   },
-  "all_time_min_bin_price": 88.8,
+  "all_time_min_bin_price": 64.95,
   "history": [
     {
       "bin_count": 36,
@@ -24,9 +24,18 @@
       "bin_min_url": "https://www.ebay.com/itm/407162196611?_skw=Jellycat+Bo+Bigfoot&hash=item5eccc21283:g:GaYAAeSww45qiSkr",
       "timestamp": "2026-08-25T07:08:18.156807+00:00",
       "total_count": 37
+    },
+    {
+      "bin_count": 42,
+      "bin_max": 985.0,
+      "bin_median": 280.0,
+      "bin_min": 64.95,
+      "bin_min_url": "https://www.ebay.com/itm/407170960522?_skw=Jellycat+Bo+Bigfoot&hash=item5ecd47cc8a:g:p1UAAeSwndxqjrlp",
+      "timestamp": "2026-08-27T17:38:10.970312+00:00",
+      "total_count": 42
     }
   ],
-  "last_checked": "2026-08-25T07:08:18.156807+00:00",
+  "last_checked": "2026-08-27T17:38:10.970312+00:00",
   "search_id": "jellycat-bo-bigfoot",
   "seen_auction_ids": []
 }
