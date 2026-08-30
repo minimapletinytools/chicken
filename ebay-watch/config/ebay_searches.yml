@@ -188,3 +188,8 @@
 - id: jellycat-yani-yeti
   tags: [jellycat, stuffed-animal]
   query: "Jellycat Yani Yeti"
+
+- id: spyderco-shabaria
+  tags: [knives, spyderco]
+  query: "Spyderco Shabaria"
+
