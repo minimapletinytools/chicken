@@ -301,9 +301,18 @@
       "bin_min_url": null,
       "timestamp": "2026-08-29T12:40:52.923859+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 1,
+      "bin_max": 799.0,
+      "bin_median": 799.0,
+      "bin_min": 799.0,
+      "bin_min_url": "https://www.ebay.com/itm/327332234014?_skw=Spyderco+Tighe+Stick&hash=item4c3685831e:g:10IAAeSwCDZqCIjF",
+      "timestamp": "2026-08-31T13:48:16.128480+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-08-29T12:40:52.923859+00:00",
+  "last_checked": "2026-08-31T13:48:16.128480+00:00",
   "search_id": "spyderco-tighe-stick",
   "seen_auction_ids": [
     "v1|127952346707|0"

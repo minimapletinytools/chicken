@@ -42,9 +42,18 @@
       "bin_min_url": "https://www.ebay.com/itm/128035771311?_skw=Jellycat+Yani+Yeti&hash=item1dcf86d3af:g:KT0AAeSwuQVqhqTW",
       "timestamp": "2026-08-29T12:41:15.608417+00:00",
       "total_count": 11
+    },
+    {
+      "bin_count": 8,
+      "bin_max": 425.0,
+      "bin_median": 303.6,
+      "bin_min": 259.0,
+      "bin_min_url": "https://www.ebay.com/itm/407161026122?_skw=Jellycat+Yani+Yeti&hash=item5eccb0364a:g:mZ4AAeSwrj5qiFOx",
+      "timestamp": "2026-08-31T13:48:39.408223+00:00",
+      "total_count": 10
     }
   ],
-  "last_checked": "2026-08-29T12:41:15.608417+00:00",
+  "last_checked": "2026-08-31T13:48:39.408223+00:00",
   "search_id": "jellycat-yani-yeti",
   "seen_auction_ids": [
     "v1|178430905378|0",

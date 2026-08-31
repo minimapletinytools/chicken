@@ -42,9 +42,18 @@
       "bin_min_url": "https://www.ebay.com/itm/407170960522?_skw=Jellycat+Bo+Bigfoot&hash=item5ecd47cc8a:g:p1UAAeSwndxqjrlp",
       "timestamp": "2026-08-29T12:41:14.879341+00:00",
       "total_count": 41
+    },
+    {
+      "bin_count": 43,
+      "bin_max": 985.0,
+      "bin_median": 280.0,
+      "bin_min": 64.95,
+      "bin_min_url": "https://www.ebay.com/itm/407170960522?_skw=Jellycat+Bo+Bigfoot&hash=item5ecd47cc8a:g:p1UAAeSwndxqjrlp",
+      "timestamp": "2026-08-31T13:48:38.626597+00:00",
+      "total_count": 43
     }
   ],
-  "last_checked": "2026-08-29T12:41:14.879341+00:00",
+  "last_checked": "2026-08-31T13:48:38.626597+00:00",
   "search_id": "jellycat-bo-bigfoot",
   "seen_auction_ids": []
 }

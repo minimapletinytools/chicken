@@ -249,9 +249,18 @@
       "bin_min_url": "https://www.ebay.com/itm/177823202186?_skw=Spyderco+Dragonfly&hash=item296716bb8a:g:YZgAAeSwE3dpfaT2",
       "timestamp": "2026-08-29T12:41:07.993457+00:00",
       "total_count": 60
+    },
+    {
+      "bin_count": 50,
+      "bin_max": 82.0,
+      "bin_median": 52.49,
+      "bin_min": 5.99,
+      "bin_min_url": "https://www.ebay.com/itm/177823202186?_skw=Spyderco+Dragonfly&hash=item296716bb8a:g:YZgAAeSwE3dpfaT2",
+      "timestamp": "2026-08-31T13:48:32.101681+00:00",
+      "total_count": 60
     }
   ],
-  "last_checked": "2026-08-29T12:41:07.993457+00:00",
+  "last_checked": "2026-08-31T13:48:32.101681+00:00",
   "search_id": "spyderco-dragonfly",
   "seen_auction_ids": [
     "v1|358787107608|0",
@@ -338,6 +347,12 @@
     "v1|137669038223|0",
     "v1|137668780592|0",
     "v1|398332194051|0",
-    "v1|398332211320|0"
+    "v1|398332211320|0",
+    "v1|287555327300|0",
+    "v1|327332616655|0",
+    "v1|137679678168|0",
+    "v1|267771461880|0",
+    "v1|287553579541|0",
+    "v1|206525743749|0"
   ]
 }
