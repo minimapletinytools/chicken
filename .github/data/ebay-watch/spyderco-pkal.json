@@ -328,9 +328,18 @@
       "bin_min_url": "https://www.ebay.com/itm/227391674856?_skw=Spyderco+P%27Kal&hash=item34f19999e8:g:m00AAeSwGN5qMaqJ",
       "timestamp": "2026-09-03T11:13:16.523492+00:00",
       "total_count": 19
+    },
+    {
+      "bin_count": 19,
+      "bin_max": 757.49,
+      "bin_median": 291.75,
+      "bin_min": 194.95,
+      "bin_min_url": "https://www.ebay.com/itm/227391674856?_skw=Spyderco+P%27Kal&hash=item34f19999e8:g:m00AAeSwGN5qMaqJ",
+      "timestamp": "2026-09-05T01:27:48.406655+00:00",
+      "total_count": 19
     }
   ],
-  "last_checked": "2026-09-03T11:13:16.523492+00:00",
+  "last_checked": "2026-09-05T01:27:48.406655+00:00",
   "search_id": "spyderco-pkal",
   "seen_auction_ids": [
     "v1|407117353401|0",
