@@ -30,10 +30,10 @@ its `.github/workflows/` — nothing else needs to change.
    - `EBAY_CLIENT_SECRET`
 3. Edit [config/ebay_searches.yml](config/ebay_searches.yml) — replace the
    example entry with the searches you actually want to track.
-4. The workflow runs roughly every 2 days on a schedule, or trigger it
-   manually from the Actions tab (`workflow_dispatch`), where you can choose
-   the issue mode (comment on the existing alert issue vs. open a new one
-   each run) and override the alert threshold for that run.
+4. The workflow runs automatically on push to `main`, roughly every 2 days on a
+   schedule, or manually from the Actions tab (`workflow_dispatch`), where you
+   can choose the issue mode (comment on the existing alert issue vs. open a new
+   one each run), alert threshold, and max comments per issue.
 
 ### How it works
 
@@ -68,8 +68,13 @@ Each run, per search:
    this once (tracked via `seen_auction_ids`), even if it stays cheap across
    several runs.
 5. If there are alerts, upserts a GitHub issue labeled `ebay-watch` listing
-   them, sorted with `priority: high` searches first.
+   them, sorted with `priority: high` searches first. In comment mode, once an
+   issue reaches 10 comments (configurable via `MAX_ISSUE_COMMENTS`), it closes
+   the issue and opens a new one so issues don't grow indefinitely.
 6. Commits the updated cache files and chart back to the repo.
+7. Packages and deploys the price history chart to GitHub Pages via
+   `actions/upload-pages-artifact` and `actions/deploy-pages` under the
+   `ebaywatcher` folder (with root redirecting to `/ebaywatcher/`).
 
 The very first run for a new search just seeds the cache — nothing to
 compare against yet, so no alert fires until a later run sees a big enough

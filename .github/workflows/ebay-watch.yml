@@ -1,6 +1,9 @@
 name: eBay Watch
 
 on:
+  push:
+    branches:
+      - main
   schedule:
     # Roughly every 2 days (day-of-month step; cron has no native "every N
     # days" so this resets at each month boundary, e.g. day 31 -> day 1).
@@ -18,10 +21,16 @@ on:
         description: "Alert threshold: BIN min drop % below all-time low"
         type: string
         default: "20"
+      max_issue_comments:
+        description: "Max comments before closing and opening a new issue"
+        type: string
+        default: "10"
 
 permissions:
   contents: write
   issues: write
+  pages: write
+  id-token: write
 
 concurrency:
   group: ebay-watch
@@ -47,6 +56,7 @@ jobs:
           GITHUB_REPOSITORY: ${{ github.repository }}
           ISSUE_MODE: ${{ inputs.issue_mode || 'comment' }}
           PRICE_DROP_THRESHOLD_PCT: ${{ inputs.price_drop_threshold_pct || '20' }}
+          MAX_ISSUE_COMMENTS: ${{ inputs.max_issue_comments || '10' }}
         run: python ebay-watch/scripts/ebay_watch.py
 
       - name: Regenerate price history chart
@@ -59,3 +69,40 @@ jobs:
           git add .github/data/ebay-watch ebay-watch/docs/index.html
           git diff --cached --quiet || git commit -m "Update eBay price cache [skip ci]"
           git push
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Build / stage Pages directory
+        run: |
+          mkdir -p _site/ebaywatcher
+          cp ebay-watch/docs/index.html _site/ebaywatcher/index.html
+          cat << 'EOF' > _site/index.html
+          <!doctype html>
+          <html>
+          <head>
+            <meta charset="utf-8">
+            <meta http-equiv="refresh" content="0; url=ebaywatcher/">
+            <title>Projects</title>
+          </head>
+          <body>
+            <p>Redirecting to <a href="ebaywatcher/">eBay Watcher</a>...</p>
+          </body>
+          </html>
+          EOF
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: watch
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -43,6 +43,7 @@ Env vars required:
 Optional env vars:
   ISSUE_MODE                "comment" (default, reuse one open issue) or "new"
   ISSUE_LABEL                label used to find/tag the alert issue (default "ebay-watch")
+  MAX_ISSUE_COMMENTS         max comments on an issue before closing and rolling over to a new one (default 10)
   CONFIG_PATH                path to searches config (default <this folder>/config/ebay_searches.yml)
   CACHE_DIR                  path to cache directory (default <repo root>/.github/data/ebay-watch)
   MAX_RESULTS                listings fetched per search per buying-option
@@ -81,6 +82,7 @@ CACHE_DIR = Path(os.environ.get("CACHE_DIR", REPO_ROOT / ".github" / "data" / "e
 MAX_RESULTS = int(os.environ.get("MAX_RESULTS", "50"))
 ISSUE_MODE = os.environ.get("ISSUE_MODE", "comment")
 ISSUE_LABEL = os.environ.get("ISSUE_LABEL", "ebay-watch")
+MAX_ISSUE_COMMENTS = int(os.environ.get("MAX_ISSUE_COMMENTS", "10"))
 DEFAULT_DROP_THRESHOLD_PCT = float(os.environ.get("PRICE_DROP_THRESHOLD_PCT", "20"))
 HISTORY_CAP = int(os.environ.get("HISTORY_CAP", "500"))
 SEEN_AUCTION_CAP = int(os.environ.get("SEEN_AUCTION_CAP", "500"))
@@ -403,8 +405,21 @@ def upsert_issue(gh_token: str, body: str) -> None:
 
     existing = github_request("GET", f"/issues?labels={ISSUE_LABEL}&state=open", gh_token).json()
     if existing:
-        issue_number = existing[0]["number"]
-        github_request("POST", f"/issues/{issue_number}/comments", gh_token, json={"body": body})
+        issue = existing[0]
+        issue_number = issue["number"]
+        comment_count = issue.get("comments", 0)
+        if comment_count >= MAX_ISSUE_COMMENTS:
+            github_request("PATCH", f"/issues/{issue_number}", gh_token, json={"state": "closed"})
+            github_request(
+                "POST",
+                "/issues",
+                gh_token,
+                json={"title": "eBay watch alerts", "body": body, "labels": [ISSUE_LABEL]},
+            )
+        else:
+            github_request("POST", f"/issues/{issue_number}/comments", gh_token, json={"body": body})
+            if comment_count + 1 >= MAX_ISSUE_COMMENTS:
+                github_request("PATCH", f"/issues/{issue_number}", gh_token, json={"state": "closed"})
     else:
         github_request(
             "POST",
