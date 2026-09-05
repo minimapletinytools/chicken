@@ -5,9 +5,8 @@ on:
     branches:
       - main
   schedule:
-    # Roughly every 2 days (day-of-month step; cron has no native "every N
-    # days" so this resets at each month boundary, e.g. day 31 -> day 1).
-    - cron: "17 6 */2 * *"
+    # Daily at 06:17 UTC
+    - cron: "17 6 * * *"
   workflow_dispatch:
     inputs:
       issue_mode:

@@ -30,10 +30,10 @@ its `.github/workflows/` — nothing else needs to change.
    - `EBAY_CLIENT_SECRET`
 3. Edit [config/ebay_searches.yml](config/ebay_searches.yml) — replace the
    example entry with the searches you actually want to track.
-4. The workflow runs automatically on push to `main`, roughly every 2 days on a
-   schedule, or manually from the Actions tab (`workflow_dispatch`), where you
-   can choose the issue mode (comment on the existing alert issue vs. open a new
-   one each run), alert threshold, and max comments per issue.
+4. The workflow runs automatically on push to `main`, daily on a schedule,
+   or manually from the Actions tab (`workflow_dispatch`), where you can choose
+   the issue mode (comment on the existing alert issue vs. open a new one each
+   run), alert threshold, and max comments per issue.
 
 ### How it works
 
