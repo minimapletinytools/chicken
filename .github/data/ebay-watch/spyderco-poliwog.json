@@ -364,9 +364,18 @@
       "bin_min_url": null,
       "timestamp": "2026-09-06T10:55:56.358597+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "timestamp": "2026-09-07T12:31:59.478504+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-09-06T10:55:56.358597+00:00",
+  "last_checked": "2026-09-07T12:31:59.478504+00:00",
   "search_id": "spyderco-poliwog",
   "seen_auction_ids": []
 }
