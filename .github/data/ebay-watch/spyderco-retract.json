@@ -373,9 +373,18 @@
       "bin_min_url": "https://www.ebay.com/itm/177952758753?_skw=Spyderco+Retract&hash=item296ecf9be1:g:~iIAAeSwTvhpsuea",
       "timestamp": "2026-09-07T12:32:03.477274+00:00",
       "total_count": 6
+    },
+    {
+      "bin_count": 6,
+      "bin_max": 127.9,
+      "bin_median": 71.62,
+      "bin_min": 71.25,
+      "bin_min_url": "https://www.ebay.com/itm/177952758753?_skw=Spyderco+Retract&hash=item296ecf9be1:g:~iIAAeSwTvhpsuea",
+      "timestamp": "2026-09-08T11:18:35.665566+00:00",
+      "total_count": 6
     }
   ],
-  "last_checked": "2026-09-07T12:32:03.477274+00:00",
+  "last_checked": "2026-09-08T11:18:35.665566+00:00",
   "search_id": "spyderco-retract",
   "seen_auction_ids": []
 }
