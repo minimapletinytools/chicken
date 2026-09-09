@@ -400,9 +400,18 @@
       "bin_min_url": "https://www.ebay.com/itm/307166265538?_skw=Spyderco+Schempp+Bowie&hash=item47848940c2:g:nacAAeSwja9qlyFs",
       "timestamp": "2026-09-09T04:14:10.905707+00:00",
       "total_count": 4
+    },
+    {
+      "bin_count": 4,
+      "bin_max": 467.0,
+      "bin_median": 387.5,
+      "bin_min": 260.0,
+      "bin_min_url": "https://www.ebay.com/itm/307166265538?_skw=Spyderco+Schempp+Bowie&hash=item47848940c2:g:nacAAeSwja9qlyFs",
+      "timestamp": "2026-09-09T11:22:36.561315+00:00",
+      "total_count": 4
     }
   ],
-  "last_checked": "2026-09-09T04:14:10.905707+00:00",
+  "last_checked": "2026-09-09T11:22:36.561315+00:00",
   "search_id": "spyderco-schempp-bowie",
   "seen_auction_ids": [
     "v1|377423592422|0",
