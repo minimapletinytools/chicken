@@ -125,10 +125,6 @@
   tags: [knives, byrd]
   query: "Byrd Gooney"
 
-- id: byrd-robin-meadowlark
-  tags: [knives, byrd]
-  query: "Byrd Robin Meadowlark"
-
 - id: byrd-finch
   tags: [knives, byrd]
   query: "Byrd Finch"
@@ -180,10 +176,6 @@
 - id: lucent-automatic-knife
   tags: [knives, lucent]
   query: "Lucent Automatic Knife"
-
-- id: jellycat-bo-bigfoot
-  tags: [jellycat, stuffed-animal]
-  query: "Jellycat Bo Bigfoot"
 
 - id: jellycat-yani-yeti
   tags: [jellycat, stuffed-animal]
