@@ -330,9 +330,18 @@
       "bin_min_url": "https://www.ebay.com/itm/298624768300?_skw=Spyderco+Ladybug&hash=item45876c592c:g:xbQAAeSwrd5qkf0z",
       "timestamp": "2026-09-08T11:18:46.881755+00:00",
       "total_count": 61
+    },
+    {
+      "bin_count": 49,
+      "bin_max": 52.5,
+      "bin_median": 52.5,
+      "bin_min": 29.99,
+      "bin_min_url": "https://www.ebay.com/itm/298624768300?_skw=Spyderco+Ladybug&hash=item45876c592c:g:xbQAAeSwrd5qkf0z",
+      "timestamp": "2026-09-09T02:55:49.536988+00:00",
+      "total_count": 58
     }
   ],
-  "last_checked": "2026-09-08T11:18:46.881755+00:00",
+  "last_checked": "2026-09-09T02:55:49.536988+00:00",
   "search_id": "spyderco-ladybug",
   "seen_auction_ids": [
     "v1|298500453106|0",
@@ -390,6 +399,7 @@
     "v1|318830462133|0",
     "v1|327345738523|0",
     "v1|407197108257|0",
-    "v1|407200655859|0"
+    "v1|407200655859|0",
+    "v1|377481660542|0"
   ]
 }

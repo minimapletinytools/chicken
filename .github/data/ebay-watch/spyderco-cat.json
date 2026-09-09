@@ -382,9 +382,18 @@
       "bin_min_url": "https://www.ebay.com/itm/407085119191?_skw=Spyderco+Cat&hash=item5ec829f6d7:g:264AAOSwkN1oW5k~",
       "timestamp": "2026-09-08T11:18:34.247162+00:00",
       "total_count": 26
+    },
+    {
+      "bin_count": 25,
+      "bin_max": 219.98,
+      "bin_median": 80.0,
+      "bin_min": 11.69,
+      "bin_min_url": "https://www.ebay.com/itm/407085119191?_skw=Spyderco+Cat&hash=item5ec829f6d7:g:264AAOSwkN1oW5k~",
+      "timestamp": "2026-09-09T02:55:37.433504+00:00",
+      "total_count": 26
     }
   ],
-  "last_checked": "2026-09-08T11:18:34.247162+00:00",
+  "last_checked": "2026-09-09T02:55:37.433504+00:00",
   "search_id": "spyderco-cat",
   "seen_auction_ids": [
     "v1|188626264154|0",
