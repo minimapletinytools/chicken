@@ -15,9 +15,18 @@
       "bin_min_url": "https://www.ebay.com/itm/800034033810?_skw=Jellycat+Rondle+Elephant&hash=itemba45be9092:g:idoAAeSwgsVqCoY1",
       "timestamp": "2026-09-11T01:07:18.089862+00:00",
       "total_count": 1
+    },
+    {
+      "bin_count": 1,
+      "bin_max": 58.0,
+      "bin_median": 58.0,
+      "bin_min": 58.0,
+      "bin_min_url": "https://www.ebay.com/itm/800034033810?_skw=Jellycat+Rondle+Elephant&hash=itemba45be9092:g:idoAAeSwgsVqCoY1",
+      "timestamp": "2026-09-11T11:21:18.581542+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-09-11T01:07:18.089862+00:00",
+  "last_checked": "2026-09-11T11:21:18.581542+00:00",
   "search_id": "jellycat-rondle-elephant",
   "seen_auction_ids": []
 }
