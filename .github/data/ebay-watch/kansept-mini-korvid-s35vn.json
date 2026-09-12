@@ -384,9 +384,18 @@
       "bin_min_url": "https://www.ebay.com/itm/407205970465?_skw=Kansept+Mini+Korvid+S35VN&hash=item5ecf5e0221:g:Hg8AAeSwo-xqojh0",
       "timestamp": "2026-09-11T11:21:04.203740+00:00",
       "total_count": 24
+    },
+    {
+      "bin_count": 24,
+      "bin_max": 117.95,
+      "bin_median": 98.0,
+      "bin_min": 79.99,
+      "bin_min_url": "https://www.ebay.com/itm/407205970465?_skw=Kansept+Mini+Korvid+S35VN&hash=item5ecf5e0221:g:Hg8AAeSwo-xqojh0",
+      "timestamp": "2026-09-12T10:46:15.760517+00:00",
+      "total_count": 24
     }
   ],
-  "last_checked": "2026-09-11T11:21:04.203740+00:00",
+  "last_checked": "2026-09-12T10:46:15.760517+00:00",
   "search_id": "kansept-mini-korvid-s35vn",
   "seen_auction_ids": []
 }

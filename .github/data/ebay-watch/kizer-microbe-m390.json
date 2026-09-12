@@ -384,9 +384,18 @@
       "bin_min_url": "https://www.ebay.com/itm/127581404287?_skw=Kizer+Microbe+M390&hash=item1db471bc7f:g:bTcAAeSwQbNpS8Qd",
       "timestamp": "2026-09-11T11:21:06.473924+00:00",
       "total_count": 7
+    },
+    {
+      "bin_count": 7,
+      "bin_max": 149.95,
+      "bin_median": 139.99,
+      "bin_min": 139.99,
+      "bin_min_url": "https://www.ebay.com/itm/127581404287?_skw=Kizer+Microbe+M390&hash=item1db471bc7f:g:bTcAAeSwQbNpS8Qd",
+      "timestamp": "2026-09-12T10:46:17.718183+00:00",
+      "total_count": 7
     }
   ],
-  "last_checked": "2026-09-11T11:21:06.473924+00:00",
+  "last_checked": "2026-09-12T10:46:17.718183+00:00",
   "search_id": "kizer-microbe-m390",
   "seen_auction_ids": []
 }

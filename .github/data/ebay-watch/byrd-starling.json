@@ -384,9 +384,18 @@
       "bin_min_url": "https://www.ebay.com/itm/137692464830?_skw=Byrd+Starling&hash=item200f1c46be:g:Cc0AAeSwKVhqmMFF",
       "timestamp": "2026-09-11T11:21:08.715319+00:00",
       "total_count": 2
+    },
+    {
+      "bin_count": 1,
+      "bin_max": 45.0,
+      "bin_median": 45.0,
+      "bin_min": 45.0,
+      "bin_min_url": "https://www.ebay.com/itm/137692464830?_skw=Byrd+Starling&hash=item200f1c46be:g:Cc0AAeSwKVhqmMFF",
+      "timestamp": "2026-09-12T10:46:19.564316+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-09-11T11:21:08.715319+00:00",
+  "last_checked": "2026-09-12T10:46:19.564316+00:00",
   "search_id": "byrd-starling",
   "seen_auction_ids": []
 }
