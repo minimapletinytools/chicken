@@ -312,9 +312,18 @@
       "bin_min_url": "https://www.ebay.com/itm/255231609405?_skw=Spyderco+Ambitious&hash=item3b6cfd4a3d:g:JsMAAOSwB7BhlBOB",
       "timestamp": "2026-09-13T11:52:15.441787+00:00",
       "total_count": 53
+    },
+    {
+      "bin_count": 50,
+      "bin_max": 41.0,
+      "bin_median": 15.29,
+      "bin_min": 8.09,
+      "bin_min_url": "https://www.ebay.com/itm/255231609405?_skw=Spyderco+Ambitious&hash=item3b6cfd4a3d:g:JsMAAOSwB7BhlBOB",
+      "timestamp": "2026-09-14T12:46:28.283133+00:00",
+      "total_count": 53
     }
   ],
-  "last_checked": "2026-09-13T11:52:15.441787+00:00",
+  "last_checked": "2026-09-14T12:46:28.283133+00:00",
   "search_id": "spyderco-ambitious",
   "seen_auction_ids": [
     "v1|358875823512|0",
@@ -334,6 +343,8 @@
     "v1|327344538975|0",
     "v1|407198037850|0",
     "v1|377479323430|0",
-    "v1|366659205482|0"
+    "v1|366659205482|0",
+    "v1|327354925761|0",
+    "v1|407214817412|0"
   ]
 }

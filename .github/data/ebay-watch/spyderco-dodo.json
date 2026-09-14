@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|158168650382|0",
-    "seen_at": "2026-08-09T07:15:34.713113+00:00",
-    "title": "Spyderco Dodo Sprint Run C80GPOR Orange G10",
-    "url": "https://www.ebay.com/itm/158168650382?_skw=Spyderco+Dodo&hash=item24d396128e:g:JgYAAeSwEi9qd-ra"
+    "id": "v1|178492895307|0",
+    "seen_at": "2026-09-14T12:46:04.942349+00:00",
+    "title": "Spyderco C42S Howard Viele VG-10 Serrated Folding Knife Seki Japan Micarta",
+    "url": "https://www.ebay.com/itm/178492895307?_skw=Spyderco+Dodo&hash=item298f01704b:g:UvQAAeSw3HxqpqOn"
   },
-  "all_time_min_bin_price": 185.0,
+  "all_time_min_bin_price": 184.42,
   "history": [
     {
       "bin_count": 16,
@@ -454,9 +454,18 @@
       "bin_min_url": "https://www.ebay.com/itm/267783545898?_skw=Spyderco+Dodo&hash=item3e5924a42a:g:HB4AAeSwKJBqpbym",
       "timestamp": "2026-09-13T11:51:47.659454+00:00",
       "total_count": 21
+    },
+    {
+      "bin_count": 21,
+      "bin_max": 425.0,
+      "bin_median": 300.0,
+      "bin_min": 184.42,
+      "bin_min_url": "https://www.ebay.com/itm/178492895307?_skw=Spyderco+Dodo&hash=item298f01704b:g:UvQAAeSw3HxqpqOn",
+      "timestamp": "2026-09-14T12:46:04.942349+00:00",
+      "total_count": 23
     }
   ],
-  "last_checked": "2026-09-13T11:51:47.659454+00:00",
+  "last_checked": "2026-09-14T12:46:04.942349+00:00",
   "search_id": "spyderco-dodo",
   "seen_auction_ids": [
     "v1|267719131239|0",
