@@ -438,9 +438,18 @@
       "bin_min_url": "https://www.ebay.com/itm/398063203022?_skw=Microtech+UTX-70&hash=item5cae6a72ce:g:WaoAAeSwvxZpqTUu",
       "timestamp": "2026-09-17T11:42:07.563706+00:00",
       "total_count": 38
+    },
+    {
+      "bin_count": 38,
+      "bin_max": 42.99,
+      "bin_median": 11.96,
+      "bin_min": 6.7,
+      "bin_min_url": "https://www.ebay.com/itm/398063203022?_skw=Microtech+UTX-70&hash=item5cae6a72ce:g:WaoAAeSwvxZpqTUu",
+      "timestamp": "2026-09-18T11:14:08.389625+00:00",
+      "total_count": 38
     }
   ],
-  "last_checked": "2026-09-17T11:42:07.563706+00:00",
+  "last_checked": "2026-09-18T11:14:08.389625+00:00",
   "search_id": "microtech-utx-70",
   "seen_auction_ids": []
 }
