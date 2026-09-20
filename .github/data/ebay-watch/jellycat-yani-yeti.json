@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|128035771311|0",
-    "seen_at": "2026-08-23T07:01:02.762568+00:00",
-    "title": "Jellycat Yani Yeti Plush Stuffed Animal",
-    "url": "https://www.ebay.com/itm/128035771311?_skw=Jellycat+Yani+Yeti&hash=item1dcf86d3af:g:KT0AAeSwuQVqhqTW"
+    "id": "v1|137757391010|0",
+    "seen_at": "2026-09-20T11:23:26.167279+00:00",
+    "title": "JellyCat Yani Yeti Rare Retired Plush",
+    "url": "https://www.ebay.com/itm/137757391010?_skw=Jellycat+Yani+Yeti&hash=item2012faf8a2:g:u3YAAeSwE01qr0RO"
   },
-  "all_time_min_bin_price": 180.0,
+  "all_time_min_bin_price": 179.5,
   "history": [
     {
       "bin_count": 10,
@@ -249,9 +249,18 @@
       "bin_min_url": "https://www.ebay.com/itm/128083037197?_skw=Jellycat+Yani+Yeti&hash=item1dd2580c0d:g:~qIAAeSwLB5qquDB",
       "timestamp": "2026-09-19T10:58:51.291144+00:00",
       "total_count": 16
+    },
+    {
+      "bin_count": 14,
+      "bin_max": 425.0,
+      "bin_median": 263.26,
+      "bin_min": 179.5,
+      "bin_min_url": "https://www.ebay.com/itm/137757391010?_skw=Jellycat+Yani+Yeti&hash=item2012faf8a2:g:u3YAAeSwE01qr0RO",
+      "timestamp": "2026-09-20T11:23:26.167279+00:00",
+      "total_count": 16
     }
   ],
-  "last_checked": "2026-09-19T10:58:51.291144+00:00",
+  "last_checked": "2026-09-20T11:23:26.167279+00:00",
   "search_id": "jellycat-yani-yeti",
   "seen_auction_ids": [
     "v1|178430905378|0",
