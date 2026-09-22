@@ -521,9 +521,18 @@
       "bin_min_url": null,
       "timestamp": "2026-09-21T12:47:50.164881+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "timestamp": "2026-09-22T11:38:02.606852+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-09-21T12:47:50.164881+00:00",
+  "last_checked": "2026-09-22T11:38:02.606852+00:00",
   "search_id": "spyderco-kris",
   "seen_auction_ids": []
 }
