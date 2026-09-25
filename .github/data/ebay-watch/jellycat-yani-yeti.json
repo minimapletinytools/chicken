@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
     "id": "v1|128083037197|0",
-    "seen_at": "2026-09-24T11:46:02.361119+00:00",
+    "seen_at": "2026-09-25T11:51:04.337202+00:00",
     "title": "Official Jellycat Yani Yeti New Without Tags Retired Rare",
     "url": "https://www.ebay.com/itm/128083037197?_skw=Jellycat+Yani+Yeti&hash=item1dd2580c0d:g:~qIAAeSwLB5qquDB"
   },
-  "all_time_min_bin_price": 179.08,
+  "all_time_min_bin_price": 178.62,
   "history": [
     {
       "bin_count": 10,
@@ -294,9 +294,18 @@
       "bin_min_url": "https://www.ebay.com/itm/128083037197?_skw=Jellycat+Yani+Yeti&hash=item1dd2580c0d:g:~qIAAeSwLB5qquDB",
       "timestamp": "2026-09-24T11:46:02.361119+00:00",
       "total_count": 15
+    },
+    {
+      "bin_count": 14,
+      "bin_max": 425.0,
+      "bin_median": 261.26,
+      "bin_min": 178.62,
+      "bin_min_url": "https://www.ebay.com/itm/128083037197?_skw=Jellycat+Yani+Yeti&hash=item1dd2580c0d:g:~qIAAeSwLB5qquDB",
+      "timestamp": "2026-09-25T11:51:04.337202+00:00",
+      "total_count": 15
     }
   ],
-  "last_checked": "2026-09-24T11:46:02.361119+00:00",
+  "last_checked": "2026-09-25T11:51:04.337202+00:00",
   "search_id": "jellycat-yani-yeti",
   "seen_auction_ids": [
     "v1|178430905378|0",

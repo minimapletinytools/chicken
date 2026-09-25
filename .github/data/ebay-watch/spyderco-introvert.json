@@ -553,9 +553,18 @@
       "bin_min_url": "https://www.ebay.com/itm/366672967713?_skw=Spyderco+Introvert&hash=item555f697821:g:XXYAAeSw7U5qqsPu",
       "timestamp": "2026-09-24T11:45:30.177464+00:00",
       "total_count": 1
+    },
+    {
+      "bin_count": 1,
+      "bin_max": 325.0,
+      "bin_median": 325.0,
+      "bin_min": 325.0,
+      "bin_min_url": "https://www.ebay.com/itm/366672967713?_skw=Spyderco+Introvert&hash=item555f697821:g:XXYAAeSw7U5qqsPu",
+      "timestamp": "2026-09-25T11:50:31.444460+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-09-24T11:45:30.177464+00:00",
+  "last_checked": "2026-09-25T11:50:31.444460+00:00",
   "search_id": "spyderco-introvert",
   "seen_auction_ids": []
 }
