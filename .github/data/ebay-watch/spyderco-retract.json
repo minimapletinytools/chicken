@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
     "id": "v1|307190591626|0",
-    "seen_at": "2026-09-25T11:50:44.887629+00:00",
+    "seen_at": "2026-09-26T11:24:37.043354+00:00",
     "title": "Fisher Space Pen Blue/White",
     "url": "https://www.ebay.com/itm/307190591626?_skw=Spyderco+Retract&hash=item4785fc708a:g:qbkAAeSwZBRqsQGS"
   },
-  "all_time_min_bin_price": 52.45,
+  "all_time_min_bin_price": 52.36,
   "history": [
     {
       "bin_count": 0,
@@ -562,12 +562,22 @@
       "bin_min_url": "https://www.ebay.com/itm/307190591626?_skw=Spyderco+Retract&hash=item4785fc708a:g:qbkAAeSwZBRqsQGS",
       "timestamp": "2026-09-25T11:50:44.887629+00:00",
       "total_count": 14
+    },
+    {
+      "bin_count": 13,
+      "bin_max": 125.35,
+      "bin_median": 71.25,
+      "bin_min": 52.36,
+      "bin_min_url": "https://www.ebay.com/itm/307190591626?_skw=Spyderco+Retract&hash=item4785fc708a:g:qbkAAeSwZBRqsQGS",
+      "timestamp": "2026-09-26T11:24:37.043354+00:00",
+      "total_count": 14
     }
   ],
-  "last_checked": "2026-09-25T11:50:44.887629+00:00",
+  "last_checked": "2026-09-26T11:24:37.043354+00:00",
   "search_id": "spyderco-retract",
   "seen_auction_ids": [
     "v1|366675441461|0",
-    "v1|366677602653|0"
+    "v1|366677602653|0",
+    "v1|366692482379|0"
   ]
 }
