@@ -541,9 +541,18 @@
       "bin_min_url": null,
       "timestamp": "2026-09-28T13:54:26.301114+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "timestamp": "2026-09-29T12:53:30.619802+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-09-28T13:54:26.301114+00:00",
+  "last_checked": "2026-09-29T12:53:30.619802+00:00",
   "search_id": "kizer-micro-sheepdog",
   "seen_auction_ids": []
 }
