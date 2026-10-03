@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|178492895307|0",
-    "seen_at": "2026-09-14T12:46:04.942349+00:00",
-    "title": "Spyderco C42S Howard Viele VG-10 Serrated Folding Knife Seki Japan Micarta",
-    "url": "https://www.ebay.com/itm/178492895307?_skw=Spyderco+Dodo&hash=item298f01704b:g:UvQAAeSw3HxqpqOn"
+    "id": "v1|800740475352|0",
+    "seen_at": "2026-10-03T11:39:12.120457+00:00",
+    "title": "Spyderco Dodo BladeHQ Exclusive Blue G10 Handle/ S30V Blade (Very Rare!)",
+    "url": "https://www.ebay.com/itm/800740475352?_skw=Spyderco+Dodo&hash=itemba6fda01d8:g:RkEAAeSwcXdqWpOv"
   },
-  "all_time_min_bin_price": 184.42,
+  "all_time_min_bin_price": 180.0,
   "history": [
     {
       "bin_count": 16,
@@ -634,9 +634,18 @@
       "bin_min_url": "https://www.ebay.com/itm/178492895307?_skw=Spyderco+Dodo&hash=item298f01704b:g:UvQAAeSw3HxqpqOn",
       "timestamp": "2026-10-02T12:34:12.384604+00:00",
       "total_count": 21
+    },
+    {
+      "bin_count": 21,
+      "bin_max": 425.0,
+      "bin_median": 300.0,
+      "bin_min": 180.0,
+      "bin_min_url": "https://www.ebay.com/itm/800740475352?_skw=Spyderco+Dodo&hash=itemba6fda01d8:g:RkEAAeSwcXdqWpOv",
+      "timestamp": "2026-10-03T11:39:12.120457+00:00",
+      "total_count": 21
     }
   ],
-  "last_checked": "2026-10-02T12:34:12.384604+00:00",
+  "last_checked": "2026-10-03T11:39:12.120457+00:00",
   "search_id": "spyderco-dodo",
   "seen_auction_ids": [
     "v1|267719131239|0",

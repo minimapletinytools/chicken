@@ -634,9 +634,18 @@
       "bin_min_url": "https://www.ebay.com/itm/176839848782?_skw=Spyderco+Dyad&hash=item292c79f34e:g:nRoAAeSwzKNnq~Lg",
       "timestamp": "2026-10-02T12:34:13.220900+00:00",
       "total_count": 22
+    },
+    {
+      "bin_count": 19,
+      "bin_max": 619.03,
+      "bin_median": 300.0,
+      "bin_min": 175.0,
+      "bin_min_url": "https://www.ebay.com/itm/178496651846?_skw=Spyderco+Dyad&hash=item298f3ac246:g:2iQAAeSwSRNqLdm9",
+      "timestamp": "2026-10-03T11:39:13.701833+00:00",
+      "total_count": 21
     }
   ],
-  "last_checked": "2026-10-02T12:34:13.220900+00:00",
+  "last_checked": "2026-10-03T11:39:13.701833+00:00",
   "search_id": "spyderco-dyad",
   "seen_auction_ids": [
     "v1|377326016430|0",
@@ -663,6 +672,7 @@
     "v1|336795332951|0",
     "v1|327365410663|0",
     "v1|336809106788|0",
-    "v1|227540600267|0"
+    "v1|227540600267|0",
+    "v1|267801823247|0"
   ]
 }
