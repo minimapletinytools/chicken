@@ -53,10 +53,6 @@
   priority: high
   query: "Spyderco Dodo"
 
-- id: spyderco-dyad
-  tags: [knives, spyderco]
-  query: "Spyderco Dyad"
-
 - id: spyderco-tighe-stick
   tags: [knives, spyderco]
   query: "Spyderco Tighe Stick"
@@ -88,10 +84,6 @@
 - id: spyderco-jester
   tags: [knives, spyderco]
   query: "Spyderco Jester"
-
-- id: spyderco-retract
-  tags: [knives, spyderco]
-  query: "Spyderco Retract"
 
 - id: spyderco-kris
   tags: [knives, spyderco]
@@ -145,10 +137,6 @@
   tags: [knives, spyderco]
   query: "Spyderco Dragonfly"
 
-- id: spyderco-ladybug
-  tags: [knives, spyderco]
-  query: "Spyderco Ladybug"
-
 - id: petrified-fish-hummingbird
   tags: [knives, petrified-fish]
   query: "Petrified Fish Hummingbird"
@@ -192,4 +180,8 @@
 - id: thiers-issard-chef-knife
   tags: [knives, thiers-issard]
   query: "Thiers Issard Chef Knife"
+
+- id: jellycat-gus-gryphon
+  tags: [jellycat, stuffed-animal]
+  query: "Jellycat Gus Gryphon"
 
