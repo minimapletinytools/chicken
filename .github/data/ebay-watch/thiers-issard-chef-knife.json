@@ -123,9 +123,18 @@
       "bin_min_url": "https://www.ebay.com/itm/116345400333?_skw=Thiers+Issard+Chef+Knife&hash=item1b16b9ec0d:g:YCUAAOSwrDBm~gV4",
       "timestamp": "2026-10-08T13:29:02.624317+00:00",
       "total_count": 1
+    },
+    {
+      "bin_count": 1,
+      "bin_max": 74.95,
+      "bin_median": 74.95,
+      "bin_min": 74.95,
+      "bin_min_url": "https://www.ebay.com/itm/116345400333?_skw=Thiers+Issard+Chef+Knife&hash=item1b16b9ec0d:g:YCUAAOSwrDBm~gV4",
+      "timestamp": "2026-10-10T04:18:21.094452+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-10-08T13:29:02.624317+00:00",
+  "last_checked": "2026-10-10T04:18:21.094452+00:00",
   "search_id": "thiers-issard-chef-knife",
   "seen_auction_ids": []
 }
