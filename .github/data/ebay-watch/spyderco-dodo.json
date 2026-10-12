@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|800740475352|0",
-    "seen_at": "2026-10-03T11:39:12.120457+00:00",
-    "title": "Spyderco Dodo BladeHQ Exclusive Blue G10 Handle/ S30V Blade (Very Rare!)",
-    "url": "https://www.ebay.com/itm/800740475352?_skw=Spyderco+Dodo&hash=itemba6fda01d8:g:RkEAAeSwcXdqWpOv"
+    "id": "v1|227563253507|0",
+    "seen_at": "2026-10-12T15:24:01.121752+00:00",
+    "title": "Spyderco Dodo Purple FRN Pocketknife Stainless Plain Edge Compression Lock",
+    "url": "https://www.ebay.com/itm/227563253507?_skw=Spyderco+Dodo&hash=item34fbd3af03:g:6WkAAeSw96NqzFYZ"
   },
-  "all_time_min_bin_price": 180.0,
+  "all_time_min_bin_price": 35.0,
   "history": [
     {
       "bin_count": 16,
@@ -715,9 +715,18 @@
       "bin_min_url": "https://www.ebay.com/itm/178492895307?_skw=Spyderco+Dodo&hash=item298f01704b:g:UvQAAeSw3HxqpqOn",
       "timestamp": "2026-10-11T12:49:13.353487+00:00",
       "total_count": 17
+    },
+    {
+      "bin_count": 19,
+      "bin_max": 425.0,
+      "bin_median": 341.99,
+      "bin_min": 35.0,
+      "bin_min_url": "https://www.ebay.com/itm/227563253507?_skw=Spyderco+Dodo&hash=item34fbd3af03:g:6WkAAeSw96NqzFYZ",
+      "timestamp": "2026-10-12T15:24:01.121752+00:00",
+      "total_count": 19
     }
   ],
-  "last_checked": "2026-10-11T12:49:13.353487+00:00",
+  "last_checked": "2026-10-12T15:24:01.121752+00:00",
   "search_id": "spyderco-dodo",
   "seen_auction_ids": [
     "v1|267719131239|0",

@@ -667,9 +667,18 @@
       "bin_min_url": null,
       "timestamp": "2026-10-11T12:49:22.817270+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "timestamp": "2026-10-12T15:24:10.849387+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-10-11T12:49:22.817270+00:00",
+  "last_checked": "2026-10-12T15:24:10.849387+00:00",
   "search_id": "boker-dw-1",
   "seen_auction_ids": [
     "v1|287535342825|0"

@@ -663,9 +663,18 @@
       "bin_min_url": "https://www.ebay.com/itm/257535594570?_skw=Petrified+Fish+Hummingbird&hash=item3bf651504a:g:ISoAAeSwCttqGlrN",
       "timestamp": "2026-10-11T12:49:34.652005+00:00",
       "total_count": 1
+    },
+    {
+      "bin_count": 1,
+      "bin_max": 160.54,
+      "bin_median": 160.54,
+      "bin_min": 160.54,
+      "bin_min_url": "https://www.ebay.com/itm/257535594570?_skw=Petrified+Fish+Hummingbird&hash=item3bf651504a:g:ISoAAeSwCttqGlrN",
+      "timestamp": "2026-10-12T15:24:19.613208+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-10-11T12:49:34.652005+00:00",
+  "last_checked": "2026-10-12T15:24:19.613208+00:00",
   "search_id": "petrified-fish-hummingbird",
   "seen_auction_ids": []
 }
