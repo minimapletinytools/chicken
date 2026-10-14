@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
     "id": "v1|206206737559|0",
-    "seen_at": "2026-07-27T07:27:03.794240+00:00",
+    "seen_at": "2026-10-14T11:51:09.612701+00:00",
     "title": "Self Defense Hooked Bladed Knife -Honshu Karambit Black Knife",
-    "url": "https://www.ebay.com/itm/206206737559?_skw=Spyderco+Kiwi&hash=item3002e11c97:g:-ewAAeSwvuZp3AqE"
+    "url": "https://www.ebay.com/itm/206206737559?_skw=Spyderco+Kiwi&hash=item3002e11c97:g:GFoAAeSwtV5p3Aqj"
   },
-  "all_time_min_bin_price": 19.96,
+  "all_time_min_bin_price": 18.71,
   "history": [
     {
       "bin_count": 7,
@@ -733,9 +733,18 @@
       "bin_min_url": "https://www.ebay.com/itm/206206737559?_skw=Spyderco+Kiwi&hash=item3002e11c97:g:GFoAAeSwtV5p3Aqj",
       "timestamp": "2026-10-13T14:10:57.647812+00:00",
       "total_count": 5
+    },
+    {
+      "bin_count": 4,
+      "bin_max": 395.0,
+      "bin_median": 217.48,
+      "bin_min": 18.71,
+      "bin_min_url": "https://www.ebay.com/itm/206206737559?_skw=Spyderco+Kiwi&hash=item3002e11c97:g:GFoAAeSwtV5p3Aqj",
+      "timestamp": "2026-10-14T11:51:09.612701+00:00",
+      "total_count": 5
     }
   ],
-  "last_checked": "2026-10-13T14:10:57.647812+00:00",
+  "last_checked": "2026-10-14T11:51:09.612701+00:00",
   "search_id": "spyderco-kiwi",
   "seen_auction_ids": [
     "v1|377326025767|0",
