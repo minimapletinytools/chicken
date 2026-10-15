@@ -742,9 +742,18 @@
       "bin_min_url": "https://www.ebay.com/itm/840014779716?_skw=Spyderco+Essenza&hash=itemc394c85544:g:GD4AAeSwJF9qzSmZ",
       "timestamp": "2026-10-14T11:51:14.489625+00:00",
       "total_count": 23
+    },
+    {
+      "bin_count": 23,
+      "bin_max": 295.11,
+      "bin_median": 176.25,
+      "bin_min": 115.0,
+      "bin_min_url": "https://www.ebay.com/itm/840014779716?_skw=Spyderco+Essenza&hash=itemc394c85544:g:GD4AAeSwJF9qzSmZ",
+      "timestamp": "2026-10-15T11:28:18.124007+00:00",
+      "total_count": 23
     }
   ],
-  "last_checked": "2026-10-14T11:51:14.489625+00:00",
+  "last_checked": "2026-10-15T11:28:18.124007+00:00",
   "search_id": "spyderco-essenza",
   "seen_auction_ids": [
     "v1|257613302234|0",
