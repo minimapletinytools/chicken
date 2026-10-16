@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
     "id": "v1|126865532938|0",
-    "seen_at": "2026-10-02T12:34:28.273222+00:00",
+    "seen_at": "2026-10-16T11:23:54.213183+00:00",
     "title": "Robin Byrd John Wayne Bobbitt Historic Old Photo 2",
     "url": "https://www.ebay.com/itm/126865532938?_skw=Byrd+Robin+2&hash=item1d89c6680a:g:IYgAAOSwGd5neIem"
   },
-  "all_time_min_bin_price": 6.24,
+  "all_time_min_bin_price": 6.23,
   "history": [
     {
       "bin_count": 47,
@@ -699,9 +699,18 @@
       "bin_min_url": "https://www.ebay.com/itm/126865532938?_skw=Byrd+Robin+2&hash=item1d89c6680a:g:IYgAAOSwGd5neIem",
       "timestamp": "2026-10-15T11:28:30.803378+00:00",
       "total_count": 50
+    },
+    {
+      "bin_count": 47,
+      "bin_max": 149.99,
+      "bin_median": 39.99,
+      "bin_min": 6.23,
+      "bin_min_url": "https://www.ebay.com/itm/126865532938?_skw=Byrd+Robin+2&hash=item1d89c6680a:g:IYgAAOSwGd5neIem",
+      "timestamp": "2026-10-16T11:23:54.213183+00:00",
+      "total_count": 49
     }
   ],
-  "last_checked": "2026-10-15T11:28:30.803378+00:00",
+  "last_checked": "2026-10-16T11:23:54.213183+00:00",
   "search_id": "byrd-robin-2",
   "seen_auction_ids": [
     "v1|188660930769|0",
