@@ -613,9 +613,18 @@
       "bin_min_url": null,
       "timestamp": "2026-10-16T11:23:59.827647+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "timestamp": "2026-10-17T10:43:28.115381+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-10-16T11:23:59.827647+00:00",
+  "last_checked": "2026-10-17T10:43:28.115381+00:00",
   "search_id": "lucent-automatic-knife",
   "seen_auction_ids": []
 }
