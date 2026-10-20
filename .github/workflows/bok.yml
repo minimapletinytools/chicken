@@ -1,0 +1,14 @@
+name: bok
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+
+jobs:
+  bok:
+    runs-on: ubuntu-latest
+    steps:
+      - name: bok
+        run: echo "bok bok"
