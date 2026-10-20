@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|198023134087|0",
-    "seen_at": "2026-08-05T07:11:34.373273+00:00",
-    "title": "Spyderco Matriarch 2 Wave Knife VG-10 Satin Serrated Blade Black FRN Used",
-    "url": "https://www.ebay.com/itm/198023134087?_skw=Spyderco+Matriarch+2+Wave&hash=item2e1b193b87:g:u~cAAeSwy8VpZTPt"
+    "id": "v1|227572801049|0",
+    "seen_at": "2026-10-20T11:35:15.562077+00:00",
+    "title": "spyderco matriarch 2 with emerson wave feature pocket knife",
+    "url": "https://www.ebay.com/itm/227572801049?_skw=Spyderco+Matriarch+2+Wave&hash=item34fc655e19:g:B88AAeSwjmBq1Nnq"
   },
-  "all_time_min_bin_price": 102.0,
+  "all_time_min_bin_price": 50.0,
   "history": [
     {
       "bin_count": 7,
@@ -787,9 +787,18 @@
       "bin_min_url": "https://www.ebay.com/itm/128013841554?_skw=Spyderco+Matriarch+2+Wave&hash=item1dce383492:g:nQ8AAeSwAfJqdIHg",
       "timestamp": "2026-10-19T13:13:54.994465+00:00",
       "total_count": 9
+    },
+    {
+      "bin_count": 8,
+      "bin_max": 160.0,
+      "bin_median": 144.75,
+      "bin_min": 50.0,
+      "bin_min_url": "https://www.ebay.com/itm/227572801049?_skw=Spyderco+Matriarch+2+Wave&hash=item34fc655e19:g:B88AAeSwjmBq1Nnq",
+      "timestamp": "2026-10-20T11:35:15.562077+00:00",
+      "total_count": 9
     }
   ],
-  "last_checked": "2026-10-19T13:13:54.994465+00:00",
+  "last_checked": "2026-10-20T11:35:15.562077+00:00",
   "search_id": "spyderco-matriarch-2-wave",
   "seen_auction_ids": [
     "v1|398169731885|0",
