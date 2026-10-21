@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|267769468742|0",
-    "seen_at": "2026-09-03T11:13:25.042135+00:00",
-    "title": "KANSEPT Mini Korvid Folding Knife 1.45\" 154CM Orange G10 Handle",
-    "url": "https://www.ebay.com/itm/267769468742?_skw=Kansept+Mini+Korvid&hash=item3e584dd746:g:xCgAAeSwPHhpxYkf"
+    "id": "v1|168802323245|0",
+    "seen_at": "2026-10-21T11:48:22.610490+00:00",
+    "title": "Kansept Mini Korvid Neck Knife Sheath.        ( Mini Korvid Knife Not Included )",
+    "url": "https://www.ebay.com/itm/168802323245?_skw=Kansept+Mini+Korvid&hash=item274d670b2d:g:ba8AAeSwdfNq1aj5"
   },
-  "all_time_min_bin_price": 32.0,
+  "all_time_min_bin_price": 29.95,
   "history": [
     {
       "bin_count": 50,
@@ -744,9 +744,18 @@
       "bin_min_url": "https://www.ebay.com/itm/206570763259?_skw=Kansept+Mini+Korvid&hash=item301893b3fb:g:n8sAAeSwMyBqsHy7",
       "timestamp": "2026-10-20T11:35:30.740425+00:00",
       "total_count": 51
+    },
+    {
+      "bin_count": 50,
+      "bin_max": 96.0,
+      "bin_median": 68.0,
+      "bin_min": 29.95,
+      "bin_min_url": "https://www.ebay.com/itm/168802323245?_skw=Kansept+Mini+Korvid&hash=item274d670b2d:g:ba8AAeSwdfNq1aj5",
+      "timestamp": "2026-10-21T11:48:22.610490+00:00",
+      "total_count": 51
     }
   ],
-  "last_checked": "2026-10-20T11:35:30.740425+00:00",
+  "last_checked": "2026-10-21T11:48:22.610490+00:00",
   "search_id": "kansept-mini-korvid",
   "seen_auction_ids": [
     "v1|358773453453|0",

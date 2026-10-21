@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|366672967713|0",
-    "seen_at": "2026-09-17T11:40:58.069965+00:00",
+    "id": "v1|840042457674|0",
+    "seen_at": "2026-10-21T11:48:10.102959+00:00",
     "title": "Spyderco C206GP Introvert Knife Integral Index-Finger Hole Black G-10 VG-10 #155",
-    "url": "https://www.ebay.com/itm/366672967713?_skw=Spyderco+Introvert&hash=item555f697821:g:XXYAAeSw7U5qqsPu"
+    "url": "https://www.ebay.com/itm/840042457674?_skw=Spyderco+Introvert&hash=itemc3966eaa4a:g:Z4EAAeSwn1tq1-Nd"
   },
-  "all_time_min_bin_price": 325.0,
+  "all_time_min_bin_price": 279.95,
   "history": [
     {
       "bin_count": 0,
@@ -796,9 +796,18 @@
       "bin_min_url": null,
       "timestamp": "2026-10-20T11:35:16.460476+00:00",
       "total_count": 0
+    },
+    {
+      "bin_count": 1,
+      "bin_max": 279.95,
+      "bin_median": 279.95,
+      "bin_min": 279.95,
+      "bin_min_url": "https://www.ebay.com/itm/840042457674?_skw=Spyderco+Introvert&hash=itemc3966eaa4a:g:Z4EAAeSwn1tq1-Nd",
+      "timestamp": "2026-10-21T11:48:10.102959+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-10-20T11:35:16.460476+00:00",
+  "last_checked": "2026-10-21T11:48:10.102959+00:00",
   "search_id": "spyderco-introvert",
   "seen_auction_ids": []
 }
