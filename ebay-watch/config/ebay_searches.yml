@@ -129,14 +129,6 @@
   tags: [knives, byrd]
   query: "Byrd Wrench"
 
-- id: byrd-robin-2
-  tags: [knives, byrd]
-  query: "Byrd Robin 2"
-
-- id: spyderco-dragonfly
-  tags: [knives, spyderco]
-  query: "Spyderco Dragonfly"
-
 - id: petrified-fish-hummingbird
   tags: [knives, petrified-fish]
   query: "Petrified Fish Hummingbird"
