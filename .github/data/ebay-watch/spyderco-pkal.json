@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|227391674856|0",
-    "seen_at": "2026-07-10T00:09:15.972153+00:00",
-    "title": "Spyderco P'Kal Trainer, Red G-10 Handles, Blunted PlainEdge C103TR Factory 2nd B",
-    "url": "https://www.ebay.com/itm/227391674856?_skw=Spyderco+P%27Kal&hash=item34f19999e8:g:m00AAeSwGN5qMaqJ"
+    "id": "v1|900027957258|0",
+    "seen_at": "2026-10-23T11:37:55.513637+00:00",
+    "title": "Spyderco P'Kal smock Carbon Fiber Handle Stainless Plain Wharncliffe",
+    "url": "https://www.ebay.com/itm/900027957258?_skw=Spyderco+P%27Kal&hash=itemd18dd8c00a:g:qlkAAeSwDtBq16c1"
   },
-  "all_time_min_bin_price": 194.95,
+  "all_time_min_bin_price": 175.0,
   "history": [
     {
       "bin_count": 26,
@@ -823,13 +823,23 @@
       "bin_min_url": "https://www.ebay.com/itm/900027957258?_skw=Spyderco+P%27Kal&hash=itemd18dd8c00a:g:qlkAAeSwDtBq16c1",
       "timestamp": "2026-10-22T13:52:02.997003+00:00",
       "total_count": 20
+    },
+    {
+      "bin_count": 18,
+      "bin_max": 747.49,
+      "bin_median": 291.75,
+      "bin_min": 175.0,
+      "bin_min_url": "https://www.ebay.com/itm/900027957258?_skw=Spyderco+P%27Kal&hash=itemd18dd8c00a:g:qlkAAeSwDtBq16c1",
+      "timestamp": "2026-10-23T11:37:55.513637+00:00",
+      "total_count": 20
     }
   ],
-  "last_checked": "2026-10-22T13:52:02.997003+00:00",
+  "last_checked": "2026-10-23T11:37:55.513637+00:00",
   "search_id": "spyderco-pkal",
   "seen_auction_ids": [
     "v1|407117353401|0",
     "v1|407135060711|0",
-    "v1|307236588790|0"
+    "v1|307236588790|0",
+    "v1|880042333657|0"
   ]
 }
