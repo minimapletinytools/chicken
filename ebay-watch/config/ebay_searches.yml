@@ -232,3 +232,9 @@
   search_type: generic
   tags: [japanese-tools]
   query: "玄能"
+
+- id: yahoo-japanese-tools-yariganna
+  source: yahoo_auctions
+  search_type: generic
+  tags: [japanese-tools]
+  query: "やり鉋"
