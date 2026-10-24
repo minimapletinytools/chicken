@@ -6,6 +6,7 @@
     "url": "https://www.ebay.com/itm/178431148907?_skw=Spyderco+Jester&hash=item298b53436b:g:M2wAAeSwTclqiOM9"
   },
   "all_time_min_bin_price": 79.99,
+  "currency": "USD",
   "history": [
     {
       "bin_count": 3,
@@ -841,10 +842,23 @@
       "bin_min_url": "https://www.ebay.com/itm/178431148907?_skw=Spyderco+Jester&hash=item298b53436b:g:M2wAAeSwTclqiOM9",
       "timestamp": "2026-10-24T10:59:02.283694+00:00",
       "total_count": 8
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 8,
+      "bin_max": 339.99,
+      "bin_median": 177.5,
+      "bin_min": 79.99,
+      "bin_min_url": "https://www.ebay.com/itm/178431148907?_skw=Spyderco+Jester&hash=item298b53436b:g:M2wAAeSwTclqiOM9",
+      "currency": "USD",
+      "timestamp": "2026-10-24T19:04:48.439643+00:00",
+      "total_count": 8
     }
   ],
-  "last_checked": "2026-10-24T10:59:02.283694+00:00",
+  "last_checked": "2026-10-24T19:04:48.439643+00:00",
   "search_id": "spyderco-jester",
+  "search_type": "specific",
   "seen_auction_ids": [
     "v1|298543700216|0",
     "v1|198559353510|0",
@@ -852,5 +866,6 @@
     "v1|198575735312|0",
     "v1|198575728334|0",
     "v1|407205455261|0"
-  ]
+  ],
+  "source": "ebay"
 }

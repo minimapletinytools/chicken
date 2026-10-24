@@ -1,6 +1,7 @@
 {
   "all_time_min_bin_item": null,
   "all_time_min_bin_price": null,
+  "currency": "USD",
   "history": [
     {
       "bin_count": 0,
@@ -784,9 +785,23 @@
       "bin_min_url": null,
       "timestamp": "2026-10-24T10:59:14.425963+00:00",
       "total_count": 0
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "currency": "USD",
+      "timestamp": "2026-10-24T19:04:58.918358+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-10-24T10:59:14.425963+00:00",
+  "last_checked": "2026-10-24T19:04:58.918358+00:00",
   "search_id": "microtech-exocet",
-  "seen_auction_ids": []
+  "search_type": "specific",
+  "seen_auction_ids": [],
+  "source": "ebay"
 }

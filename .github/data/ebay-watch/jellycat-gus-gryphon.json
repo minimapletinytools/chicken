@@ -6,6 +6,7 @@
     "url": "https://www.ebay.com/itm/206256298406?_skw=Jellycat+Gus+Gryphon&hash=item3005d559a6:g:uhsAAeSwfLxp-1xP"
   },
   "all_time_min_bin_price": 208.3,
+  "currency": "USD",
   "history": [
     {
       "bin_count": 16,
@@ -159,11 +160,25 @@
       "bin_min_url": "https://www.ebay.com/itm/206256298406?_skw=Jellycat+Gus+Gryphon&hash=item3005d559a6:g:uhsAAeSwfLxp-1xP",
       "timestamp": "2026-10-24T10:59:20.849545+00:00",
       "total_count": 16
+    },
+    {
+      "auction_count": 1,
+      "auction_min": 235.0,
+      "bin_count": 15,
+      "bin_max": 1500.0,
+      "bin_median": 285.0,
+      "bin_min": 212.45,
+      "bin_min_url": "https://www.ebay.com/itm/206256298406?_skw=Jellycat+Gus+Gryphon&hash=item3005d559a6:g:uhsAAeSwfLxp-1xP",
+      "currency": "USD",
+      "timestamp": "2026-10-24T19:05:05.105271+00:00",
+      "total_count": 16
     }
   ],
-  "last_checked": "2026-10-24T10:59:20.849545+00:00",
+  "last_checked": "2026-10-24T19:05:05.105271+00:00",
   "search_id": "jellycat-gus-gryphon",
+  "search_type": "specific",
   "seen_auction_ids": [
     "v1|840042572824|0"
-  ]
+  ],
+  "source": "ebay"
 }
