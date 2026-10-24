@@ -854,9 +854,21 @@
       "currency": "USD",
       "timestamp": "2026-10-24T19:04:38.542645+00:00",
       "total_count": 1
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 1,
+      "bin_max": 279.95,
+      "bin_median": 279.95,
+      "bin_min": 279.95,
+      "bin_min_url": "https://www.ebay.com/itm/840042457674?_skw=Spyderco+Introvert&hash=itemc3966eaa4a:g:Z4EAAeSwn1tq1-Nd",
+      "currency": "USD",
+      "timestamp": "2026-10-24T20:41:17.341477+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-10-24T19:04:38.542645+00:00",
+  "last_checked": "2026-10-24T20:41:17.341477+00:00",
   "search_id": "spyderco-introvert",
   "search_type": "specific",
   "seen_auction_ids": [],
