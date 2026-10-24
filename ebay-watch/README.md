@@ -1,6 +1,8 @@
-# eBay watch
+# Auction watch
 
-Tracks eBay searches over time (BIN price range and listing counts) and
+Tracks eBay and Yahoo Auctions Japan searches over time. Each YAML entry
+selects one source and supplies that source's own search terms. eBay tracks
+BIN price range and listing counts and
 opens an alert for two kinds of events: a search's minimum Buy-It-Now price
 dropping significantly below its all-time low, or an auction listing
 showing up priced below the median history BIN price (over the last 2 months).
@@ -21,13 +23,16 @@ its `.github/workflows/` — nothing else needs to change.
 
 ### Setup
 
-1. Create a free eBay developer account at https://developer.ebay.com and
+1. For eBay searches, create a free eBay developer account at https://developer.ebay.com and
    create an application (Production keyset). You only need the **Client ID**
    and **Client Secret** — this uses the client-credentials app token, no
    user login/OAuth flow required.
 2. In the repo's Settings → Secrets and variables → Actions, add:
    - `EBAY_CLIENT_ID`
    - `EBAY_CLIENT_SECRET`
+   For Yahoo Auctions searches, add a Firecrawl API key as the Actions secret
+   `FIRECRAWL_KEY`. Keys belong in Actions secrets or local environment variables,
+   never in committed files. Yahoo-only runs do not require eBay credentials.
 3. Edit [config/ebay_searches.yml](config/ebay_searches.yml) — replace the
    example entry with the searches you actually want to track.
 4. The workflow runs automatically on push to `main`, daily on a schedule,
@@ -35,9 +40,67 @@ its `.github/workflows/` — nothing else needs to change.
    the issue mode (comment on the existing alert issue vs. open a new one each
    run), alert threshold, and max comments per issue.
 
-### How it works
+### Choosing the search source
 
-Each run, per search:
+```yaml
+- id: spyderco-dodo
+  source: ebay                  # optional; ebay is the default
+  query: "Spyderco Dodo"
+
+- id: spyderco-dodo-yahoo
+  source: yahoo_auctions
+  query: "スパイダルコ ドードー"
+  tags: [knives, spyderco]
+  max_price: 30000               # JPY; eBay's max_price is USD
+```
+
+An entry searches exactly one source. To track both, create two entries
+with distinct IDs and independently chosen queries. Queries are sent literally;
+they are not translated. Unknown sources, duplicate IDs, and invalid prices are
+rejected before searching. `category_ids`, `condition`, and `marketplace` are
+eBay-only and are rejected on Yahoo entries. `tags`, `priority`,
+`exclude_keywords`, `max_price`, and `price_drop_threshold_pct` work on both.
+
+Keep IDs stable. Cached histories record the source and currency, and changing
+either requires a new ID. Existing caches without metadata are treated as eBay
+USD histories. No currency conversion or cross-source price comparisons occur.
+
+### Yahoo Auctions through Firecrawl
+
+Yahoo search pages are fetched exclusively using Firecrawl's `/v2/scrape`
+endpoint, with Japanese location/language settings and fresh HTML (`maxAge: 0`).
+Prices are parsed from the displayed HTML, including tax where shown; no AI
+extraction step is needed. Only actual search results are included: catalog
+suggestions, recommendations, ads, and Yahoo flea-market listings are excluded.
+
+Searches fetch the newest results in pages of 50, stopping at `MAX_RESULTS`
+(default 50, before keyword/price filtering). A final page may fetch more than
+the cap; only up to `MAX_RESULTS` listings are retained. These snapshots describe
+the fetched sample, so the cheapest buyout across the whole market is not
+guaranteed. A warning shows when the search exceeds the limit. Firecrawl requests
+consume credits; raising `MAX_RESULTS` above 50 can require more requests per run.
+
+Current bid (`現在`) and buyout (`即決`) are tracked separately. A listing with
+both contributes its bid to auction tracking and its buyout to BIN history.
+`max_price` is in JPY: an affordable bid is retained even if its buyout exceeds
+the ceiling, but that buyout is excluded from BIN statistics. Shipping, proxy
+fees, and import charges are not included. Closing times are included in new
+auction alerts when present on the page.
+
+The first successful Yahoo run seeds history without alerts. Later runs alert
+once per newly observed auction that passes the filters, even without BIN
+history. Fixed-price/buyout listings use the existing price-drop rule. Auctions
+are deduplicated by listing ID, subject to the existing `SEEN_AUCTION_CAP` limit
+(default 500). Yahoo new-auction alerts do not imply a discount versus BIN prices.
+
+HTTP failures, blocked pages, missing prices, unrecognized layouts, and partial
+pages leave that search's cache unchanged; other searches continue. A confirmed
+empty search records an empty snapshot. Each failure is reported in the run log
+and summary. A missing or failing eBay credential does not stop Yahoo searches.
+
+### How eBay works
+
+Each run, per eBay search:
 
 1. Makes two separate eBay Browse API calls — one for BIN listings
    (`buyingOptions:{FIXED_PRICE}`, sorted by price ascending, up to
@@ -88,13 +151,15 @@ new floor. A search that never has any BIN listings can't establish
 
 Each search can have a `tags` list (e.g. `[knives, spyderco]`) for grouping
 and filtering — `priority` (`high`/`normal`) is folded in as an implicit tag
-too. After every run, `scripts/generate_chart.py` regenerates
+too, along with the search source. After every run, `scripts/generate_chart.py` regenerates
 [docs/index.html](docs/index.html): a self-contained line chart of BIN
 min/median/max price over time per search, with checkboxes to filter which
-tags' lines are shown and a dropdown to switch the plotted metric. Hovering
+tags' lines are shown and dropdowns to switch the metric and currency. USD and
+JPY appear in separate views. The auction minimum metric shows bid history,
+including Yahoo searches with no buyouts. Hovering
 a line highlights its legend entry and vice versa.
 
-Each legend entry has two icons: 🔍 opens that search on eBay in a new tab,
+Each legend entry shows the source and has two icons: 🔍 opens that search on its marketplace in a new tab,
 and 🏷️ opens the actual listing that was cheapest as of the most recent run
 (sourced from `bin_min_url` in that search's cache history — not the
 all-time-low listing, which may already be sold/delisted). The 🏷️ icon is
@@ -110,6 +175,74 @@ URL would need a custom Pages deployment step (e.g. via
 
 To regenerate it manually: `python scripts/generate_chart.py` (run from
 anywhere — paths resolve relative to this file, not your working directory).
+
+### Verification
+
+Install `ebay-watch/requirements.txt`, then run from the repository root:
+
+```sh
+python -m unittest discover -s ebay-watch/tests -v
+```
+
+Tests use sanitized Yahoo HTML captured through Firecrawl and mocked network
+requests. They do not consume credits, contact eBay, or create GitHub issues.
+
+### Specific items versus broad discovery searches
+
+`search_type` chooses the workflow independently of the marketplace or category:
+
+```yaml
+- id: yahoo-japanese-tools-nankin-kanna
+  source: yahoo_auctions
+  search_type: generic
+  tags: [japanese-tools]
+  query: "南京鉋"
+  max_results: 500               # optional; default for generic Yahoo searches
+```
+
+- `specific` (default): the existing price-history and alert workflow for a
+  particular model or item.
+- `generic`: a daily discovery digest for broad terms, including both auctions
+  and fixed-price listings. These searches do not generate individual price or
+  new-auction alerts, and are omitted from the price chart.
+
+All seven Japanese-tool searches use `generic`. The category remains the
+`japanese-tools` tag; `search_type` controls behavior.
+
+Bookmark **`/ebaywatcher/new-listings.html` on the deployed Pages site**, or use
+the “Daily new listings” link in the deployment job summary. The existing daily
+workflow refreshes this page. You can also open [docs/new-listings.html](docs/new-listings.html)
+locally after regenerating the chart. The chart links to the digest and vice
+versa. Each day has expandable groups per search, with new-match counts,
+direct listing links, bid/price, buyout and closing time where available.
+Auctions ending soon appear first within each group. An item matching multiple
+searches appears in each matching group; counts are matches, not unique items.
+
+The first successful generic run records a baseline without adding existing
+listings to the digest, including when switching a search from specific to
+generic. Later runs report listings first observed since that baseline. Pushes
+and manual reruns merge discoveries into the same UTC day, so they do not erase
+the day's earlier results. The digest keeps seven calendar days, and listing
+IDs are remembered for 90 days after their last observation, separately from
+the specific-item auction-ID cap. A stale search is explicitly marked when it
+has not completed a successful run today. “New” means newly observed, not a
+guarantee of the marketplace's original posting date. A relisting with a new ID
+is a new discovery.
+
+Yahoo generic searches scan up to **500 newest results per run** by default
+(at most 10 Firecrawl page requests per search); `max_results` can override this
+from 1 to 10,000. Seven broad searches can therefore use up to 70 page requests
+per run, including baseline and manual/push runs. Specific searches retain
+their existing `MAX_RESULTS` default. eBay generic searches sort both listing
+types by recency and default to `MAX_RESULTS` per type; their `max_results`
+override is limited to 200 per type.
+
+When matches exceed the fetch cap, the digest displays a coverage warning and
+a link to the full marketplace search. Increase `max_results` or narrow the
+query if needed. The digest cannot guarantee all new listings when more arrive
+between runs than the cap allows, and listings that start and end between
+checks can be missed. Failures preserve previous discoveries. Generating the
+HTML page itself makes no marketplace or Firecrawl calls.
 
 ### Caveats
 

@@ -22,6 +22,9 @@ from pathlib import Path
 
 import yaml
 
+from search_config import check_cache_source, search_type_of, search_url, source_of, validate_searches
+from listing_digest import render_digest
+
 AUTOMATION_ROOT = Path(__file__).resolve().parent.parent
 REPO_ROOT = AUTOMATION_ROOT.parent
 CONFIG_PATH = Path(os.environ.get("CONFIG_PATH", AUTOMATION_ROOT / "config" / "ebay_searches.yml"))
@@ -32,7 +35,7 @@ HTML_TEMPLATE = """<!doctype html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>eBay Watch — Price History</title>
+<title>Auction Watch — Price History</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns"></script>
 <style>
@@ -68,7 +71,8 @@ HTML_TEMPLATE = """<!doctype html>
 </style>
 </head>
 <body>
-<h1>eBay Watch — Price History</h1>
+<h1>Auction Watch — Price History</h1>
+<p><a href="new-listings.html" style="color:#8ab4f8">Daily new listings for broad searches →</a></p>
 <div id="controls">
   <div>
     Metric:
@@ -76,8 +80,10 @@ HTML_TEMPLATE = """<!doctype html>
       <option value="bin_min" selected>Min BIN</option>
       <option value="bin_median">Median BIN</option>
       <option value="bin_max">Max BIN</option>
+      <option value="auction_min">Min auction bid</option>
     </select>
   </div>
+  <div>Currency: <select id="currency"></select></div>
   <div>
     <button id="selectAllTags" type="button">Select all</button>
     <button id="deselectAllTags" type="button">Unselect all</button>
@@ -99,9 +105,15 @@ const BORDER_WIDTH = 2;
 const BORDER_WIDTH_ACTIVE = 3.5;
 const DIM_ALPHA = 0.12;
 
-function ebaySearchUrl(query) {
-  return 'https://www.ebay.com/sch/i.html?_nkw=' + encodeURIComponent(query);
-}
+const currencyEl = document.getElementById('currency');
+[...new Set(DATA.map(d => d.currency))].sort().forEach(currency => {
+  const option = document.createElement('option');
+  option.value = currency;
+  option.textContent = currency;
+  currencyEl.appendChild(option);
+});
+currencyEl.addEventListener('change', render);
+if (DATA.some(d => d.currency === 'USD')) currencyEl.value = 'USD';
 
 function withAlpha(hex, alpha) {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -147,15 +159,15 @@ function buildLegend(visible) {
 
     const label = document.createElement('span');
     label.className = 'legend-label';
-    label.textContent = d.query;
-    label.title = d.query;
+    label.textContent = d.query + ' · ' + d.source_label;
+    label.title = label.textContent;
 
     const searchLink = document.createElement('a');
     searchLink.className = 'legend-link';
-    searchLink.href = ebaySearchUrl(d.query);
+    searchLink.href = d.search_url;
     searchLink.target = '_blank';
     searchLink.rel = 'noopener';
-    searchLink.title = 'Open eBay search in new tab';
+    searchLink.title = 'Open ' + d.source_label + ' search in new tab';
     searchLink.textContent = '🔍';
     searchLink.addEventListener('click', event => event.stopPropagation());
 
@@ -215,10 +227,11 @@ function setActiveDataset(index) {
 function render() {
   const metric = document.getElementById('metric').value;
   const active = new Set([...tagsEl.querySelectorAll('input:checked')].map(cb => cb.value));
-  const visible = DATA.filter(d => d.tags.some(t => active.has(t)));
+  const currency = currencyEl.value || 'USD';
+  const visible = DATA.filter(d => d.currency === currency && d.tags.some(t => active.has(t)));
 
   const datasets = visible.map((d, i) => ({
-    label: d.query,
+    label: d.query + ' · ' + d.source_label,
     data: d.history.map(h => ({ x: h.timestamp, y: h[metric] })),
     borderColor: COLORS[i % COLORS.length],
     backgroundColor: COLORS[i % COLORS.length],
@@ -254,7 +267,7 @@ function render() {
           grid: { color: '#333' },
           title: { display: true, text: 'Date', color: '#ccc' },
         },
-        y: { ticks: { color: '#ccc' }, grid: { color: '#333' }, title: { display: true, text: 'USD', color: '#ccc' } },
+        y: { ticks: { color: '#ccc' }, grid: { color: '#333' }, title: { display: true, text: currency, color: '#ccc' } },
       },
       plugins: { legend: { display: false } },
     },
@@ -283,19 +296,28 @@ def latest_min_price_url(history: list[dict]) -> str | None:
 
 def build_dataset() -> list[dict]:
     searches = yaml.safe_load(CONFIG_PATH.read_text()) or []
+    validate_searches(searches)
     dataset = []
     for search in searches:
+        if search_type_of(search) == "generic":
+            continue
         search_id = search["id"]
         cache_path = CACHE_DIR / f"{search_id}.json"
         if not cache_path.exists():
             continue
         cache = json.loads(cache_path.read_text())
+        check_cache_source(cache, search)
         history = cache.get("history", [])
-        tags = list(search.get("tags", [])) + [search.get("priority", "normal")]
+        source = source_of(search)
+        tags = list(search.get("tags", [])) + [search.get("priority", "normal"), source]
         dataset.append(
             {
                 "id": search_id,
                 "query": search["query"],
+                "source": source,
+                "source_label": "Yahoo Auctions" if source == "yahoo_auctions" else "eBay",
+                "search_url": search_url(search),
+                "currency": cache.get("currency", "USD"),
                 "tags": tags,
                 "history": history,
                 "min_price_url": latest_min_price_url(history),
@@ -307,9 +329,13 @@ def build_dataset() -> list[dict]:
 def main() -> None:
     dataset = build_dataset()
     OUTPUT_PATH.parent.mkdir(parents=True, exist_ok=True)
-    html = HTML_TEMPLATE.replace("__DATA__", json.dumps(dataset))
+    html = HTML_TEMPLATE.replace("__DATA__", json.dumps(dataset).replace("<", "\\u003c"))
     OUTPUT_PATH.write_text(html)
     print(f"Wrote {OUTPUT_PATH} with {len(dataset)} searches")
+    searches = yaml.safe_load(CONFIG_PATH.read_text()) or []
+    digest_path = OUTPUT_PATH.with_name("new-listings.html")
+    digest_path.write_text(render_digest(searches, CACHE_DIR))
+    print(f"Wrote {digest_path}")
 
 
 if __name__ == "__main__":

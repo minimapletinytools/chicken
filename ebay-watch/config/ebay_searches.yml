@@ -1,11 +1,16 @@
-# eBay watch list.
+# Auction watch list (eBay and Yahoo Auctions Japan).
 #
 # Each entry is one saved search. `id` must be unique and stable — it's used
 # as the cache filename, so renaming it resets that search's price history.
 #
 # Fields:
 #   id               (required) unique slug, e.g. "rtx-3080-fe"
-#   query            (required) eBay search text
+#   search_type      (optional) specific (default) | generic; generic goes to
+#                      the daily new-listings digest instead of price alerts
+#   max_results      (optional) per-search fetch cap; Yahoo generic defaults to
+#                      500, other searches default to MAX_RESULTS (50)
+#   source           (optional) ebay (default) | yahoo_auctions; exactly one
+#   query            (required) literal search text for the selected source
 #   tags             (optional) list of free-text tags (e.g. [knives, spyderco]);
 #                      used to group/filter in alerts and the price-history
 #                      visualizer. priority (below) is also treated as an
@@ -18,11 +23,20 @@
 #   category_ids     (optional) eBay category id(s), comma-separated string
 #   condition        (optional) NEW | USED | NEW_OTHER | CERTIFIED_REFURBISHED
 #                      | SELLER_REFURBISHED | omit for any condition
-#   max_price        (optional) hard ceiling in USD; listings above this are
+#   max_price        (optional) hard ceiling: USD for eBay, JPY for Yahoo;
+#                      Yahoo bid and buyout prices are filtered separately;
+#                      listings above this are
 #                      ignored entirely, regardless of price history
 #   exclude_keywords (optional) list of case-insensitive substrings; a listing
 #                      whose title contains any of these is skipped
 #   marketplace      (optional) defaults to EBAY_US
+#
+# category_ids, condition and marketplace are eBay-only fields.
+# Yahoo example (use a separate id to keep its JPY history separate):
+# - id: spyderco-dodo-yahoo
+#   source: yahoo_auctions
+#   query: "スパイダルコ ドードー"
+#   max_price: 30000
 
 - id: spyderco-matriarch-2-wave
   tags: [knives, spyderco]
@@ -177,3 +191,44 @@
   tags: [jellycat, stuffed-animal]
   query: "Jellycat Gus Gryphon"
 
+- id: yahoo-japanese-tools-sen
+  source: yahoo_auctions
+  search_type: generic
+  tags: [japanese-tools]
+  query: "銑"
+
+- id: yahoo-japanese-tools-nankin-kanna
+  source: yahoo_auctions
+  search_type: generic
+  tags: [japanese-tools]
+  query: "南京鉋"
+
+- id: yahoo-japanese-tools-chouna
+  source: yahoo_auctions
+  search_type: generic
+  tags: [japanese-tools]
+  query: "釿"
+
+- id: yahoo-japanese-tools-anaya-nomi
+  source: yahoo_auctions
+  search_type: generic
+  tags: [japanese-tools]
+  query: "穴屋鑿"
+
+- id: yahoo-japanese-tools-tsuki-nomi
+  source: yahoo_auctions
+  search_type: generic
+  tags: [japanese-tools]
+  query: "突き鑿"
+
+- id: yahoo-japanese-tools-used-kitchen-knife-lots
+  source: yahoo_auctions
+  search_type: generic
+  tags: [japanese-tools]
+  query: "中古 包丁 まとめ"
+
+- id: yahoo-japanese-tools-gennou
+  source: yahoo_auctions
+  search_type: generic
+  tags: [japanese-tools]
+  query: "玄能"

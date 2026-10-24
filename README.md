@@ -7,5 +7,6 @@ live under `.github/workflows/` per GitHub's requirements.
 
 ## Automations
 
-- [ebay-watch](ebay-watch/) — watches eBay searches for BIN price drops and
-  tracks price history over time. See [ebay-watch/README.md](ebay-watch/README.md).
+- [ebay-watch](ebay-watch/) — watches specific eBay or Yahoo Auctions Japan items
+  for price drops and new auctions, and collects broad searches into a daily
+  listing digest. See [ebay-watch/README.md](ebay-watch/README.md).

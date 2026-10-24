@@ -1,6 +1,11 @@
 #!/usr/bin/env python3
 """
-Watches eBay searches over time, using the official eBay Browse API.
+Watches eBay (official Browse API) or Yahoo Auctions Japan (Firecrawl).
+
+Each search selects exactly one source, defaulting to eBay. Yahoo's adapter
+keeps JPY bids and buyouts separate, seeds the first run, and then alerts
+on newly observed auctions and buyout price drops. The details below describe
+the eBay path.
 
 Does two separate item_summary/search calls per search, not one:
   - BIN listings, filter buyingOptions:{FIXED_PRICE}, sort=price (ascending)
@@ -36,7 +41,8 @@ Opens/updates a GitHub issue for two kinds of events:
     price (median over last 2 months)
 
 Env vars required:
-  EBAY_CLIENT_ID, EBAY_CLIENT_SECRET  - eBay developer app credentials
+  EBAY_CLIENT_ID, EBAY_CLIENT_SECRET  - required only for eBay searches
+  FIRECRAWL_KEY                      - required only for Yahoo Auctions searches
   GITHUB_TOKEN                        - for creating/updating the alert issue
   GITHUB_REPOSITORY                   - "owner/repo" (set automatically in GHA)
 
@@ -74,6 +80,10 @@ from pathlib import Path
 
 import requests
 import yaml
+
+from search_config import check_cache_source, result_limit, search_type_of, source_of, validate_searches
+from listing_digest import update_discoveries
+from yahoo_auctions import search_yahoo
 
 AUTOMATION_ROOT = Path(__file__).resolve().parent.parent
 REPO_ROOT = AUTOMATION_ROOT.parent
@@ -119,7 +129,7 @@ def fetch_ebay_page(token: str, search: dict, buying_options: str, sort: str) ->
 
     params = {
         "q": search["query"],
-        "limit": str(MAX_RESULTS),
+        "limit": str(result_limit(search, MAX_RESULTS)),
         "sort": sort,
         "filter": ",".join(filters),
     }
@@ -171,10 +181,15 @@ def fetch_ebay_page(token: str, search: dict, buying_options: str, sort: str) ->
 
 
 def search_ebay(token: str, search: dict) -> list[dict]:
-    bin_items, bin_total = fetch_ebay_page(token, search, "FIXED_PRICE", "price")
+    bin_sort = "newlyListed" if search_type_of(search) == "generic" else "price"
+    bin_items, bin_total = fetch_ebay_page(token, search, "FIXED_PRICE", bin_sort)
     auction_items, auction_total = fetch_ebay_page(token, search, "AUCTION", "newlyListed")
 
     search_id = search["id"]
+    limit = result_limit(search, MAX_RESULTS)
+    search["_coverage"] = {"limited": bin_total > limit or auction_total > limit,
+                           "total": bin_total + auction_total,
+                           "fetched": len({item["id"] for item in bin_items + auction_items})}
     print(
         f"[{search_id}] fetched {len(bin_items)}/{bin_total} BIN match(es), "
         f"{len(auction_items)}/{auction_total} auction match(es)"
@@ -182,13 +197,13 @@ def search_ebay(token: str, search: dict) -> list[dict]:
     if bin_total > len(bin_items):
         print(
             f"[{search_id}] WARNING: {bin_total - len(bin_items)} BIN listing(s) not fetched "
-            f"(beyond MAX_RESULTS={MAX_RESULTS}) — min/max/median may not reflect the full market",
+            f"(result limit={limit}) — fetched prices may not reflect the full market",
             file=sys.stderr,
         )
     if auction_total > len(auction_items):
         print(
             f"[{search_id}] WARNING: {auction_total - len(auction_items)} auction listing(s) not fetched "
-            f"(beyond MAX_RESULTS={MAX_RESULTS}) — some new auctions may be missed this run",
+            f"(result limit={limit}) — some new auctions may be missed this run",
             file=sys.stderr,
         )
 
@@ -264,14 +279,43 @@ def get_median_history_bin(history: list[dict], days: int = 60, now: datetime | 
     return round(statistics.median(recent_medians), 2)
 
 
-def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
+def process_search(token: str | None, search: dict, firecrawl_key: str | None = None) -> tuple[dict, list[dict]]:
     search_id = search["id"]
+    cache_exists = (CACHE_DIR / f"{search_id}.json").exists()
     cache = load_cache(search_id)
-    items = search_ebay(token, search)
+    source = source_of(search)
+    if cache_exists:
+        check_cache_source(cache, search)
+    seeded = cache.get("last_checked") is not None
+    if source == "yahoo_auctions":
+        if not firecrawl_key:
+            raise ValueError("FIRECRAWL_KEY is required for Yahoo Auctions")
+        items = search_yahoo(firecrawl_key, search, result_limit(search, MAX_RESULTS))
+    else:
+        if not token:
+            raise ValueError("eBay credentials are required for eBay searches")
+        items = search_ebay(token, search)
+    currencies = {item["currency"] for item in items}
+    currency = next(iter(currencies), cache.get("currency", "JPY" if source == "yahoo_auctions" else "USD"))
+    prior_currency = cache.get("currency", "USD" if cache_exists else currency)
+    if len(currencies) > 1 or currency != prior_currency:
+        raise ValueError(f"[{search_id}] currency differs from cached history; use a new id")
+    cache.update(source=source, currency=currency)
     now_dt = datetime.now(timezone.utc)
     now = now_dt.isoformat()
 
+    if search_type_of(search) == "generic":
+        update_discoveries(cache, items, now_dt, search.get("_coverage", {}))
+        save_cache(search_id, cache)
+        return cache, []
+    cache["search_type"] = "specific"
+
     bin_items = [i for i in items if i["buying_option"] == "FIXED_PRICE"]
+    if source == "yahoo_auctions":
+        bin_items += [dict(item, price=item["buyout_price"])
+                      for item in items if item["buying_option"] == "AUCTION"
+                      and item.get("buyout_price") is not None
+                      and (search.get("max_price") is None or item["buyout_price"] <= search["max_price"])]
     bin_prices = [i["price"] for i in bin_items]
     auction_items = [i for i in items if i["buying_option"] == "AUCTION"]
     current_min_item = min(bin_items, key=lambda i: i["price"]) if bin_items else None
@@ -288,6 +332,9 @@ def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
             # all_time_min_bin_item below, which can go stale/sold once a
             # cheaper item has since been listed and the record-holder ends).
             "bin_min_url": current_min_item["url"] if current_min_item else None,
+            "currency": currency,
+            "auction_count": len(auction_items),
+            "auction_min": min((item["price"] for item in auction_items), default=None),
         }
     )
     cache["history"] = cache["history"][-HISTORY_CAP:]
@@ -335,7 +382,17 @@ def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
     median_hist_bin = get_median_history_bin(cache["history"], days=60, now=now_dt)
     seen_auctions = list(cache.get("seen_auction_ids", []))
     seen_auction_set = set(seen_auctions)
-    if median_hist_bin is not None:
+    if source == "yahoo_auctions" and seeded:
+        for item in auction_items:
+            if item["id"] not in seen_auction_set:
+                alerts.append({
+                    "kind": "yahoo_new_auction", "search_id": search_id,
+                    "search_query": search["query"], "tags": search.get("tags", []),
+                    "priority": search.get("priority", "normal"), "current_min": item["price"],
+                    "drop_pct": 0, "title": item["title"], "url": item["url"],
+                    "ends_at": item.get("ends_at"),
+                })
+    elif source == "ebay" and median_hist_bin is not None:
         for item in auction_items:
             if item["id"] in seen_auction_set or item["price"] >= median_hist_bin:
                 continue
@@ -360,6 +417,8 @@ def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
             seen_auction_set.add(item["id"])
     cache["seen_auction_ids"] = seen_auctions[-SEEN_AUCTION_CAP:]
 
+    for alert in alerts:
+        alert.update(source=source, currency=currency)
     save_cache(search_id, cache)
     return cache, alerts
 
@@ -367,17 +426,25 @@ def process_search(token: str, search: dict) -> tuple[dict, list[dict]]:
 def format_alert(alert: dict) -> str:
     flag = "🔴 **HIGH PRIORITY** — " if alert.get("priority") == "high" else ""
     tags = f" [{', '.join(alert['tags'])}]" if alert.get("tags") else ""
+    currency = alert.get("currency", "USD")
+    money = lambda value: f"{currency} {value:,.0f}" if currency == "JPY" else f"{currency} {value:,.2f}"
+    source = "Yahoo Auctions" if alert.get("source") == "yahoo_auctions" else "eBay"
+    suffix = f" · {source} · search `{alert['search_id']}`{tags}"
+    if alert["kind"] == "yahoo_new_auction":
+        ends = f" · ends {alert['ends_at']}" if alert.get("ends_at") else ""
+        return (f"- {flag}🔨 **{alert['search_query']}** new auction: {money(alert['current_min'])} bid — "
+                f"[{alert['title']}]({alert['url']}){ends}{suffix}")
     if alert["kind"] == "new_auction":
         return (
             f"- {flag}🔨 **{alert['search_query']}** auction below median BIN history: "
-            f"${alert['current_min']:.2f} bid vs ${alert['median_bin']:.2f} median BIN "
+            f"{money(alert['current_min'])} bid vs {money(alert['median_bin'])} median BIN "
             f"({alert['drop_pct']:.1f}% under) — [{alert['title']}]({alert['url']}) · "
-            f"search `{alert['search_id']}`{tags}"
+            f"{source} · search `{alert['search_id']}`{tags}"
         )
     return (
         f"- {flag}🔻 **{alert['search_query']}** min BIN dropped "
-        f"{alert['drop_pct']:.1f}% (${alert['prior_min']:.2f} → ${alert['current_min']:.2f}) — "
-        f"[{alert['title']}]({alert['url']}) · search `{alert['search_id']}`{tags}"
+        f"{alert['drop_pct']:.1f}% ({money(alert['prior_min'])} → {money(alert['current_min'])}) — "
+        f"[{alert['title']}]({alert['url']}){suffix}"
     )
 
 
@@ -399,7 +466,7 @@ def upsert_issue(gh_token: str, body: str) -> None:
             "POST",
             "/issues",
             gh_token,
-            json={"title": f"eBay watch alert — {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}", "body": body, "labels": [ISSUE_LABEL]},
+            json={"title": f"Auction watch alert — {datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}", "body": body, "labels": [ISSUE_LABEL]},
         )
         return
 
@@ -414,7 +481,7 @@ def upsert_issue(gh_token: str, body: str) -> None:
                 "POST",
                 "/issues",
                 gh_token,
-                json={"title": "eBay watch alerts", "body": body, "labels": [ISSUE_LABEL]},
+                json={"title": "Auction watch alerts", "body": body, "labels": [ISSUE_LABEL]},
             )
         else:
             github_request("POST", f"/issues/{issue_number}/comments", gh_token, json={"body": body})
@@ -425,45 +492,64 @@ def upsert_issue(gh_token: str, body: str) -> None:
             "POST",
             "/issues",
             gh_token,
-            json={"title": "eBay watch alerts", "body": body, "labels": [ISSUE_LABEL]},
+            json={"title": "Auction watch alerts", "body": body, "labels": [ISSUE_LABEL]},
         )
 
 
 def main() -> None:
-    client_id = os.environ["EBAY_CLIENT_ID"]
-    client_secret = os.environ["EBAY_CLIENT_SECRET"]
     gh_token = os.environ.get("GITHUB_TOKEN")
 
     searches = yaml.safe_load(CONFIG_PATH.read_text()) or []
-    token = get_ebay_token(client_id, client_secret)
+    validate_searches(searches)
+    if MAX_RESULTS <= 0:
+        raise ValueError("MAX_RESULTS must be positive")
+    token = None
+    token_error = None
+    if any(source_of(search) == "ebay" for search in searches):
+        try:
+            token = get_ebay_token(os.environ["EBAY_CLIENT_ID"], os.environ["EBAY_CLIENT_SECRET"])
+        except (KeyError, requests.RequestException) as exc:
+            token_error = f"eBay authentication failed ({type(exc).__name__})"
 
     all_alerts = []
-    summary_lines = ["# eBay watch run\n"]
+    summary_lines = ["# Auction watch run\n"]
     for search in searches:
         try:
-            cache, alerts = process_search(token, search)
-        except requests.HTTPError as e:
-            print(f"[{search['id']}] eBay API error: {e}", file=sys.stderr)
-            summary_lines.append(f"- `{search['id']}`: ERROR {e}\n")
+            if source_of(search) == "ebay" and token_error:
+                raise ValueError(token_error)
+            cache, alerts = process_search(token, search, os.environ.get("FIRECRAWL_KEY"))
+        except (requests.RequestException, ValueError) as e:
+            # Do not log response bodies or request headers (credentials).
+            detail = str(e) if isinstance(e, ValueError) else type(e).__name__
+            print(f"[{search['id']}] {source_of(search)} error: {detail}", file=sys.stderr)
+            summary_lines.append(f"- `{search['id']}`: ERROR {detail}\n")
             continue
 
+        if search_type_of(search) == "generic":
+            today = datetime.now(timezone.utc).date().isoformat()
+            record = cache["discovery_days"][today]
+            warning = " — fetch limit reached; coverage incomplete" if record["limited"] else ""
+            summary_lines.append(f"- `{search['id']}` (generic): {len(record['items'])} new matches in daily digest{warning}\n")
+            continue
         latest = cache["history"][-1]
         price_drops = [a for a in alerts if a["kind"] == "price_drop"]
-        new_auctions = [a for a in alerts if a["kind"] == "new_auction"]
+        new_auctions = [a for a in alerts if a["kind"] in ("new_auction", "yahoo_new_auction")]
         note = ""
         if price_drops:
             note += f" — 🔻 {price_drops[0]['drop_pct']:.1f}% BIN drop"
         if new_auctions:
-            note += f" — 🔨 {len(new_auctions)} auction(s) below median BIN"
+            note += f" — 🔨 {len(new_auctions)} new auction alert(s)"
         summary_lines.append(
-            f"- `{search['id']}`: {latest['bin_count']} BIN / {latest['total_count']} total, "
-            f"min ${latest['bin_min']}, max ${latest['bin_max']}, median ${latest['bin_median']}"
+            f"- `{search['id']}` ({source_of(search)}, {cache['currency']}): {latest['bin_count']} BIN / {latest['total_count']} total, "
+            f"min {latest['bin_min']}, max {latest['bin_max']}, median {latest['bin_median']}"
             f"{note}\n"
         )
         all_alerts.extend(alerts)
 
     all_alerts.sort(key=lambda a: (0 if a.get("priority") == "high" else 1, -a["drop_pct"]))
 
+    if any(search_type_of(search) == "generic" for search in searches):
+        summary_lines.append("\nDaily listing digest: `ebaywatcher/new-listings.html` on the Pages site.\n")
     summary = "".join(summary_lines)
     print(summary)
     step_summary_path = os.environ.get("GITHUB_STEP_SUMMARY")
@@ -477,7 +563,7 @@ def main() -> None:
             f.write(f"alerts_found={'true' if all_alerts else 'false'}\n")
 
     if all_alerts and gh_token:
-        body_lines = [f"### eBay watch alerts\n_{datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}_\n"]
+        body_lines = [f"### Auction watch alerts\n_{datetime.now(timezone.utc):%Y-%m-%d %H:%M UTC}_\n"]
         body_lines.extend(format_alert(a) for a in all_alerts)
         upsert_issue(gh_token, "\n".join(body_lines))
     elif all_alerts:
