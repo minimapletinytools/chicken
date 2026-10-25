@@ -866,9 +866,21 @@
       "currency": "USD",
       "timestamp": "2026-10-24T20:41:22.081315+00:00",
       "total_count": 0
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "currency": "USD",
+      "timestamp": "2026-10-25T11:27:52.234837+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-10-24T20:41:22.081315+00:00",
+  "last_checked": "2026-10-25T11:27:52.234837+00:00",
   "search_id": "spyderco-tighe-stick",
   "search_type": "specific",
   "seen_auction_ids": [

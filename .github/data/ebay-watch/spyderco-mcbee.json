@@ -866,9 +866,21 @@
       "currency": "USD",
       "timestamp": "2026-10-24T20:41:26.418184+00:00",
       "total_count": 50
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 50,
+      "bin_max": 197.97,
+      "bin_median": 195.0,
+      "bin_min": 16.88,
+      "bin_min_url": "https://www.ebay.com/itm/174104158603?_skw=Spyderco+McBee&hash=item28896aa18b:g:TkkAAOSwIvdd2EXr",
+      "currency": "USD",
+      "timestamp": "2026-10-25T11:27:56.547527+00:00",
+      "total_count": 50
     }
   ],
-  "last_checked": "2026-10-24T20:41:26.418184+00:00",
+  "last_checked": "2026-10-25T11:27:56.547527+00:00",
   "search_id": "spyderco-mcbee",
   "search_type": "specific",
   "seen_auction_ids": [],
