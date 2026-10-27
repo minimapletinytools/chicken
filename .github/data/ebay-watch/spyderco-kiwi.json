@@ -890,9 +890,21 @@
       "currency": "USD",
       "timestamp": "2026-10-26T13:01:15.285723+00:00",
       "total_count": 5
+    },
+    {
+      "auction_count": 1,
+      "auction_min": 150.0,
+      "bin_count": 5,
+      "bin_max": 379.0,
+      "bin_median": 209.0,
+      "bin_min": 18.71,
+      "bin_min_url": "https://www.ebay.com/itm/206206737559?_skw=Spyderco+Kiwi&hash=item3002e11c97:g:GFoAAeSwtV5p3Aqj",
+      "currency": "USD",
+      "timestamp": "2026-10-27T12:10:22.993618+00:00",
+      "total_count": 6
     }
   ],
-  "last_checked": "2026-10-26T13:01:15.285723+00:00",
+  "last_checked": "2026-10-27T12:10:22.993618+00:00",
   "search_id": "spyderco-kiwi",
   "search_type": "specific",
   "seen_auction_ids": [
@@ -904,7 +916,8 @@
     "v1|327288096255|0",
     "v1|267756560810|0",
     "v1|267763193371|0",
-    "v1|128123496584|0"
+    "v1|128123496584|0",
+    "v1|307250708391|0"
   ],
   "source": "ebay"
 }
