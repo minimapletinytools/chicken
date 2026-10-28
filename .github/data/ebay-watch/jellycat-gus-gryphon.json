@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
-    "id": "v1|206256298406|0",
-    "seen_at": "2026-10-13T14:11:26.626657+00:00",
-    "title": "Jellycat Gus Gryphon 14\u201d Plush Stuffed Animal",
-    "url": "https://www.ebay.com/itm/206256298406?_skw=Jellycat+Gus+Gryphon&hash=item3005d559a6:g:uhsAAeSwfLxp-1xP"
+    "id": "v1|318875470854|0",
+    "seen_at": "2026-10-28T12:54:22.741028+00:00",
+    "title": "Jellycat Gus Gryphon Plush Stuffed Animal, With Tags, Adult Owner",
+    "url": "https://www.ebay.com/itm/318875470854?_skw=Jellycat+Gus+Gryphon&hash=item4a3e758c06:g:ASkAAeSwFVVqqaFl"
   },
-  "all_time_min_bin_price": 208.3,
+  "all_time_min_bin_price": 200.0,
   "currency": "USD",
   "history": [
     {
@@ -220,9 +220,21 @@
       "currency": "USD",
       "timestamp": "2026-10-27T12:10:43.749008+00:00",
       "total_count": 16
+    },
+    {
+      "auction_count": 1,
+      "auction_min": 235.0,
+      "bin_count": 15,
+      "bin_max": 1500.0,
+      "bin_median": 285.0,
+      "bin_min": 200.0,
+      "bin_min_url": "https://www.ebay.com/itm/318875470854?_skw=Jellycat+Gus+Gryphon&hash=item4a3e758c06:g:ASkAAeSwFVVqqaFl",
+      "currency": "USD",
+      "timestamp": "2026-10-28T12:54:22.741028+00:00",
+      "total_count": 16
     }
   ],
-  "last_checked": "2026-10-27T12:10:43.749008+00:00",
+  "last_checked": "2026-10-28T12:54:22.741028+00:00",
   "search_id": "jellycat-gus-gryphon",
   "search_type": "specific",
   "seen_auction_ids": [
