@@ -857,9 +857,21 @@
       "currency": "USD",
       "timestamp": "2026-10-28T12:54:16.301691+00:00",
       "total_count": 0
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "currency": "USD",
+      "timestamp": "2026-10-29T12:59:54.334561+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-10-28T12:54:16.301691+00:00",
+  "last_checked": "2026-10-29T12:59:54.334561+00:00",
   "search_id": "kizer-micro-sheepdog",
   "search_type": "specific",
   "seen_auction_ids": [],

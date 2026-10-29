@@ -862,9 +862,21 @@
       "currency": "USD",
       "timestamp": "2026-10-28T12:54:13.714313+00:00",
       "total_count": 8
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 8,
+      "bin_max": 30.0,
+      "bin_median": 10.59,
+      "bin_min": 5.99,
+      "bin_min_url": "https://www.ebay.com/itm/377478636618?_skw=Byrd+Finch&hash=item57e37ae44a:g:vxsAAeSwNRJqnpmS",
+      "currency": "USD",
+      "timestamp": "2026-10-29T12:59:51.654304+00:00",
+      "total_count": 8
     }
   ],
-  "last_checked": "2026-10-28T12:54:13.714313+00:00",
+  "last_checked": "2026-10-29T12:59:51.654304+00:00",
   "search_id": "byrd-finch",
   "search_type": "specific",
   "seen_auction_ids": [
