@@ -874,9 +874,21 @@
       "currency": "USD",
       "timestamp": "2026-10-29T12:59:52.926268+00:00",
       "total_count": 1
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 1,
+      "bin_max": 5.0,
+      "bin_median": 5.0,
+      "bin_min": 5.0,
+      "bin_min_url": "https://www.ebay.com/itm/336732081092?_skw=Byrd+Wrench&hash=item4e66cbcbc4:g:h6kAAeSwk71qdmCB",
+      "currency": "USD",
+      "timestamp": "2026-10-30T12:54:53.237191+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-10-29T12:59:52.926268+00:00",
+  "last_checked": "2026-10-30T12:54:53.237191+00:00",
   "search_id": "byrd-wrench",
   "search_type": "specific",
   "seen_auction_ids": [],

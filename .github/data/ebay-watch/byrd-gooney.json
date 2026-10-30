@@ -874,14 +874,27 @@
       "currency": "USD",
       "timestamp": "2026-10-29T12:59:51.092921+00:00",
       "total_count": 19
+    },
+    {
+      "auction_count": 1,
+      "auction_min": 29.99,
+      "bin_count": 18,
+      "bin_max": 65.0,
+      "bin_median": 60.0,
+      "bin_min": 49.95,
+      "bin_min_url": "https://www.ebay.com/itm/820070029893?_skw=Byrd+Gooney&hash=itembeeffb9a45:g:3X0AAeSw69pqlbZQ",
+      "currency": "USD",
+      "timestamp": "2026-10-30T12:54:50.778338+00:00",
+      "total_count": 19
     }
   ],
-  "last_checked": "2026-10-29T12:59:51.092921+00:00",
+  "last_checked": "2026-10-30T12:54:50.778338+00:00",
   "search_id": "byrd-gooney",
   "search_type": "specific",
   "seen_auction_ids": [
     "v1|267721785199|0",
-    "v1|940023225372|0"
+    "v1|940023225372|0",
+    "v1|257823807796|0"
   ],
   "source": "ebay"
 }
