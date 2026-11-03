@@ -3,38 +3,6 @@
   "all_time_min_bin_price": null,
   "currency": "JPY",
   "discovery_days": {
-    "2026-10-24": {
-      "baseline": true,
-      "checked_at": "2026-10-24T20:44:33.427572+00:00",
-      "fetched": 3,
-      "items": [],
-      "limited": false,
-      "total": 3
-    },
-    "2026-10-25": {
-      "baseline": false,
-      "checked_at": "2026-10-25T11:31:12.766108+00:00",
-      "fetched": 3,
-      "items": [],
-      "limited": false,
-      "total": 3
-    },
-    "2026-10-26": {
-      "baseline": false,
-      "checked_at": "2026-10-26T13:04:48.231528+00:00",
-      "fetched": 1,
-      "items": [],
-      "limited": false,
-      "total": 1
-    },
-    "2026-10-27": {
-      "baseline": false,
-      "checked_at": "2026-10-27T12:13:20.945581+00:00",
-      "fetched": 3,
-      "items": [],
-      "limited": false,
-      "total": 3
-    },
     "2026-10-28": {
       "baseline": false,
       "checked_at": "2026-10-28T12:57:20.163716+00:00",
@@ -50,18 +18,26 @@
       "items": [],
       "limited": false,
       "total": 3
+    },
+    "2026-11-03": {
+      "baseline": false,
+      "checked_at": "2026-11-03T14:15:31.374082+00:00",
+      "fetched": 2,
+      "items": [],
+      "limited": false,
+      "total": 2
     }
   },
   "discovery_seeded": true,
   "history": [],
-  "last_checked": "2026-10-29T13:02:58.235921+00:00",
+  "last_checked": "2026-11-03T14:15:31.374082+00:00",
   "search_id": "yahoo-japanese-tools-yariganna",
   "search_type": "generic",
   "seen_auction_ids": [],
   "seen_listings": {
     "j1246797538": "2026-10-29T13:02:58.235921+00:00",
-    "q1242828237": "2026-10-29T13:02:58.235921+00:00",
-    "u1243656842": "2026-10-29T13:02:58.235921+00:00"
+    "q1242828237": "2026-11-03T14:15:31.374082+00:00",
+    "u1243656842": "2026-11-03T14:15:31.374082+00:00"
   },
   "source": "yahoo_auctions"
 }
