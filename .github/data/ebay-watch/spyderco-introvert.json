@@ -1010,11 +1010,25 @@
       "currency": "USD",
       "timestamp": "2026-11-05T14:38:52.532861+00:00",
       "total_count": 0
+    },
+    {
+      "auction_count": 1,
+      "auction_min": 5.5,
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "currency": "USD",
+      "timestamp": "2026-11-06T14:15:13.107511+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-11-05T14:38:52.532861+00:00",
+  "last_checked": "2026-11-06T14:15:13.107511+00:00",
   "search_id": "spyderco-introvert",
   "search_type": "specific",
-  "seen_auction_ids": [],
+  "seen_auction_ids": [
+    "v1|117506959910|0"
+  ],
   "source": "ebay"
 }
