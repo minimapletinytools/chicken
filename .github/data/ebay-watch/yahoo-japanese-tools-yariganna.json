@@ -34,18 +34,26 @@
       "items": [],
       "limited": false,
       "total": 2
+    },
+    "2026-11-07": {
+      "baseline": false,
+      "checked_at": "2026-11-07T13:02:19.986756+00:00",
+      "fetched": 2,
+      "items": [],
+      "limited": false,
+      "total": 2
     }
   },
   "discovery_seeded": true,
   "history": [],
-  "last_checked": "2026-11-06T14:17:36.082729+00:00",
+  "last_checked": "2026-11-07T13:02:19.986756+00:00",
   "search_id": "yahoo-japanese-tools-yariganna",
   "search_type": "generic",
   "seen_auction_ids": [],
   "seen_listings": {
     "j1246797538": "2026-10-29T13:02:58.235921+00:00",
-    "q1242828237": "2026-11-06T14:17:36.082729+00:00",
-    "u1243656842": "2026-11-06T14:17:36.082729+00:00"
+    "q1242828237": "2026-11-07T13:02:19.986756+00:00",
+    "u1243656842": "2026-11-07T13:02:19.986756+00:00"
   },
   "source": "yahoo_auctions"
 }
