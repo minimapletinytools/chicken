@@ -887,9 +887,21 @@
       "currency": "USD",
       "timestamp": "2026-11-07T12:59:43.021479+00:00",
       "total_count": 0
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "currency": "USD",
+      "timestamp": "2026-11-08T13:23:58.493742+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-11-07T12:59:43.021479+00:00",
+  "last_checked": "2026-11-08T13:23:58.493742+00:00",
   "search_id": "lucent-automatic-knife",
   "search_type": "specific",
   "seen_auction_ids": [],
