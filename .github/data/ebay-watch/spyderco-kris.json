@@ -1,6 +1,11 @@
 {
-  "all_time_min_bin_item": null,
-  "all_time_min_bin_price": null,
+  "all_time_min_bin_item": {
+    "id": "v1|257846206006|0",
+    "seen_at": "2026-11-11T14:21:29.866825+00:00",
+    "title": "\ud83d\udd25\u26abVintage 2006 Rare Spyderco/Ed Schempp C104BMP Kris VG-10 Ethnic Series ",
+    "url": "https://www.ebay.com/itm/257846206006?_skw=Spyderco+Kris&hash=item3c08d4de36:g:TKQAAeSwrEFq849G"
+  },
+  "all_time_min_bin_price": 599.99,
   "currency": "USD",
   "history": [
     {
@@ -1065,9 +1070,21 @@
       "currency": "USD",
       "timestamp": "2026-11-10T14:52:05.641466+00:00",
       "total_count": 0
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 1,
+      "bin_max": 599.99,
+      "bin_median": 599.99,
+      "bin_min": 599.99,
+      "bin_min_url": "https://www.ebay.com/itm/257846206006?_skw=Spyderco+Kris&hash=item3c08d4de36:g:TKQAAeSwrEFq849G",
+      "currency": "USD",
+      "timestamp": "2026-11-11T14:21:29.866825+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-11-10T14:52:05.641466+00:00",
+  "last_checked": "2026-11-11T14:21:29.866825+00:00",
   "search_id": "spyderco-kris",
   "search_type": "specific",
   "seen_auction_ids": [],
