@@ -1082,9 +1082,21 @@
       "currency": "USD",
       "timestamp": "2026-11-11T14:21:21.084332+00:00",
       "total_count": 10
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 9,
+      "bin_max": 415.0,
+      "bin_median": 180.0,
+      "bin_min": 40.0,
+      "bin_min_url": "https://www.ebay.com/itm/840102346491?_skw=Spyderco+Lava&hash=itemc39a007efb:g:BQgAAeSwyehqRV4Z",
+      "currency": "USD",
+      "timestamp": "2026-11-12T15:13:55.473819+00:00",
+      "total_count": 9
     }
   ],
-  "last_checked": "2026-11-11T14:21:21.084332+00:00",
+  "last_checked": "2026-11-12T15:13:55.473819+00:00",
   "search_id": "spyderco-lava",
   "search_type": "specific",
   "seen_auction_ids": [
