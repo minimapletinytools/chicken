@@ -1,6 +1,11 @@
 {
-  "all_time_min_bin_item": null,
-  "all_time_min_bin_price": null,
+  "all_time_min_bin_item": {
+    "id": "v1|820347079120|0",
+    "seen_at": "2026-11-13T14:34:07.119711+00:00",
+    "title": "Pocket Knife Lot: Flash2 SOG, Micro Recon1 Cold Steel, DW1 Boker, Shuffle Kersha",
+    "url": "https://www.ebay.com/itm/820347079120?_skw=Boker+%22DW-1%22&hash=itembf007f09d0:g:UHMAAeSwvd9q9dSJ"
+  },
+  "all_time_min_bin_price": 60.0,
   "currency": "USD",
   "history": [
     {
@@ -1046,9 +1051,21 @@
       "currency": "USD",
       "timestamp": "2026-11-12T15:14:06.744173+00:00",
       "total_count": 0
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 1,
+      "bin_max": 60.0,
+      "bin_median": 60.0,
+      "bin_min": 60.0,
+      "bin_min_url": "https://www.ebay.com/itm/820347079120?_skw=Boker+%22DW-1%22&hash=itembf007f09d0:g:UHMAAeSwvd9q9dSJ",
+      "currency": "USD",
+      "timestamp": "2026-11-13T14:34:07.119711+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-11-12T15:14:06.744173+00:00",
+  "last_checked": "2026-11-13T14:34:07.119711+00:00",
   "search_id": "boker-dw-1",
   "search_type": "specific",
   "seen_auction_ids": [
