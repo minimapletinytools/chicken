@@ -1106,9 +1106,21 @@
       "currency": "USD",
       "timestamp": "2026-11-13T14:34:01.490196+00:00",
       "total_count": 13
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 14,
+      "bin_max": 76.0,
+      "bin_median": 60.0,
+      "bin_min": 49.95,
+      "bin_min_url": "https://www.ebay.com/itm/820070029893?_skw=Spyderco+Gooney&hash=itembeeffb9a45:g:3X0AAeSw69pqlbZQ",
+      "currency": "USD",
+      "timestamp": "2026-11-14T13:30:12.141890+00:00",
+      "total_count": 14
     }
   ],
-  "last_checked": "2026-11-13T14:34:01.490196+00:00",
+  "last_checked": "2026-11-14T13:30:12.141890+00:00",
   "search_id": "spyderco-gooney",
   "search_type": "specific",
   "seen_auction_ids": [

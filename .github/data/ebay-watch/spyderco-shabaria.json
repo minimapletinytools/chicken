@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
     "id": "v1|840097722442|0",
-    "seen_at": "2026-11-13T14:34:21.550237+00:00",
+    "seen_at": "2026-11-14T13:30:26.831799+00:00",
     "title": "Spyderco UltraRare Vintage SHABARIA numbered C59BMP collector number",
     "url": "https://www.ebay.com/itm/840097722442?_skw=Spyderco+Shabaria&hash=itemc399b9f04a:g:wUoAAeSwZJxq7ONz"
   },
-  "all_time_min_bin_price": 243.21,
+  "all_time_min_bin_price": 242.51,
   "currency": "USD",
   "history": [
     {
@@ -811,9 +811,21 @@
       "currency": "USD",
       "timestamp": "2026-11-13T14:34:21.550237+00:00",
       "total_count": 4
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 4,
+      "bin_max": 629.99,
+      "bin_median": 374.5,
+      "bin_min": 242.51,
+      "bin_min_url": "https://www.ebay.com/itm/840097722442?_skw=Spyderco+Shabaria&hash=itemc399b9f04a:g:wUoAAeSwZJxq7ONz",
+      "currency": "USD",
+      "timestamp": "2026-11-14T13:30:26.831799+00:00",
+      "total_count": 4
     }
   ],
-  "last_checked": "2026-11-13T14:34:21.550237+00:00",
+  "last_checked": "2026-11-14T13:30:26.831799+00:00",
   "search_id": "spyderco-shabaria",
   "search_type": "specific",
   "seen_auction_ids": [],
