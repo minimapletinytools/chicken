@@ -1118,9 +1118,21 @@
       "currency": "USD",
       "timestamp": "2026-11-14T13:30:08.896463+00:00",
       "total_count": 20
+    },
+    {
+      "auction_count": 2,
+      "auction_min": 143.5,
+      "bin_count": 18,
+      "bin_max": 425.0,
+      "bin_median": 324.5,
+      "bin_min": 184.42,
+      "bin_min_url": "https://www.ebay.com/itm/178492895307?_skw=Spyderco+Dodo&hash=item298f01704b:g:UvQAAeSw3HxqpqOn",
+      "currency": "USD",
+      "timestamp": "2026-11-15T13:55:31.533996+00:00",
+      "total_count": 20
     }
   ],
-  "last_checked": "2026-11-14T13:30:08.896463+00:00",
+  "last_checked": "2026-11-15T13:55:31.533996+00:00",
   "search_id": "spyderco-dodo",
   "search_type": "specific",
   "seen_auction_ids": [
