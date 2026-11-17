@@ -1142,9 +1142,21 @@
       "currency": "USD",
       "timestamp": "2026-11-16T15:45:09.501541+00:00",
       "total_count": 1
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 1,
+      "bin_max": 599.99,
+      "bin_median": 599.99,
+      "bin_min": 599.99,
+      "bin_min_url": "https://www.ebay.com/itm/257846206006?_skw=Spyderco+Kris&hash=item3c08d4de36:g:TKQAAeSwrEFq849G",
+      "currency": "USD",
+      "timestamp": "2026-11-17T15:59:02.864980+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-11-16T15:45:09.501541+00:00",
+  "last_checked": "2026-11-17T15:59:02.864980+00:00",
   "search_id": "spyderco-kris",
   "search_type": "specific",
   "seen_auction_ids": [],
