@@ -1114,9 +1114,21 @@
       "currency": "USD",
       "timestamp": "2026-11-18T15:39:11.170189+00:00",
       "total_count": 0
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "currency": "USD",
+      "timestamp": "2026-11-19T15:44:03.099058+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-11-18T15:39:11.170189+00:00",
+  "last_checked": "2026-11-19T15:44:03.099058+00:00",
   "search_id": "byrd-starling",
   "search_type": "specific",
   "seen_auction_ids": [
