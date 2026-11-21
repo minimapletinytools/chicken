@@ -3,57 +3,9 @@
   "all_time_min_bin_price": null,
   "currency": "JPY",
   "discovery_days": {
-    "2026-11-04": {
+    "2026-11-21": {
       "baseline": false,
-      "checked_at": "2026-11-04T14:34:12.311528+00:00",
-      "fetched": 1,
-      "items": [],
-      "limited": false,
-      "total": 1
-    },
-    "2026-11-05": {
-      "baseline": false,
-      "checked_at": "2026-11-05T14:41:47.141353+00:00",
-      "fetched": 2,
-      "items": [],
-      "limited": false,
-      "total": 2
-    },
-    "2026-11-06": {
-      "baseline": false,
-      "checked_at": "2026-11-06T14:17:36.082729+00:00",
-      "fetched": 2,
-      "items": [],
-      "limited": false,
-      "total": 2
-    },
-    "2026-11-07": {
-      "baseline": false,
-      "checked_at": "2026-11-07T13:02:19.986756+00:00",
-      "fetched": 2,
-      "items": [],
-      "limited": false,
-      "total": 2
-    },
-    "2026-11-08": {
-      "baseline": false,
-      "checked_at": "2026-11-08T13:27:18.859459+00:00",
-      "fetched": 2,
-      "items": [],
-      "limited": false,
-      "total": 2
-    },
-    "2026-11-09": {
-      "baseline": false,
-      "checked_at": "2026-11-09T16:20:49.987703+00:00",
-      "fetched": 1,
-      "items": [],
-      "limited": false,
-      "total": 1
-    },
-    "2026-11-10": {
-      "baseline": false,
-      "checked_at": "2026-11-10T14:55:36.621306+00:00",
+      "checked_at": "2026-11-21T14:39:32.984684+00:00",
       "fetched": 1,
       "items": [],
       "limited": false,
@@ -62,14 +14,14 @@
   },
   "discovery_seeded": true,
   "history": [],
-  "last_checked": "2026-11-10T14:55:36.621306+00:00",
+  "last_checked": "2026-11-21T14:39:32.984684+00:00",
   "search_id": "yahoo-japanese-tools-yariganna",
   "search_type": "generic",
   "seen_auction_ids": [],
   "seen_listings": {
     "j1246797538": "2026-10-29T13:02:58.235921+00:00",
     "q1242828237": "2026-11-08T13:27:18.859459+00:00",
-    "u1243656842": "2026-11-10T14:55:36.621306+00:00"
+    "u1243656842": "2026-11-21T14:39:32.984684+00:00"
   },
   "source": "yahoo_auctions"
 }
