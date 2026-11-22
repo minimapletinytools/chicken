@@ -1202,9 +1202,21 @@
       "currency": "USD",
       "timestamp": "2026-11-21T14:38:26.156209+00:00",
       "total_count": 3
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 3,
+      "bin_max": 319.0,
+      "bin_median": 315.0,
+      "bin_min": 225.0,
+      "bin_min_url": "https://www.ebay.com/itm/377617292433?_skw=Spyderco+Poliwog&hash=item57ebbe9c91:g:-pEAAeSwJhxq6ZpY",
+      "currency": "USD",
+      "timestamp": "2026-11-22T14:33:51.525821+00:00",
+      "total_count": 3
     }
   ],
-  "last_checked": "2026-11-21T14:38:26.156209+00:00",
+  "last_checked": "2026-11-22T14:33:51.525821+00:00",
   "search_id": "spyderco-poliwog",
   "search_type": "specific",
   "seen_auction_ids": [],
