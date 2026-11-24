@@ -1226,13 +1226,26 @@
       "currency": "USD",
       "timestamp": "2026-11-23T18:06:36.113749+00:00",
       "total_count": 1
+    },
+    {
+      "auction_count": 1,
+      "auction_min": 55.0,
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "currency": "USD",
+      "timestamp": "2026-11-24T17:43:19.700596+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-11-23T18:06:36.113749+00:00",
+  "last_checked": "2026-11-24T17:43:19.700596+00:00",
   "search_id": "spyderco-kris",
   "search_type": "specific",
   "seen_auction_ids": [
-    "v1|366825346940|0"
+    "v1|366825346940|0",
+    "v1|137956810758|0"
   ],
   "source": "ebay"
 }

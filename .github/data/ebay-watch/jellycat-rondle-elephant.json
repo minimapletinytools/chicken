@@ -1,11 +1,11 @@
 {
   "all_time_min_bin_item": {
     "id": "v1|800034033810|0",
-    "seen_at": "2026-09-11T01:07:18.089862+00:00",
+    "seen_at": "2026-11-24T17:43:34.850177+00:00",
     "title": "Rare Jellycat London Rondle Elephant Plush 11\" Stuffed Animal Retired Round Zoo",
     "url": "https://www.ebay.com/itm/800034033810?_skw=Jellycat+Rondle+Elephant&hash=itemba45be9092:g:idoAAeSwgsVqCoY1"
   },
-  "all_time_min_bin_price": 58.0,
+  "all_time_min_bin_price": 56.0,
   "currency": "USD",
   "history": [
     {
@@ -814,9 +814,21 @@
       "currency": "USD",
       "timestamp": "2026-11-23T18:07:02.527079+00:00",
       "total_count": 1
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 1,
+      "bin_max": 56.0,
+      "bin_median": 56.0,
+      "bin_min": 56.0,
+      "bin_min_url": "https://www.ebay.com/itm/800034033810?_skw=Jellycat+Rondle+Elephant&hash=itemba45be9092:g:idoAAeSwgsVqCoY1",
+      "currency": "USD",
+      "timestamp": "2026-11-24T17:43:34.850177+00:00",
+      "total_count": 1
     }
   ],
-  "last_checked": "2026-11-23T18:07:02.527079+00:00",
+  "last_checked": "2026-11-24T17:43:34.850177+00:00",
   "search_id": "jellycat-rondle-elephant",
   "search_type": "specific",
   "seen_auction_ids": [],

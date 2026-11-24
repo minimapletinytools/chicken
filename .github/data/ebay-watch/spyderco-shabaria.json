@@ -931,14 +931,27 @@
       "currency": "USD",
       "timestamp": "2026-11-23T18:07:01.362415+00:00",
       "total_count": 4
+    },
+    {
+      "auction_count": 1,
+      "auction_min": 225.0,
+      "bin_count": 3,
+      "bin_max": 629.99,
+      "bin_median": 390.0,
+      "bin_min": 359.0,
+      "bin_min_url": "https://www.ebay.com/itm/286270452705?_skw=Spyderco+Shabaria&hash=item42a70c73e1:g:4CwAAOSw~JBnisbL",
+      "currency": "USD",
+      "timestamp": "2026-11-24T17:43:34.174866+00:00",
+      "total_count": 4
     }
   ],
-  "last_checked": "2026-11-23T18:07:01.362415+00:00",
+  "last_checked": "2026-11-24T17:43:34.174866+00:00",
   "search_id": "spyderco-shabaria",
   "search_type": "specific",
   "seen_auction_ids": [
     "v1|287731597447|0",
-    "v1|377651791563|0"
+    "v1|377651791563|0",
+    "v1|377671251316|0"
   ],
   "source": "ebay"
 }
