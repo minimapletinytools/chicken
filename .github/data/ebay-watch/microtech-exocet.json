@@ -1181,9 +1181,21 @@
       "currency": "USD",
       "timestamp": "2026-11-24T17:43:30.372174+00:00",
       "total_count": 0
+    },
+    {
+      "auction_count": 0,
+      "auction_min": null,
+      "bin_count": 0,
+      "bin_max": null,
+      "bin_median": null,
+      "bin_min": null,
+      "bin_min_url": null,
+      "currency": "USD",
+      "timestamp": "2026-11-25T17:12:43.287490+00:00",
+      "total_count": 0
     }
   ],
-  "last_checked": "2026-11-24T17:43:30.372174+00:00",
+  "last_checked": "2026-11-25T17:12:43.287490+00:00",
   "search_id": "microtech-exocet",
   "search_type": "specific",
   "seen_auction_ids": [],
