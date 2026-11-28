@@ -1274,9 +1274,21 @@
       "currency": "USD",
       "timestamp": "2026-11-27T16:39:00.328082+00:00",
       "total_count": 28
+    },
+    {
+      "auction_count": 1,
+      "auction_min": 194.5,
+      "bin_count": 29,
+      "bin_max": 747.49,
+      "bin_median": 291.75,
+      "bin_min": 199.99,
+      "bin_min_url": "https://www.ebay.com/itm/257875409175?_skw=Spyderco+P%27Kal&hash=item3c0a927917:g:eXMAAeSwT1ZrB6rx",
+      "currency": "USD",
+      "timestamp": "2026-11-28T15:30:10.386242+00:00",
+      "total_count": 30
     }
   ],
-  "last_checked": "2026-11-27T16:39:00.328082+00:00",
+  "last_checked": "2026-11-28T15:30:10.386242+00:00",
   "search_id": "spyderco-pkal",
   "search_type": "specific",
   "seen_auction_ids": [
